@@ -1,0 +1,953 @@
+﻿<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>既知の問題：スタジオ、ブライトコーブプレーヤー、API</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">ブライトコーブのその他のドキュメント</option>
+      
+        
+          <option value="https://support.brightcove.com">ドキュメントホーム</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">ブライトコーブビーコン</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">ブライトコーブキャンペーン</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">ブライトコーブソーシャル</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">ブライトコーブのプレーヤー開発</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/general/">一般情報</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">既知の問題：スタジオ、ブライトコーブプレーヤー、API</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">ホーム</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/brightcove-product-overview.html">ブライトコーブ製品の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-continuum-overview.html">ブライトコーブのContinuumの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
+                  
+                
+                  
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">ブライトコーブのフォーラムグループとメールリスト</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>ウーヤラから移行+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">ブライトコーブアナリティクス API への移行</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">ビデオクラウドへの移行:広告セット</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">ビデオクラウドへの移行:取り込みアダプタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:アスペラで摂取する</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:バックロット API を使用した取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">バックロット/ビデオクラウドCMSコネクタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">バックロットとビデオクラウド:動画と再生リストのフィールド</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のブライトコーブ DNS サーバの追加</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">ブライトコーブ API リクエストの認証</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:ビデオクラウドの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:ビデオクラウド分析の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:ビデオクラウドの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/training/video-cloud-studio-training-videos.html">ビデオクラウドスタジオトレーニングビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                  
+                
+                  
+                    <li><a href="/support/brightcove-answer.html">ブライトコーブの回答</a></li>
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">ブライトコーブのシステムステータスページの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+
+<article class="bcls-article">
+
+  <script>
+    var BCLS = ( function (window, document) {
+      var newURL = '/support/known-issues-studio-brightcove-player-and-apis.html',
+          message = '<h1 style="color:#990000;">This page has moved to the Integrations site. The new url is: ' + newURL + ' You will be redirected in 5 seconds. Please update your bookmarks.</h1>',
+          t;
+      function goToNewURL() {
+        window.location.href = newURL;
+      }
+      document.write(message);
+      t = window.setTimeout(goToNewURL, 5000);
+    })(window, document);
+  </script>
+
+  <summary>このトピックでは、スタジオ、ブライトコーブプレーヤー、および API に関する既知の問題について説明します。</summary>
+  <section class="bcls-section">
+    <p><strong>特定された既知の問題は次のとおりです。</strong></p>
+    <ul>
+      <li><a href="#studio">スタジオ</a>
+        <ul>
+          <li><a href="#media">メディアモジュール</a></li>
+          <li><a href="#players">プレイヤーモジュール</a></li>
+          <li><a href="#live">ライブビデオ</a></li>
+          <li><a href="#analytics">分析モジュール</a></li>
+          <li><a href="#gallery">ギャラリーモジュール</a></li>
+          <li><a href="#audience">オーディエンスモジュール</a></li>
+          <li><a href="#social">ソーシャルモジュール</a></li>
+          <li><a href="#di">アップロードモジュール/動的取り込み</a></li>
+        </ul>
+      </li>
+      <li><a href="#player">ブライトコーブプレーヤー</a></li>
+      <li><a href="#player_plugins">ブライトコーブプレーヤープラグイン</a></li>
+      <li><a href="#brightcoveLive">ブライトコーブ・ライブ</a></li>
+    </ul>
+    <ul>
+      <li><a href="#analytics_api">アナリティクス API </a></li>
+      <li><a href="#cms">CMS API </a></li>
+      <li><a href="#diapi">動的取り込み API </a></li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="studio">Studio</h2>
+    <dl>
+      <dt>Chrome の翻訳機能を使用すると、Studio の一部の機能が壊れる </dt>
+      <dd>Chrome の翻訳機能を使用して Studio モジュールを翻訳すると、一部の機能が壊れます。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="media">Mediaモジュール</h2>
+    <dl>
+      <dt>IE 11での画像キャプチャ</dt>
+      <dd>ビデオのアスペクト比が 1:1 または 4:3 の場合、IE 11 を使用した画像キャプチャは機能しません。</dd>
+      <dt>プレーヤーのプレビュー</dt>
+      <dd>ライブの HLS のみのリモートアセットビデオは、プレビュープレーヤーでは再生できません。</dd>
+      <dt>2 バイト文字を含むソースファイル名</dt>
+      <dd>メディアモジュールで再変換すると、2 バイト文字を含むソースファイル名が文字化けされます。</dd>
+      <dt>メディア共有</dt>
+      <dd>
+        <p>多くの動画を共有するときは、一度に2ページまでの動画を共有することをブライトコーブは推奨します。一度に多くの動画を共有すると、タイムアウトエラーが発生する場合があります。</p>
+        <p>既にキャプションが含まれている共有されている動画へのキャプションの追加はサポートされていません。</p>
+        <p>ライブストリームをクリップして作成したビデオでは、メディア共有が失敗します。</p>
+      </dd>
+      <dt>予定された動画</dt>
+      <dd>再生 API とカタログキャッシュ動画は最大 10 ～ 15 分間であるため、数分間（最大 20 分）に利用可能になるようスケジュールされている動画を要求しているプレーヤーは、キャッシュが更新されるまで再生可能なビデオを取得できない場合があります。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="players">Playersモジュール</h2>
+    <dl>
+      <dt>プリロード設定</dt>
+      <dd>Internet Explorer のバグにより、IE を使用するときにプリロード設定が無視されることがあります。</dd>
+      <dt>[ドメイン間のデータソースへのアクセス] 設定</dt>
+      <dd>ドメインが制限された Brightcove プレーヤーでこの<a href="https://www.windows-security.org/0d1b99f52cba398c3ce4d1cdd80d7441/access-data-sources-across-domains"> Internet Explorer ポリシー設定が有効になっている場合</a>、プレーヤーは Internet Explorer 11 で読み込まれません。これはIEのバグのようであり、既知の回避策はありません。ドメイン制限付きプレーヤーを IE 11 で動作させる場合は、この設定をオフにします。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="live">ライブ動画</h2>
+    <dt>Brightcove Playerが終了したライブイベントの動画ビューをカウントする</dt>
+    <dd>HLSプレイリストが空である、またはもはや取得できない終了したライブイベントであっても、Brightcove Playerは、リモートアセットがロードされるたびにvideo_viewをカウントします。<strong>対処策:</strong> 動画を非アクティブ化する、動画の公開設定を取り消す、または動画を削除します。</dd>
+  </section>
+  <section class="bcls-section">&nbsp;</section>
+  <section class="bcls-section">
+    <h2 id="analytics">アナリティクス</h2>
+    <dl>
+      <dt><strong>広告ブロッカーが原因で、分析データが正確でない可能性があります</strong></dt>
+      <dd>クライアントマシンでの分析データの送信をブロックする uBlock などの広告ブロッカーが原因で、分析データ (UI と API の両方で取得) が不正確になる可能性があります。</dd>
+      <dt><strong>0バイトを表示するカスタムレポート (一部の動画で配信済み) </strong></dt>
+      <dd>動的配信インジェストプロファイルを使用して取り込んだ動画には、カスタムレポートに 0 bytes_delivered と表示されます。</dd>
+      <dt><strong>複数のフィルタを使用したカスタムレポート</strong></dt>
+      <dd>複数のフィルターを使用する場合には、AND演算が使用されます。たとえば、2つのフィルター、<strong>video tag</strong> および <strong>player</strong> を追加すると、指定されたタグを備え、<strong>かつ</strong>指定されたプレーヤーで視聴された動画のみが返されます。</dd>
+      <dt><strong>ビデオタグによるフィルター機能を使用したカスタムレポート</strong></dt>
+      <dd>カスタムレポートを作成するとき、「動画タグ絞り込み」機能の使用に制限があります。お客様のライブラリーにある、その特定のタグを持つ動画を2,000件までしか考慮しません。特定のタグを持つ動画の数がそれを超える場合、絞り込みなしでそのタグを含むレポートを作成し、表計算ソフトで絞り込むことを推奨します。</dd>
+      <dt><strong>「その他/サードパーティ」</strong>とパフォーマンスレポートに表示される</dt>
+      <dd>Video Cloudライブラリーにない動画がVideo Cloudプレーヤー（リモートアセットなど）で再生された場合、関連動画IDのない[<strong>その他/サードパーティ</strong>]が表示されます。</dd>
+      <dt>更新された動画名が解析で反映されない</dt>
+      <dd>解析が動画のタイトルについて知るのは、プレーヤーが再生ビーコンの一部としてタイトルを解析に送信するときのみです。動画のタイトルが変更されても、動画が再生されるまで解析には新しいタイトルは知らされません。このため、動画名が更新されても再生の記録がないと、解析レポートには古い動画名が使用されます。この問題は2013年3月以前の期間のデータにしばしば発生し、数字のみのメタデータが表示されます。たとえば、動画タイトルが1230123012と表示されます。これは、この期間のデータが以前の解析システムで取り込まれたためです。</dd>
+      <dt>Analytics UIで動画名とプレーヤー名が ??????? と表示される</dt>
+      <dd>2013年10月に、メタデータ（動画名とプレーヤー名）に ????? が連続して表示された場合があります。この問題は、メタデータに2バイト文字が含まれ、2013年10月に動画表示が行われたパブリッシャーに発生しています。この問題は、Analytics UIに表示するためのメタデータの取り込み方法に関連していました。2013年11月から解析システムに対策を行い、イベントメトリックスと一緒に送信されたメタデータの破損を防いでいます。</dd>
+      <dt>レポート生成タイムゾーン</dt>
+      <dd>レポートタイムゾーンはレポートデータの1日の境界を計算するために使用されます。レポートタイムゾーン設定を変更すると、影響を受けるのは以後のデータのみです。変更は以前のデータにさかのぼって適用されません。この設定を変更すると、変更が適用された日の境界ではデータに平らな部分または山形が現れます。この設定の更新は有効になるまで少し時間がかかる場合があります。解析データが古い設定を参照し続ける場合があります。</dd>
+      <dt>日次ベースでのエンゲージメントデータの保存</dt>
+      <dd>エンゲージメントデータは日次ベースでUTC時間を使って保存され、場合により「エンゲージメントレポート」内の「x%の視聴者」欄に丸2日分のデータが含まれます。</dd>
+      <dt>Internet Explorerのサポート</dt>
+      <dd>分析モジュールには、Internet Explorer 11 以降が必要です。</dd>
+      <dt>デバイスメーカーの「その他」の結果が多数ある</dt>
+      <dd>場合によっては、デバイス製造元の「その他」の結果が多数表示されることがあります。これは、<code translate="No">user_agent</code>データコレクターが分析データを使用して配信されたを認識しない場合に発生します。私たちがこれのために特定した最も一般的な原因は、Instagramによって作成されたカスタムuser_agent文字列ですが、おそらく他にもあります。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="gallery">Gallery</h2>
+    <dl>
+      <dt>水平プレイリスト IPX で使用すると Chatroll ログインが失敗する</dt>
+      <dd>チャットロールは、iframeからのクッキーの設定に問題があります。Safari では、元のサイト (この場合は chatroll.com) から既にクッキーを持っているユーザーのみが iFrame から保存できます。ユーザーがアクセスしたことがない場合、IPX 内の埋め込みチャットロールは Cookie を設定できません。これはブライトコーブの問題ではなく、Safari と Chatroll の問題です。 </dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="audience">Audience</h2>
+    <dl>
+      <dt>オーディエンスのアクティビティは、視聴率:0、視聴時間:0 と表示時間:0</dt>
+      <dd>ビデオを再生せずに、またはビデオが最初のビーコンを送信する前に、インタラクティブイベントがトリガされることがあります。これにより、インタラクティブ機能があるがビデオアクティビティがないビューイベントが記録されます（0% の閲覧、0 秒の視聴）。</dd>
+      <dt>Internet Explorerのサポート</dt>
+      <dd>オーディエンスのリードフォームには、Internet Explorer 11 以降が必要です。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="social">ソーシャル</h2>
+    <dl>
+      <details>Ghostery ブラウザプラグインが Social モジュールと干渉する可能性があります</details>
+      <dd>
+        <p>Ghostery ブラウザプラグインは、Social モジュールを妨害し、正しくロードできないことがあります。</p>
+        <p><strong>対処策: </strong>Ghostery のホワイトリストにスタジオを追加します。</p>
+      </dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="di">Uploadモジュール/ダイナミックインジェスト</h2>
+    <dl>
+      <dt>デバイスの時計が実際の時刻と一致しない場合、アップロードモジュールを介したアップロードが失敗する</dt>
+      <dd>アップロードは一定時間認証されます。時計の時刻が実際の時刻から 15 分以上異なる場合、アップロード時にエラーが発生します。</dd>
+      <dt>ダイナミックインジェストによって再トランスコードすると、動画アクティブ化日が更新される</dt>
+      <dd>ダイナミックインジェストを使用して、動画を再トランスコードすると、動画のアクティブ化日が現在の日付に更新されます。スマートプレイリストでアクティブ化日を基準に並べ替えている場合、プレイリストの動画の順序が影響を受けます。</dd>
+      <dt>ファイル名</dt>
+      <dd>ビデオファイル名（拡張子を含む）は、120 シングルバイト（60 全バイト）文字を超えないようにしてください。その場合は、ビデオは正常に取り込まれますが、後で再変換することはできません。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="player">Brightcoveプレーヤー</h2>
+    <p>過去の既知の問題が最近のリリースで修正されたか確認するには、<a href="https://player.support.brightcove.com/release-notes/brightcove-player-release-notes.html">「Brightcove Playerリリースノート」</a>をチェックしてください。</p>
+    <dl>
+      <dt>ウェブプレーヤーアクセシビリティ:ビデオの位置を調整できません</dt>
+      <dl>
+        <em>iOS では VoiceOver </em>、<em> Android では TalkBack </em>のネイティブジェスチャでは、ブライトコーブプレーヤーの進行状況コントロールとボリュームスライダーを調整することはできません。これはプラットフォームの制限によるものです。代わりに、ユーザーは要素と直接対話する必要があります。
+        <ul>
+          <li> iOSでは、ユーザーはプログレスバーまたは音量スライダーをダブルタップして選択する必要があります。その後、ダブルタップしてホールドすると、時間または音量を調整できます。 </li>
+          <li> Androidでは、2本の指でダブルタップすると、ユーザーは2本の指ダブルタップの位置に進行または音量を調整することができます。 </li>
+        </ul>
+      </dl>
+      <dt><code translate="No">id</code>をに設定した要素<code translate="No">default</code></dt>
+      <dd>ページに要素がある場合、Brightcove Player の動作が悪くなることが知られています。<code translate="No">id="default"</code>ブログ記事<a href="https://2ality.com/2012/08/ids-are-global.html"> DOM: 要素IDはグローバル変数であり</a>、なぜこれが問題なのかを説明しています。</dd>
+      <dt>コンソールの警告</dt>
+      <p>Brightcove Player は、<strong>ブラウザーのコンソールに表示される警告を生成することがあります</strong>。警告は、エラーメッセージではなく、無害であり、再生には影響しません。警告の例がここに表示されます。</p>
+      <figure class="bcls-figure"><img class="bcls-image" alt="コンソール警告" src="/assets/images/general/console-warning.png"/></figure>
+      <dt>ポスターやサムネイル画像のない動画</dt>
+      <dd>サムネイル/ポスター画像のない動画は、ロード時にプレーヤーにエラーが表示されることがあります。これは、プレーヤーをクラッシュさせる可能性のある方法で、モバイル SDK プレーヤーに影響します。</dd>
+      <dt>Internet Explorer では、再生が一時停止されるたびに、常に再生レートが 1.0 にリセットされます。</dt>
+      <dd>これは、Safari 14 (ビッグサーバージョン) ではもはや問題になりません。</dd>
+      <dt>オーディオのみのコンテンツのIE11画像が表示されない</dt>
+      <dd>IE11でオーディオコンテンツのみを再生すると、ビデオの静止画像が表示されず、黒い画面のみが表示されます。イメージは次のコードで保持できます。
+        <pre>
+  <code class="language-css" translate="No">.vjs-has-started .vjs-poster {
+  display: block;
+  }
+  </code>
+  </pre>
+      </dd>
+      <dt>Safariの自動アドバンスプレイリスト</dt>
+      <dd>Safari では、<strong>プレイリストが表示され</strong>、<code translate="No">pre-load </code>プレーヤーの設定がに設定されている場合<code translate="No">none </code>、次のビデオのの自動再生はサイレントに失敗します。</dd>
+      <dt>コンテキストメニュー</dt>
+      <dd>プレーヤーの右端または下端に近いビデオを右クリックすると、プレーヤーのコンテキストメニューが画面外に表示されます。</dd>
+      <dt>ページ上で同じplayer_idを持つ異なるサイズの複数のプレーヤーを使用する</dt>
+      <dd>
+        <p> 複数のプレイヤーが1ページに同じIDを持ち、<code translate="No">&lt;video&gt;</code><code translate="No">width</code><code translate="No">height</code>属性を使用してタグ内に異なるサイズを指定した場合、最後のプレーヤーのCSSが適用されますすべてのプレイヤーに. </p>
+        <p><strong>回避策</strong></p>
+        <ul>
+          <li>異なるサイズやスタイリング/ライにしたい場合は、異なるプレーヤー ID を持つプレーヤーを使用します。&gt;</li>
+          <li>CSS を使用してプレーヤーのサイジングを提供するプレーヤーのクラスを定義し、そのクラスを異なるプレーヤーのビデオタグに追加します</li>
+        </ul>
+      </dd>
+      <dt>FastClick.jsでイベントハンドリングが正しく行われない</dt>
+      <dd>FastClick.jsを使用すると、弊社のカスタムコントロールバー内でイベントハンドリングが正しく行われません。このため、弊社のコントロールバーをモバイルデバイスで使用できなくなる場合があります。</dd>
+      <dt>ChromeとFirefoxで動画表示が灰色がかる</dt>
+      <dd>
+        <p>ChromeやFirefoxを使用すると、Brightcove Playerの動画が灰色がかって表示される場合があります。これは、ハードウェアアクセラレーションおよび/またはNVIDIAドライバーの設定が原因の可能性があります。</p>
+        <p><strong>対処策: </strong>NVIDIAコントロールパネルを開きます。[<strong>動画</strong>]で[<strong>動画カラー設定の調整</strong>]を選択します。[<strong>カラー調整の方法</strong>]で[<strong>NVIDIAの設定を使用</strong>]を選択します。[<strong>詳細設定</strong>]で、[<strong>ダイナミックレジン</strong>]が[<strong>限定レンジ (16-235)</strong>]ではなく[<strong>フルレンジ (0-255)</strong>]であることを確認します。[<strong>ダイナミックコントラスト強調</strong>]を選択しないでください。この問題は、<a href="https://productforums.google.com/forum/#!topic/chrome/wsDhGzP73bI;context-place=forum/chrome">Google Chromeヘルプフォーラム</a>で報告されています。</p>
+      </dd>
+      <dt>エミュレーターを使用する</dt>
+      <dd>
+        <p>動画再生のテストでChromeデバイスモードを使用している場合も他のエミュレーターを使用している場合も、実際のデバイスがどう機能するか、エミュレーターは正確には示さないことに注意してください。開発の間の初期テストにエミュレーターを使用できますが、正確な結果を求める場合には実際のデバイスを使用するのがベストプラクティスです。</p>
+        <p>Chromeデバイスモードで再生をテストすると、次のメッセージが表示される場合があります。「The use of Chrome in device mode simply renders the viewport and user agent string of that device in Chrome, which is not an accurate representation of how the actual device will perform.（「デバイスモードでChromeを使用すると、Chromeでは、そのデバイスのビューポートおよびユーザーエージェント文字列が表示されるだけです。実際のデバイスがどう機能するかを正確には表していません。」）</p>
+      </dd>
+      <dt><code translate="No">data-setup </code> を使用する</dt>
+      <dd><code translate="No">data-setup </code> をBrightcove Playerと使用「しない」でください。APIドキュメントには <code translate="No">data-setup </code> の使用が記載されているかもしれませんが、それはそのドキュメントがVideo.jsプレーヤーソースコードから直接生成されているためです。また、その属性を純粋なVideo.jsの <code translate="No">video </code> タグと使用することはできます。この属性はプレーヤーに設定情報を送信しますが、Brightcove Playerは別の方法を使ってこのタスクを行い、<code translate="No">data-setup </code> の信頼性が低くなります。</dd>
+      <dt>プロトコルを意識したソース選択とDASH</dt>
+      <dd>DASHコンテンツを使用しているとき、プロトコルを意識したソース選択は利用できません。HLSコンテンツとMP4コンテンツにだけ利用できます。</dd>
+      <dt>Safariでiframeプレーヤー実装を使用するとコンソールエラーが発生する</dt>
+      <dd>SafariでBrightcove Playerのiframe実装を使用すると、コンソールに次のエラーメッセージが表示されます。<strong>「Blocked a frame with origin "http://players.brightcove.net" from accessing a frame with origin "#DOMAIN NAME#".Protocols, domains, and ports must match.</strong>（始点 "http://players.brightcove.net" のフレームによる、始点 "#DOMAIN NAME#" のフレームへのアクセスがブロックされました。プロトコル、ドメイン、ポートが一致しなければなりません。）」報告されたエラーは再生に影響しません。</dd>
+      <dt>Safariのキャプションメニューに「Unknown」と表示される</dt>
+      <dd>これはSafari/Appleの制限です。Brightcove Playerの新しいバージョンは、Safariに組み込まれたネイティブのキャプション付け機能を使用し、これが標準の動作になります。これはAppleによって次のリンクで文書化されています。<a href="https://developer.apple.com/library/ios/qa/qa1801/_index.html">https://developer.apple.com/library/ios/qa/qa1801/_index.html</a></dd>
+      <dt>非Flash環境でのフルスクリーン</dt>
+      <dd>
+        <p> プレーヤーでFlashが無効またはFlashベースのHLSが無効であり、<code translate="No">video </code> タグの <code translate="No">style </code> 属性を使用して、明示的にプレーヤーのサイズが設定されている環境では、フルスクリーン表示は一部のブラウザーで機能しない場合があります。 </p>
+        <p>対処策: <code translate="No">video </code> タグから <code translate="No">style </code> 属性を削除します。代わりに、ページスタイルシートで以下のようにルールを作成します。</p>
+        <pre>
+  <code class="language-css" translate="No">.video-js{
+  width:640px;
+  height:360px;
+  }
+  </code>
+  </pre>
+      </dd>
+      <dt>ソーシャル共有</dt>
+      <dd>デスクトップで、広告の間、ソーシャル共有ボタンが見えません。</dd>
+      <dt>HTTPS</dt>
+      <dd>
+        <p>ほとんどのデスクトップブラウザーで、HTTPS接続上でマニフェストと動画セグメントの両方が供給されたとき、Brightcove PlayerはHTTPS Webサイト上でHLSだけを再生します。これは、非SSLコンテンツをさらに厳しく制限する、複数のブラウザーへの最近の変更のためです。これは、デスクトップコンピューターでChrome、Firefox、Internet Explorerを使用するユーザーに影響します。Safariユーザーやモバイルブラウザーには影響せず、MP4レンディションの再生にも影響しません。</p>
+        <p>Video Cloudが管理するアセットに対するこの制限に対応中です。ご自身のCDNおよびトランスコーディング（リモートアセット）を管理している場合、マニフェストと動画コンテンツの両方のHTTPS配信をサポートするよう、CDNを設定する必要があります。</p>
+      </dd>
+      <dt>フルスクリーン表示</dt>
+      <dd>
+        <p>フルスクリーンAPIをサポートする新しいブラウザーでは、フルスクリーンに切り替えたときにプレーヤーが100%に拡大されるよう、ページ内CSSルールを適用する必要があります。そうしないと、プレーヤーはフルスクリーン表示内に元のサイズで表示されます。詳細は<strong>「プレーヤーのサイズを調整する」</strong>にある<a href="https://player.support.brightcove.com/styling/sizing-player.html#fullscreen">「フルスクリーン表示」</a>を参照してください。</p>
+        <p>IE10以前では、フルスクリーンAPIがサポートされておらず、新しいウィンドウは開きますが、プレーヤーはウィンドウいっぱいに拡大されません。これは、プレーヤーのサイズを変更するためのスタイルが適用されないからです。ウィンドウをスクロールできないので、Webサイトの一部しか見えず、プレーヤーがまったく見えない場合があります。</p>
+      </dd>
+      <dt>複数のビデオが HapyaK チャプターで 1 つのページに公開されます</dt>
+      <dd>
+        <p>HapyaK チャプターを含む単一ページに複数のビデオを公開すると、誤ったチャプタが表示されることがあります。</p>
+        <p><strong>対処策</strong></p>
+        <p>次のスクリプトを使用してください: <a href="https://github.com/brightcove/gallery-in-page-snippets/blob/master/snippets/hapyakFix.js"> https://github.com/brightcove/gallery-in-page-snippets/blob/master/snippets/hapyakFix.js </a>。ただし、Flash再生 (IE11/Win7) ではこの問題を回避できないため、IE11/Win7 の場合は HTML5 フォールバックを実装する必要がある。</p>
+      </dd>
+      <dt>Akamai HDとHDS</dt>
+      <dd>Brightcove Playerは、Akamai HDまたはHDS配信方法による動画配信をサポートしません。</dd>
+      <dt>エラー: <strong>d.off is not a function（d.offは関数ではありません）</strong></dt>
+      <dd>
+        <p>既知のバグが原因のこのエラーは、MP4とHLSなど、プレーヤーで形式を切り替えると発生する場合があります。このバグが修正されるまでは、問題の原因となっているコードを再試行してください。以下のコードは、アプリでエラーを修正した例です。</p>
+        <pre>
+  <code class="language-javascript" translate="No">try {
+  myPlayer.catalog.load(video);
+  } catch (e) {
+  myPlayer.catalog.load(video);
+  }
+  myPlayer.play();
+  </code>
+  </pre>
+      </dd>
+      <dt>HLS動画の継続時間</dt>
+      <dd>コントロールバーに表示される継続時間が最初の表示から変わる場合があります。すべてのHLSセグメントがロードされると、継続時間が更新される場合があります。</dd>
+      <dt>RequireJS</dt>
+      <dd>RequireJSを使用している場合、<code translate="No">bc() </code> メソッドを使用したプレーヤーのインスタンス化が必要となる「場合があります」。このメソッドの使用が必要かどうかは、どのように/いつプレーヤーアセットがロードされたかによって決まります。詳細については<a href="https://player.support.brightcove.com/coding-topics/requirejs-and-brightcove-player.html">「RequireJSとBrightcove Player」</a>を参照してください。</dd>
+      <dt>referrer_urlとdescription_url</dt>
+      <dd><code translate="No">referrer_url </code>値は、iOS デバイスと Android デバイス間で異なる値を持つ場合があります。このため、代わりに <code translate="No">description_url </code> 値を使用することを推奨します。この値は、すべてのプラットフォームとデバイスで一貫しています。</dd>
+      <dt>Safariのループ属性</dt>
+      <dd><strong>ループ属性は</strong> Safari で正しく動作しません。&nbsp;<a href="https://player.support.brightcove.com/code-samples/brightcove-player-sample-creating-video-loop.html">Brightcove Player のサンプルに記載されているソリューションを使用できます。ビデオループドキュメントを作成します</a>。</dd>
+      <dt>サファリのキャプション</dt>
+      <dd>Safariはキャプションのスタイル設定にネイティブ機能を使用するため、Safariブラウザ（iOSとmacOSの両方）の<strong>[CC]</strong>メニューでは<strong>[キャプション設定]</strong>メニューオプションを使用できません。</dd>
+      <dt>グローバルという名前のHTML要素IDを使用して</dt>
+      <dd>高度（ページ内埋め込み）プレーヤー実装コードは、<code translate="No">&lt;div&gt; <code translate="No">id </code></code>値が割り当てられた親タグにネストしないでください<code translate="No">global </code>。これにより、Brightcove Player で問題が発生します。</dd>
+      <dt>プレーヤーバージョン 5 アイコンの問題</dt>
+      <dd>Brightcove Player バージョン 5 では、チャプターと字幕の両方で同じアイコンが使用されます。バージョン 5 はメンテナンスモードであり、これは表面的な問題であるため、問題は解決される可能性は疑わしい。</dd>
+    </dl>
+  </section>
+  <section class="bcls-section">
+    <h2 id="player_plugins">ブライトコーブプレーヤープラグイン</h2>
+    <p>特定のプラグインドキュメントにリンクされるので、プラグインの既知の問題を参照してください。バージョン 5 はメンテナンスモードであり、これは外観上の問題であるため、修正されません。</p>
+    <ul>
+      <li><a href="https://player.support.brightcove.com/plugins/advertising-freewheel-plugin.html#Known_issues">FreeWheel プラグインでの広告</a></li>
+      <li><a href="https://player.support.brightcove.com/plugins/advertising-ima3-plugin.html#issues">IMA3 プラグインでの広告</a></li>
+      <li><a href="https://player.support.brightcove.com/plugins/display-error-messages-plugin.html#Known_issues">エラーメッセージプラグインの表示</a></li>
+      <li><a href="https://player.support.brightcove.com/plugins/quality-selection-plugin.html#Known_issues">品質選択プラグイン</a></li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="android">Android</h2>
+    <ul>
+      <li> Android の TalkBack のネイティブジェスチャでは、Brightcove Player の進行状況コントロールとボリュームスライダーを調整できません。これはプラットフォームの制限によるものです。代わりに、ユーザーは要素と直接対話する必要があります。Androidでは、2本の指でダブルタップすると、ユーザーは2本の指ダブルタップの位置に進行または音量を調整することができます。 </li>
+      <li>Androidデバイスで、プログレスバーがHLS動画と同期しない場合があります。HLSはAndroidであまりうまく機能しないためです。動画の総継続時間が誤って0:01と表示される場合もあります。</li>
+      <li>Androidの全バージョンの電話とタブレットの両方で、<em>ネイティブ</em> ブラウザーにアクセシビリティの問題が複数あります。プレーヤーコントロールのいずれに対しても、Talkbackが音声や振動のフィードバックを行いません。（この問題は、AndroidデバイスのアドオンChromeブラウザーには該当<em>しません</em>。ネイティブブラウザーにのみ該当します。）</li>
+      <li>Androidデバイスで、エラーメッセージに対するタップイベントが親動画要素まで到達しません。つまり、表示されたエラーメッセージを閉じることができません。</li>
+      <li>Android デバイスでは、キャプションや品質の選択など、コントロールバーのプレーヤーメニューをナビゲートすると、メニュー内の項目を長押しすると、メニューが開いた状態で「立ち往生」することがあります。これは、Chrome <code translate="No">:hover </code>が擬似クラスを追加するためです。プレーヤーの他の場所で別の長押しすると、通常、メニューが閉じます。</li>
+    </ul>
+    <p class="BCL-aside"><a href="https://sdks.support.brightcove.com/android/">Brightcove Player SDK for Android</a> を利用したAndroidアプリの作成方法を学習してください。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ios">iOS</h2>
+    <ul>
+      <li> iOS の VoiceOver のネイティブジェスチャでは、Brightcove Player の進行状況コントロールと音量スライダーを調整できません。これはプラットフォームの制限によるものです。代わりに、ユーザーは要素と直接対話する必要があります。iOSでは、ユーザーはプログレスバーまたは音量スライダーをダブルタップして選択する必要があります。その後、ダブルタップしてホールドすると、時間または音量を調整できます。 </li>
+      <li>iOSのSafariは決してプリロードしません。詳細については、<a href="https://developer.apple.com/library/content/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/AudioandVideoTagBasics/AudioandVideoTagBasics.html"> Safari HTML5 オーディオとビデオガイドを参照してください</a>。</li>
+      <li>別のアプリに切り替えると、iOSでプレーヤーエラーが発生します。Safari/Chrome の iOS デバイスで Brightcove Player の動画を再生すると、別のアプリに切り替えてから 1 分以上後に Safari/Chrome に切り替えた後にプレーヤーがエラーになります。</li>
+    </ul>
+    <h3>iPhone</h3>
+    <ul>
+      <li>ソーシャル共有はiPhoneでは機能しません。iOS電話はフルスクリーンネイティブに切り替わるので、iPhoneから動画を共有できません。</li>
+      <li>iPhoneで、エラーメッセージに対するタップイベントが親動画要素まで到達しません。つまり、表示されたエラーメッセージを閉じることができません。</li>
+    </ul>
+    <p class="BCL-aside"><a href="https://sdks.support.brightcove.com/ios/">Brightcove Player SDK for iOS</a> を利用したiOSアプリの作成方法を学習してください。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="windows8">Windows 8</h2>
+    <ul>
+      <li>コンパニオン広告はサポートされていません。</li>
+      <li>Windows 8タブレットでは、標準のHTML/MP4再生でシークが機能しません。HLSでは正しく機能します。</li>
+      <li>Windows 8タブレットでは広告は機能しますが、コンパニオン広告でブラウザーがクラッシュします。</li>
+      <li>Windows 8タブレットでは、HLS、Flash、Live、および埋込みタイプがすべてサポートされています。</li>
+      <li>Windows 8電話ではMP4を再生できますが、FlashやHLSはサポートされていません。</li>
+      <li>Windows 8電話では埋込みタイプがiframeかインラインかに関係なく、再生を押すと再生は必ずフルスクリーンで行われます。つまり、再生が始まるとオーバーレイは表示されません。</li>
+      <li>キャプションを有効化できません。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="chrome">Chrome</h2>
+    <ul>
+      <li><strong>オーディオビットレートの低いレンディションに関する問題</strong>
+        <p>以下で文書化されているChromeブラウザー実装のMSEのバグが原因です。</p>
+        <p><a href="https://bugs.chromium.org/p/chromium/issues/detail?id=534301">https://bugs.chromium.org/p/chromium/issues/detail?id=534301 </a></p>
+        <p>BC プレーヤーのバージョン 5 以降のブラウザでの再生は、試行中のレンディションのオーディオプロファイルが AAC-LC と異なる場合、失敗します (MEDIA_ERR_DECODE と表示されます)。</p>
+        <p>新しく取り込んだコンテンツでこれを避けるには、お客様は以下のいずれかを行う必要があります。</p>
+        <ul>
+          <li>48 kbps以上の音声ビットレートを使用する</li>
+          <li>DIプロファイルに次の設定を含める。<code translate="No">"max_aac_profile": "aac-lc" </code></li>
+        </ul>
+        <p>既存のコンテンツでこれを避けるには、以下を行います。</p>
+        <ul>
+          <li>上記の推奨事項に従って再トランスコーディングする</li>
+        </ul>
+      </li>
+      <li>HTML5動画の要求が保留のままになって、動画がロードされない場合があります。この問題に関するGoogleの<a href="https://code.google.com/p/chromium/issues/detail?id=234779">文書</a>を参照してください。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="firefox">Firefox</h2>
+    <ul>
+      <li>Firefox Browser for Android:公式にはサポートしていませんが、できればバグへの対応を試みます。</li>
+      <li>Firefoxバージョン42でBrightcove Playerに再生の問題があるかもしれないと報告されています。この問題は、Firefoxの「<strong>ハードウェアアクセラレーション機能を使用する</strong>」設定に関連するようです。これを選択（有効に）すると、動画プレーヤーは音声だけを再生し、静止画像だけを表示します。この問題を解決するには、次のようにこのオプションを無効にします。<strong>[オプション] -&gt; [詳細] -&gt; [一般] -&gt; （クリア）[ハードウェアアクセラレーション機能を使用する（可能な場合）]</strong></li>
+      <li>動画コンテンツの最初のフレームの開始プレゼンテーションタイムスタンプ (pts) が 0 より大きい場合、Firefox で Brightcove Player がタイムアウトすることがあります。現在の推奨ソリューションは、コンテンツを再エンコードすることです。再エンコードは再トランスコードを意味しないことに注意してください。元のマスターを再アップロードする必要があります。これで問題が解決しない場合は、<a href="https://supportportal.brightcove.com/s/login/?language=en_US">カスタマーサポートにお問い合わせください</a>。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="internetexplorer">Internet Explorer</h2>
+    <ul>
+      <li>ビデオに自動的に表示されるように設定されたキャプション（メディアモジュールのキャプションの「デフォルト」設定をチェックする）が IE11 では機能しない</li>
+      <li>48 khz を超えるオーディオのビデオは、Windows 8 および Windows 10 の Edge および IE11 での再生中に失敗します。これはマイクロソフトの制限です。詳細については<a href=" https://msdn.microsoft.com/en-us/library/windows/desktop/dd742784(v=vs.85).aspx#FORMAT_CONSTRAINTS">、このマイクロソフトのドキュメントを参照してください</a>。</li>
+      <li>IMA3 Flash広告は、IEでよりうまく機能します。Google IMA3はIEでのFlash広告やHTML広告をサポートしていませんが、現時点での弊社のテストではFlash SDKの方がより堅牢であることが分かっています。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="safari">Safari</h2>
+    <ul>
+      <li>既知の問題はありません</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="ima3">IMA3</h2>
+    <ul>
+      <li>Google IMA3のスキップ可能広告を使用するとき、広告のスキップボタンにタブインデックスがないので、ボタンをキーボードで操作できません。したがって、キーボード操作に依存している視聴者は広告をスキップできません。</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="brightcoveLive">Brightcove Live</h2>
+    <ul>
+      <li><code translate="No">h264_profile </code>がに設定されている場合、<code translate="No">baseline </code><code translate="No">h264_profile </code>またはがジョブ要求に追加されていない場合、Windows 10 で Firefox v57 を使用する問題が発生します。</li>
+      <li>ライブストリームの終わりに達すると、<code translate="No">PLAYER_ERR_TIMEOUT </code>プレーヤーはエラーを表示することがあります。</li>
+    </ul>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページ最終更新日 2020 年 9 月 29 日
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>ブライトコーブサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
