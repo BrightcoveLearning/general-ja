@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ja">
 
 <head>
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>Ooyala-Video Cloud取り込みアダプタ:OISで取り込む2.5</title>
+  <title>JSONのご紹介</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -129,9 +129,9 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       
       
       
-      <li class="breadcrumb-item"><a href="/ooyala/">Ooyalaからの移行</a></li>
+      <li class="breadcrumb-item"><a href="/developer/">開発者</a></li>
       
-      <li class="breadcrumb-item active" aria-current="page">Ooyala-Video Cloud取り込みアダプタ:OISで取り込む2.5</li>
+      <li class="breadcrumb-item active" aria-current="page">JSONのご紹介</li>
     </ol>
   </nav>
 </header>
@@ -408,21 +408,113 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 
 <article class="bcls-article">
-  <h1>Ooyala-Video Cloud取り込みアダプタ:OISで取り込む2.5</h1>
-  <summary><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">取り込みアダプタを介して</a> OIS 2.5 を引き続き使用して、ビデオやアセットを Video Cloud に追加できます。</summary>
-  <aside class="bcls-aside bcls-aside--information language-editable">注:このトピックは、Video Cloud に移行した Ooyala <strong>カスタマーにのみ適用されます</strong>。</aside>
-  
-  <section class="bcls-section" id="ingestion_ois__section_esb_1yl_pdb">
-    <h2 id="Source_File_Formats_Supported">サポートされているソースファイル形式</h2>
-    <p>サポートされている取り込みファイル形式の詳細については、「<a class="xref" target="_blank" href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込み」ファイル形式を参照してください</a>。</p>
+  <h1>概念:JSONのご紹介</h1>
+  <summary>このトピックでは、このデータを操作するために使用される JSON ファイルとメソッドについて説明します。</summary>
+  <section class="bcls-section">
+    <h2 id="whatsCovered">JSON トピック</h2>
+    <p>このガイドの内容は次のとおりです。</p>
+    <ul>
+      <li>JSON ファイルを使い始める</li>
+      <li>JSON データを操作するためのメソッドの使用</li>
+      <li>JSONテキストを作成するためのツールを使用する</li>
+      <li>JSON データを検証する</li>
+    </ul>
   </section>
   <section class="bcls-section">
-    <h2 id="ways_to_ingest">動画とアセットを取り込む方法</h2>
-    <ul class="ullinks">
-      <li><strong><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">FTPS での取り込み FTPS </a></strong><br/>を使用して、動画、サムネイル、クローズドキャプション、マニフェストファイルを Backlot にアップロードできます。</li>
-      <li><strong><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">Aspera での取り込み Aspera </a></strong><br/>ファイル転送ソフトウェアを使用して、動画、サムネイル、クローズドキャプション、マニフェストファイルをアップロードできます。</li>
-      <li><strong><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">リモートでホストされた MRSS </a></strong><br/>フィードからの取り込みメディア   RSS (MRSS) を使用して、Ooyala が公開した MRSS フィードから自分のシステムからコンテンツを引き出すことができます。Backlot は MRSS フィードからメタデータを取り出し、リモートアセットまたはダウンロード（ホストされている場所）を作成し、動画と関連ファイル（サムネイル、クローズドキャプションファイルなど）を処理します。</li>
-      <li><strong><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">マニフェストファイル形式</a></strong></li>
+    <h2 id="startingWithJSON">JSONで始まる</h2>
+    <p>JavaScript オブジェクト記法 (JSON) ファイル形式は、サーバーと Web アプリケーション間で構造化データをシリアル化して送信するために使用されるテキストベースのオープン標準形式です。JSON形式は、人間が読み書きするのは簡単です。また、マシンが解析して生成することも簡単です。JavaScript プログラミング言語のサブセットに基づいていますが、完全に言語に依存しません。JSON形式は、XMLよりも小さく、速く、解析が容易です。これらのプロパティのため、JSON 形式は理想的なデータ交換言語です。</p>
+    <p>JSON 形式のデータ型は次のとおりです。</p>
+    <ul>
+      <li><strong>数値</strong> -JavaScriptの倍精度浮動小数点</li>
+      <li><strong>文字列</strong> -二重引用符で囲まれたUnicode（バックスラッシュエスケープ）</li>
+      <li><strong>ブール値</strong> -真または偽</li>
+      <li><strong>配列</strong> -角括弧で囲まれたカンマ区切り値の順序付きシーケンス</li>
+      <li><strong>オブジェクト</strong> -キーと値を区切るコロン「:」を持つ、キーと値のペアの順序付けされていないコレクション。これは、中括弧で囲まれたカンマ区切りのリストです。</li>
+      <li><strong>ヌル</strong> -ヌル値</li>
+    </ul>
+    <p>次の例は、ユーザーの連絡先情報を JSON 形式で記述します。</p>
+    <pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25,
+    "address": {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": 10021
+    },
+    "phoneNumbers": [
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        }
+    ]
+}</code></pre>
+    <p>JSON 形式の詳細については、「JSON と<a href="http://javascript.crockford.com/"> JavaScript ドキュメントの JSON </a><a href="//www.json.org/">の紹介</a>」を参照してください。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="usingJSONMethods">JSON メソッドを使用する</h2>
+    <p>JSON 形式は JavaScript 言語と非常に密接に関連しているため (文字 U+2028 と U+2029 は 2 つの言語では異なって処理されます)、ほとんど手間を使わずに言語で使用できます。JSON テキスト形式は、JavaScript オブジェクトの作成に使用されるコードと同じ構文を使用します。JSON オブジェクトには、値を JSON 形式に変換し、JSON 形式を値に変換するためのメソッドが含まれています。</p>
+    <p>JSON オブジェクトには、次のようなメソッドがあります。</p>
+    <ul>
+      <li>JSON 文字列を JavaScript <code translate="No">parse()</code>オブジェクトまたは配列に変換する方法。
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var jsonstring = '{"firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"]}';
+var contact = JSON.parse(jsonstring);
+console.log(contact.lastName + ", " + contact.firstName);
+//Output: Smith, John</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836466%28v=vs.94%29.aspx"> JSON.PARSE 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
+      <li>JavaScript 値 (通常はオブジェクトまたは配列) を JSON <code translate="No">stringify()</code>文字列に変換する方法。
+        <p>例1: </p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var contact = new Object();
+contact.firstName = "John";
+contact.lastName = "Smith";
+contact.phone = ["555-0100","555-0120"];
+var jsonstring = JSON.stringify(contact);
+console.log(jsonstring);
+//Output: { "firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"] }</code></pre>
+        <p>例2: （内部文字列にはエスケープ文字が使用されていることに注意してください）</p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var foo = new Object();
+foo.template = '&lt;p class="bar"&gt;Hello&lt;/p&gt;';
+var jsonstring = JSON.stringify(foo);
+console.log(jsonstring);
+//Output: {"template":"&lt;p class=\"bar\"&gt;Hello&lt;/p&gt;"}</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836459%28v=vs.94%29.aspx"> JSON.stringify 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="createJSONText">JSON テキストを作成する</h2>
+    <p>JSON 形式のテキストファイルを多数使用して作成している場合は、JSON エディタを使用してそれらの表示、編集、書式設定を行うことができます。</p>
+    <p>ダウンロード可能なJSONエディタは次のとおりです。</p>
+    <ul>
+      <li><a href="//tickplant.com/" translate="No">Power JSON Editor</a></li>
+      <li><a href="//sourceforge.net/projects/eclipsejsonedit/" translate="No">Eclipse JSON Editor Plugin</a></li>
+      <li><a href="//chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?hl=en-US" translate="No">Chrome Web Store JSON Editor</a></li>
+    </ul>
+    <p>オンラインJSONエディタもあります：</p>
+    <ul>
+      <li><a href="//www.jsoneditoronline.org/" translate="No">JSON Editor Online</a></li>
+      <li><a href="//jsonmate.com/" translate="No">JSONmate</a></li>
+      <li><a href="http://json.parser.online.fr" translate="No">JSON Parser Online</a></li>
+    </ul>
+    <p>JSON形式のファイルを扱うのに役立つ無料のツールがたくさんあります。他のアプリケーションを検索するには、ブラウザを使用します。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="validateJSONData">JSON データを検証する</h2>
+    <p>は JSON <a href="//json-schema.org/" translate="No">JSON schema</a>データの構造を定義し、JSON データを検証し、が<a href="//json.org/"> json.org </a>で定義されている標準に準拠していることを確認するために使用されます。JSON ファイルを検証するためのオンラインツールがあります。</p>
+    <p>JSONバリデーターをいくつか挙げます：</p>
+    <ul>
+      <li><a href="//jsonlint.com" translate="No">JSONLint</a></li>
+      <li><a href="//jsonformatter.curiousconcept.com/" translate="No">JSON Formatter &amp; Validator</a></li>
     </ul>
   </section>
 </article>
@@ -442,7 +534,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 <hr>
 <div class="last-updated">
-  ページ最終更新日 2020 年 5 月 9 日
+  ページ最終更新日 2020年9月28日
 </div>
 
 
