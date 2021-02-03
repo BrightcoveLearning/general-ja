@@ -1,12 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ja">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="このトピックでは、Brightcove のサービスおよびアプリケーションの更新に関する [Brightcove System Status] ページを表示します。">
+  <meta name="description" content="">
   
-  <title>Brightcove Systemのステータスページを表示する</title>
+  <title>JSONのご紹介</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -129,9 +129,9 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       
       
       
-      <li class="breadcrumb-item"><a href="/support/">サポート</a></li>
+      <li class="breadcrumb-item"><a href="/developer/">開発者</a></li>
       
-      <li class="breadcrumb-item active" aria-current="page">Brightcove Systemのステータスページを表示する</li>
+      <li class="breadcrumb-item active" aria-current="page">JSONのご紹介</li>
     </ol>
   </nav>
 </header>
@@ -407,77 +407,118 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 
 
-<!-- 
-  This content appears on all sites!
-  
-  If you update in one place, you MUST update it in all!
- -->
-
- <h1>Brightcove Systemのステータスページを表示する</h1>
- <article class="bcls-article">
-  <summary>このトピックでは、Brightcove のサービスおよびアプリケーションの更新に関する [Brightcove System Status] ページを表示します。</summary>
+<article class="bcls-article">
+  <h1>概念:JSONのご紹介</h1>
+  <summary>このトピックでは、このデータを操作するために使用される JSON ファイルとメソッドについて説明します。</summary>
   <section class="bcls-section">
-    <p>ブライトコーブは、すべての Brightcove サービスとアプリケーションのステータスを継続的に監視します。サービスに何らかの中断があると、システムステータスページに表示されます。本ページには、予定されているメンテナンス通知もすべて掲載されます。</p>
-    <p>[システムステータス] ページにアクセスするには、<a href="https://status.brightcove.com"> https://status.brightcove.com </a>にアクセスするか、ナビゲーションヘッダーから [サポート] アイコン ( <img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/question-icon.png"/> ) をクリックし、[ &nbsp;<strong>システムステータス</strong> ] をクリックします。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status.png"/></figure>
-    <p>投稿されたすべての通知には、以下の情報が含まれます。</p>
+    <h2 id="whatsCovered">JSON トピック</h2>
+    <p>このガイドの内容は次のとおりです。</p>
     <ul>
-      <li>インシデントステータス
-        <ul>
-          <li>運用可能 (緑)</li>
-          <li>通知 (青-システムは現在動作中ですが、遅延または断続的な停止の影響を受ける)</li>
-          <li>部分的なサービス中断 (黄色)</li>
-          <li>フルサービスの中断 (赤)</li>
-        </ul>
-      </li>
-      <li>コンポーネント － 影響を受けるサービスまたは領域</li>
-      <li>場所
-        <ul>
-          <li>アジア・太平洋</li>
-          <li>アメリカ</li>
-          <li>エメア</li>
-          <li>日本</li>
-        </ul>
-      </li>
-      <li>現在の状態とステータス。状態には以下があります。
-        <ul>
-          <li>調査中-エンジニアが問題を調査中</li>
-          <li>特定-エンジニアが問題を特定し、修正を検討している</li>
-          <li>モニタリング-問題の解決とエンジニアリング監視により、すべてが正常であることを確認する</li>
-          <li>解決済み-問題が解決しました</li>
-        </ul>
-      </li>
+      <li>JSON ファイルを使い始める</li>
+      <li>JSON データを操作するためのメソッドの使用</li>
+      <li>JSONテキストを作成するためのツールを使用する</li>
+      <li>JSON データを検証する</li>
     </ul>
-    <p>投稿されたメッセージはすべて英語で、使用時間は東部標準時 (GMT-5) です。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="history">システム状態の履歴を表示する</h2>
-    <p>システムステータスの履歴を表示するには、ページ上部の[<strong>履歴</strong>]リンクをクリックします。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-history.png"/></figure>
+    <h2 id="startingWithJSON">JSONで始まる</h2>
+    <p>JavaScript オブジェクト記法 (JSON) ファイル形式は、サーバーと Web アプリケーション間で構造化データをシリアル化して送信するために使用されるテキストベースのオープン標準形式です。JSON形式は、人間が読み書きするのは簡単です。また、マシンが解析して生成することも簡単です。JavaScript プログラミング言語のサブセットに基づいていますが、完全に言語に依存しません。JSON形式は、XMLよりも小さく、速く、解析が容易です。これらのプロパティのため、JSON 形式は理想的なデータ交換言語です。</p>
+    <p>JSON 形式のデータ型は次のとおりです。</p>
+    <ul>
+      <li><strong>数値</strong> -JavaScriptの倍精度浮動小数点</li>
+      <li><strong>文字列</strong> -二重引用符で囲まれたUnicode（バックスラッシュエスケープ）</li>
+      <li><strong>ブール値</strong> -真または偽</li>
+      <li><strong>配列</strong> -角括弧で囲まれたカンマ区切り値の順序付きシーケンス</li>
+      <li><strong>オブジェクト</strong> -キーと値を区切るコロン「:」を持つ、キーと値のペアの順序付けされていないコレクション。これは、中括弧で囲まれたカンマ区切りのリストです。</li>
+      <li><strong>ヌル</strong> -ヌル値</li>
+    </ul>
+    <p>次の例は、ユーザーの連絡先情報を JSON 形式で記述します。</p>
+    <pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25,
+    "address": {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": 10021
+    },
+    "phoneNumbers": [
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        }
+    ]
+}</code></pre>
+    <p>JSON 形式の詳細については、「JSON と<a href="http://javascript.crockford.com/"> JavaScript ドキュメントの JSON </a><a href="//www.json.org/">の紹介</a>」を参照してください。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="subscribe">システム状態の変更を購読する</h2>
-    <p>サインアップして、システムステータスが変更されたときに通知を受け取ることができます。このセクションの構成は次のとおりです。</p>
+    <h2 id="usingJSONMethods">JSON メソッドを使用する</h2>
+    <p>JSON 形式は JavaScript 言語と非常に密接に関連しているため (文字 U+2028 と U+2029 は 2 つの言語では異なって処理されます)、ほとんど手間を使わずに言語で使用できます。JSON テキスト形式は、JavaScript オブジェクトの作成に使用されるコードと同じ構文を使用します。JSON オブジェクトには、値を JSON 形式に変換し、JSON 形式を値に変換するためのメソッドが含まれています。</p>
+    <p>JSON オブジェクトには、次のようなメソッドがあります。</p>
     <ul>
-      <li><a href="#email">メールを購読中</a></li>
-      <li><a href="#webhook">webhookを購読中</a></li>
-      <li><a href="#manage">サブスクリプションの管理</a></li>
+      <li>JSON 文字列を JavaScript <code translate="No">parse()</code>オブジェクトまたは配列に変換する方法。
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var jsonstring = '{"firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"]}';
+var contact = JSON.parse(jsonstring);
+console.log(contact.lastName + ", " + contact.firstName);
+//Output: Smith, John</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836466%28v=vs.94%29.aspx"> JSON.PARSE 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
+      <li>JavaScript 値 (通常はオブジェクトまたは配列) を JSON <code translate="No">stringify()</code>文字列に変換する方法。
+        <p>例1: </p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var contact = new Object();
+contact.firstName = "John";
+contact.lastName = "Smith";
+contact.phone = ["555-0100","555-0120"];
+var jsonstring = JSON.stringify(contact);
+console.log(jsonstring);
+//Output: { "firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"] }</code></pre>
+        <p>例2: （内部文字列にはエスケープ文字が使用されていることに注意してください）</p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var foo = new Object();
+foo.template = '&lt;p class="bar"&gt;Hello&lt;/p&gt;';
+var jsonstring = JSON.stringify(foo);
+console.log(jsonstring);
+//Output: {"template":"&lt;p class=\"bar\"&gt;Hello&lt;/p&gt;"}</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836459%28v=vs.94%29.aspx"> JSON.stringify 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
     </ul>
-    <h3 id="email">メールを購読中</h3>
-    <p>メールで通知を受信するには、[ <strong>購読</strong> ] ボタンをクリックし、メールアドレスを入力して [ <strong>購読</strong> ] をクリックします。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-subscribe.png"/></figure>
-    <h3 id="webhook">webhookを購読中</h3>
-    <p>ウェブフックは、HTTP POSTで作成された定義されたコールバックです。ステータスの更新がある場合に、コールバックが JSON オブジェクトをポストする URL を指定します。</p>
-    <p>システムステータスが変更されたときに通知を受けるようにサインアップするには、[ <strong>購読</strong> ] ボタンを選択します。次に、電子メールアドレスとともに JSON ペイロードを受信する URL を入力します。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="webhook 購読する" src="https://general.support.brightcove.com/assets/images/support/system-status-webhook-subscribe.png"/></figure>
-    <p>システムステータスの変更が送信されると、Webhook アドレスは次のような JSON オブジェクトを受け取ります。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="webhook json" src="https://general.support.brightcove.com/assets/images/support/system-status-webhook-json.png"/></figure>
-    <h3 id="manage">サブスクリプションの管理</h3>
-    <p>登録すると、「購読の管理」ページへのリンクを記載した電子メールが送られてきます。このページで、お客様の購読について管理できます。通知の受信を希望するコンポーネント/製品/リージョンを選択できます。項目を選択し、[<strong>購読の保存</strong>]をクリックします。</p>
-    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="https://general.support.brightcove.com/assets/images/support/system-status-manage-sub.png"/></figure>
-    <p>購読を解除するには、[サブスクリプションの管理] ページの下部にある [ <strong>登録解除</strong> ] リンクをクリックします。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="createJSONText">JSON テキストを作成する</h2>
+    <p>JSON 形式のテキストファイルを多数使用して作成している場合は、JSON エディタを使用してそれらの表示、編集、書式設定を行うことができます。</p>
+    <p>ダウンロード可能なJSONエディタは次のとおりです。</p>
+    <ul>
+      <li><a href="//tickplant.com/" translate="No">Power JSON Editor</a></li>
+      <li><a href="//sourceforge.net/projects/eclipsejsonedit/" translate="No">Eclipse JSON Editor Plugin</a></li>
+      <li><a href="//chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?hl=en-US" translate="No">Chrome Web Store JSON Editor</a></li>
+    </ul>
+    <p>オンラインJSONエディタもあります：</p>
+    <ul>
+      <li><a href="//www.jsoneditoronline.org/" translate="No">JSON Editor Online</a></li>
+      <li><a href="//jsonmate.com/" translate="No">JSONmate</a></li>
+      <li><a href="http://json.parser.online.fr" translate="No">JSON Parser Online</a></li>
+    </ul>
+    <p>JSON形式のファイルを扱うのに役立つ無料のツールがたくさんあります。他のアプリケーションを検索するには、ブラウザを使用します。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="validateJSONData">JSON データを検証する</h2>
+    <p>は JSON <a href="//json-schema.org/" translate="No">JSON schema</a>データの構造を定義し、JSON データを検証し、が<a href="//json.org/"> json.org </a>で定義されている標準に準拠していることを確認するために使用されます。JSON ファイルを検証するためのオンラインツールがあります。</p>
+    <p>JSONバリデーターをいくつか挙げます：</p>
+    <ul>
+      <li><a href="//jsonlint.com" translate="No">JSONLint</a></li>
+      <li><a href="//jsonformatter.curiousconcept.com/" translate="No">JSON Formatter &amp; Validator</a></li>
+    </ul>
   </section>
 </article>
+
 <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
@@ -493,7 +534,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 
 <hr>
 <div class="last-updated">
-  ページ最終更新日 2020 年 10 月 28 日
+  ページ最終更新日 2020年9月28日
 </div>
 
 
