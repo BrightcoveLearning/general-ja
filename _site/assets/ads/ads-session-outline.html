@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>デイビッドミーティング広告情報ノート</title>
+</head>
+
+<body>
+  <h1>***デイビッドミーティング広告情報ノート***</h1>
+  <br/>
+  <h1>基本的な語彙</h1>
+  <h3>広告タイプ</h3>
+  <ul>
+    <li>リニア広告:再生中に発生する広告、タイムラインで時間を要する（例はプリロール）</li>
+    <li>ノンリニア広告:再生を中断しない。オーバーレイ広告やコンパニオン広告が例</li>
+  </ul>
+  <h3>広告スタンダード</h3>
+  <ul>
+    <li>
+      <p>VMAP:「広告プレイリスト」; プリロール、ミッドロール、ポストロール (VMAP ドキュメントへの URL) を指定します。形式は XML です。</p>
+      <ul>
+        <li>DFPは、VMAP文書を「広告ルール」と呼んでいる。広告ルールを使用すると、サーバー上のすべての広告を構成でき、広告ルールを理解しているクライアントは同じ動作をする。クライアントでの「古い古い古い時代の」広告構成では、ロジックはパブリッシングシステムに移行する</li>
+      </ul>
+    </li>
+    <li>
+      <p>VAST:個々の広告の詳細。VMAP は広告に関する情報を含むVAST ドキュメントを指します。</p>
+    </li>
+    <li>Chrome 開発ツールの [ネットワーク] タブからの例 VAST</li>
+		    <p><img src="vast-response.png"/></p>
+    <li>
+      <p>VPAID:VAST に似ていますが、インタラクティブ広告の標準です。広告にはクイズやグーフィーゲームが含まれています（BC Player のサポートはまだありません）</p>
+    </li>
+  </ul>
+  <h1>IMA プラグイン情報</h1>
+  <ul>
+    <li>
+      <p>IMA 制約:IMAライブラリの2つのバージョン、フラッシュまたはHTMLバージョン、両方を使用することはできません</p>
+      <ul>
+        <li>プラグインのデフォルト設定は、可能な場合はFlashを使用します（Flash広告が普及しているため）</li>
+        <li>プラグインの設定オプションでは、HTML（<strong> adtechOrder </strong>）にデフォルトを切り替えることができます</li>
+        <li>デスクトップのデフォルトフラッシュ、モバイルデフォルト HTML</li>
+      </ul>
+    </li>
+    <li>
+      <p>IMAプラグインの基本実装</p>
+      <ul>
+        <li>プラグイン用のJavaScriptを含める</li>
+        <li>IMAプラグインをプレイヤーに追加する</li>
+        <li>サーバーURLを広告タグに提供する</li>
+        <li>設定例</li>
+		    <p><img src="plugin-simple-config.png"/></p>
+      </ul>
+    </li>
+    <li>
+      <p>動的広告ターゲティング:顧客情報を収集した後に実行されたIMAプラグインの設定（視聴者の年齢から広告ルールを選択するなど）</p>
+      <ul>
+        <li>プラグイン用のJavaScriptを含める</li>
+        <li>IMAプラグインを呼び出して、その時点でオプションを渡す
+          <ul>
+            <li>MyPlayer.ima3 ({serverUrl:...})</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>コンパニオン広告:IMA Pluginはリニア広告とオーバーレイをシームレスに扱います。プレイヤーとページの残りの部分間の通信が発生する必要があるため、コンパニオン広告は難しい場合があります。;;; インページ埋め込み実装を使用する</li>
+    <ul>
+    	<li>Google パブリッシャータグ（GPT）ライブラリを使用し、コンパニオン広告ブロックを自動的に埋める</li>
+    	<li>IMAサイトで利用可能な良いチュートリアル</li>
+    	<li>iframeは親ページと対話できないため、コンパニオン広告にはインページ埋め込み実装を使用する</li>
+    	<li>例:コンパニオン広告用のJSとHTML</li>
+		    <p><img src="companion-ad-script.png"/></p>
+		    <p><img src="companion-ad-html.png"/></p>
+    </ul>
+  </ul>
+  <h1>リソース</h1>
+  <ul>
+    <li>一般IMA情報: <a href="https://developers.google.com/interactive-media-ads/"> https://developers.google.com/interactive-media-ads/ </a>
+    </li>
+    <li>トラブルシューティング:ビデオスイートのインスペクタ (https://developers.google.com/interactive-media-ads/docs/vastinspector_dual) は、ビデオタグ/サーバーが動作しているかどうかをテストします
+    	<ul><li>BCプレーヤーで使用する前に、URLが動作するかどうかをテストし、互換性のある広告サーバーをチェックしてください。ここで動作しない場合は、BCプレーヤーでは動作しません</li></ul>
+    </li>
+  </ul>
+  <h1>これはBrightcove ブプレーヤーの「広告 API」です</h1>
+  <ul>
+  	<li>https://github.com/videojs/videojs-contrib-ads:独自の広告の実装を書いているパートナーにとって興味深い</li>
+    <li>サイト「videojs-contrib-adsプラグインは、video.js を扱うビデオ広告ライブラリに必要な共通機能を提供します。それはあなたのための多くの懸念に対処し、広告統合のために記述しなければならないコードを削減します。」</li>
+    <li>ユースケース:広告とは異なるスタイルのバンパーを表示する方法</li>
+  </ul>
+</body>
+
+</html>

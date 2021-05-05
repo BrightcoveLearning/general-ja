@@ -1,0 +1,886 @@
+﻿<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>モバイルデバイスでのデバッグ</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">Brightcove ブのその他のドキュメント</option>
+      
+        
+          <option value="https://support.brightcove.com">ドキュメントホーム</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">Brightcove Social</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">Brightcove ブのプレーヤー開発</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/developer/">開発者</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">モバイルデバイスでのデバッグ</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+            <div class="col-sm-3 left-side-bar">
+        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+          <option value="">Brightcove ブのその他のドキュメント</option>
+          
+            
+              <option value="https://support.brightcove.com">ドキュメントホーム</option>
+            
+          
+            
+              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+            
+          
+            
+              <option value="https://beacon.support.brightcove.com">Brightcove ブビーコン</option>
+            
+          
+            
+              <option value="https://campaign.support.brightcove.com">Brightcove ブキャンペーン</option>
+            
+          
+            
+              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+            
+          
+            
+              <option value="https://live.support.brightcove.com">Brightcove ブ・ライブ</option>
+            
+          
+            
+              <option value="https://gallery.support.brightcove.com">Brightcove ブギャラリー</option>
+            
+          
+            
+              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+            
+          
+            
+              <option value="https://social.support.brightcove.com">Brightcove ブソーシャル</option>
+            
+          
+            
+              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+            
+          
+            
+              <option value="https://player.support.brightcove.com">Brightcove ブのプレーヤー開発</option>
+            
+          
+            
+              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+            
+          
+            
+              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
+            
+          
+            
+              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
+            
+          
+            
+              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
+            
+          
+            
+              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+            
+          
+        </select>
+
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">ホーム</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove ブ製品の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
+                  
+                
+                  
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove ブのフォーラムグループとメールリスト</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove ブアナリティクス API への移行</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove ブ DNS サーバの追加</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove ブ API リクエストの認証</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                  
+                
+                  
+                    
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove ブのシステムステータスページの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+
+<article class="bcls-article">
+  <h1>モバイルデバイスでのデバッグ</h1>
+  <summary>このトピックでは、モバイルデバイスでの JavaScript のデバッグについて学びます。開発中、モバイルプラットフォームでのコンテンツのテストとデバッグは非常に困難な場合があります。</summary>
+  <section class="bcls-section">
+    <h2 id="Overview">概要</h2>
+    <p>この文書では、モバイルデバイスでのデバッグを開始する方法と、次のソリューションについて説明します。</p>
+    <ul>
+      <li>iOS デバイスでのデバッグ</li>
+      <li>Androidデバイスでのデバッグ</li>
+      <li>モバイルデバイスでのチャールズの使用</li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information language-editable">このドキュメントは、開発者がモバイルデバイス上でデバッグするためのジャンプポイントとして機能します。モバイルデバッグのすべての方法を網羅しているわけではありません。一般的なデバッグの詳細については、「<a href="/developer/concepts-javascript-debugging-basics.html"> JavaScript デバッグの基本</a>」ドキュメントを参照してください。</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="iOS_debugging">iOSのデバッグ</h2>
+    <div class="BCL-concept">
+      <div class="BCL-subsection">
+        <h3>iOSデバッグの最小要件</h3>
+        <ul>
+          <li>Mac macOSで動作するSafariバージョン6以降</li>
+          <li>iOS6+搭載のiPhoneかiPad</li>
+        </ul>
+        <aside class="bcls-aside bcls-aside--information language-editable">注:iOS 10.3 以降を使用している場合は、[設定] を開き、[一般] [&gt; &gt; 証明書の信頼設定について] に移動して、Charles Proxy 証明書を見つけて、有効にして完全な信頼を有効にします。</aside>
+      </div>
+      <div class="BCL-subsection">
+        <h3>Safari リモートデバッグを使用する</h3>
+        <p>アップルの iOS 6 アップデートでは Safari リモートデバッグが導入されました。これにより、iOS デバイス上の Safari アプリでウェブページをデバッグできます。開始するには、次の手順に従います。</p>
+        <ol>
+          <li>USBケーブルでiOSデバイスをマシンに接続します。</li>
+          <li>端末で<strong> [設定</strong> ] アプリを開きます。<strong>Safari </strong>を選択し、ページの下部までスクロールして [ <strong>詳細設定</strong> ] メニューを開きます。[ <strong> Web インスペクタ</strong> ] オプションを有効にします。
+            <figure class="bcls-figure"><img class="bcls-image" alt="ウェブインスペクタ" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-iOS.png"/>
+              <figcaption class="bcls-caption--image">ウェブインスペクタ</figcaption>
+            </figure>
+          </li>
+          <li>デバイス上で<strong> Safari </strong>アプリを開き、任意の Web ページを参照します。</li>
+          <li>Mac で<strong> Safari </strong>を起動し、「<strong>環境設定」</strong>（<strong> Safari &gt; 環境設定</strong>）を開き、「<strong>詳細</strong>」セクションに移動します。[ <strong>メニューバーに開発メニューを表示] </strong>オプションを有効にします。
+            <figure class="bcls-figure"><img class="bcls-image" alt="[開発] メニューを表示" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-iOS.png"/>
+              <figcaption class="bcls-caption--image">[開発] メニューを表示</figcaption>
+            </figure>
+          </li>
+          <li>[ <strong>開発</strong> ] メニューを開きます。iOS デバイスがリストに表示されます。デバイス名の上にマウスを置くと、デバイス上で閲覧したサイトの URL が表示されます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="デバイスを見つける" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-iOS.png"/>
+              <figcaption class="bcls-caption--image">デバイスを見つける</figcaption>
+            </figure>
+          </li>
+          <li>URL を選択すると、<strong> Web インスペクターウィンドウが開き</strong>、デスクトップからモバイルブラウザーのコンテンツをプレビュー、検査、デバッグできます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="デスクトップでデバッグ" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-iOS.png"/>
+              <figcaption class="bcls-caption--image">デスクトップでデバッグ</figcaption>
+            </figure>
+          </li>
+          <li>[ <strong>リソース</strong> ] セクションでは、Web ページをプレビューおよび検査できます。<strong>Web インスペクタで要素の上にカーソルを置くと</strong>、iOS デバイスのブラウザで対応する要素がハイライトされます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="エレメントを検査する" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-iOS.png"/>
+              <figcaption class="bcls-caption--image">エレメントを検査する</figcaption>
+            </figure>
+          </li>
+          <li><strong>デバッガー</strong>セクションと<strong>コンソール</strong>セクションを使用して、ブレークポイントを設定したり、データをログに記録したりして、ページをさらにデバッグすることもできます。</li>
+        </ol>
+        <aside class="bcls-aside bcls-aside--information language-editable">Safari Web Inspector の使用方法の詳細については、<a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html"> Apple の開発者向けドキュメントを参照してください</a>。</aside>
+      </div>
+    </div>
+  </section>
+  <!-- div id="ios" -->
+  
+  <section class="bcls-section">
+    <h2 id="Android_debugging">Androidのデバッグ</h2>
+    <div class="BCL-concept">
+      <div class="BCL-subsection">
+        <h3>Androidデバッグの最小要件</h3>
+        <ul>
+          <li>Chrome 32+はMacかWindowsで動作している</li>
+          <li>アンドロイド32+用のクローム付きAndroidデバイス</li>
+        </ul>
+        <p class="BCL-aside">注：このセクションの手順は、Android 4.3を実行しているデバイスを使用して作成されました。</p>
+      </div>
+      <div class="BCL-subsection">
+        <h3>デバイスでのデバッグの有効化</h3>
+        <p>デバイスでコンテンツのデバッグを開始する前に、デバイス設定で USB デバッグを有効にする必要があります。</p>
+        <ol>
+          <li>Android 4.2以降を実行している場合は、USBデバッグを有効にする前に、<strong>デバイスの開発者オプションを有効にする必要があります</strong>。端末で [ <strong>設定</strong> ] アプリを開き、[ <strong>電話について</strong> ] メニューを選択します。<strong>デバイスのビルド番号を探し</strong>、7 回タップします。
+            <aside class="bcls-aside bcls-aside--tip">古いバージョンのAndroidを実行している場合は、[設定] [&gt; 開発者オプション] に直接移動して、USBデバッグを有効にすることができます。</aside>
+          </li>
+          <li>デバイスの [ <strong>戻る</strong> ] ボタンを押すと、[設定] に [ <strong>開発者オプション</strong> ] メニューが表示されます。
+            <figure class="bcls-figure"><img width="400" class="bcls-image--no-border" alt="開発者オプションへの入手" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-android.png"/>
+              <figcaption class="bcls-caption--image">開発者オプションへの入手</figcaption>
+            </figure>
+          </li>
+          <li>[ <strong>開発者オプション</strong> ] メニューを開き、チェックボックスをオンにして<strong> USB デバッグを有効にします</strong>。
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="USB デバッグを有効にする" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-android.png"/>
+              <figcaption class="bcls-caption--image">USB デバッグを有効にする</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+      <div class="BCL-subsection">
+        <h3>Android用のChromeを使用したリモートデバッグ</h3>
+        <p>端末で USB デバッグが有効になったので、Chrome でリモートデバッグを開始するには、次の手順に従います。</p>
+        <ol>
+          <li>パソコンで<strong> Chrome </strong>を起動し、を参照します<code translate="No">about:inspect</code>。[ <strong>デバイス</strong> ] ページで、[ <strong> USB デバイスの検出</strong> ] オプションを有効にします。
+            <figure class="bcls-figure"><img class="bcls-image" alt="USBデバイスの検出" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-android.png"/>
+              <figcaption class="bcls-caption--image">USBデバイスの検出</figcaption>
+            </figure>
+          </li>
+          <li>USBケーブルでデバイスをマシンに接続します。デバイスでは、USBデバッグを許可するかどうかを尋ねるダイアログが表示されます。<strong>「OK」</strong>を選択すると、コンピュータがデバイスに接続できるようになります。
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="デバイスへの接続を許可" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-android.png"/>
+              <figcaption class="bcls-caption--image">デバイスへの接続を許可</figcaption>
+            </figure>
+            <aside class="bcls-aside bcls-aside--information language-editable">Windowsマシンを使用している場合は、USBドライバをインストールする必要があります。詳細については、<a href="//developer.android.com/tools/extras/oem-usb.html"> Android 開発者向けドキュメントを参照してください</a>。</aside>
+          </li>
+          <li>端末で<strong> Chrome </strong>アプリを開き、ウェブページを参照します。</li>
+          <li>パソコンで<strong> Chrome </strong>に戻ります。<code translate="No">about:inspect</code>このページには、接続されているデバイスが表示されます。端末名の下に、端末の Chrome で開いているすべてのページの一覧が表示されます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="接続されたデバイス" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-android.png"/>
+              <figcaption class="bcls-caption--image">接続されたデバイス</figcaption>
+            </figure>
+          </li>
+          <li>Web ページのデバッグを開始するには、ページ URL <strong>の下にある検査リンクを選択します</strong>。<strong>Chromeの開発ツールが開きます</strong>。
+            <figure class="bcls-figure"><img class="bcls-image" alt="Web ページの検査" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-android.png"/>
+              <figcaption class="bcls-caption--image">Web ページの検査</figcaption>
+            </figure>
+          </li>
+          <li>[ <strong>要素</strong> ] タブの左側にあるデバイスアイコンを選択すると、DevTool のスクリーンキャスト機能が開きます。これにより、モバイルデバイスに表示されるコンテンツのライブプレビューを開くことができます。スクリーンキャストを使用して端末を操作する方法の詳細については、<a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging#screencasting"> Google のドキュメントを参照してください</a>。</li>
+        </ol>
+        <aside class="bcls-aside bcls-aside--information language-editable">Chrome デベロッパーツールの使用方法の詳細については、<a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging"> Google の開発者向けドキュメントを参照してください</a>。</aside>
+      </div>
+    </div>
+  </section>
+  <!-- div id="android" -->
+  
+  <section class="bcls-section">
+    <h2 id="Charles_for_mobile">チャールズ・フォー・モービル</h2>
+    <div class="BCL-concept">
+      <p>Charles は、自分のコンピュータ上で実行できる Web プロキシで、Web ブラウザ経由で送受信されるデータを記録することができます。このアプリケーションの詳細については、<a href="//www.charlesproxy.com/">チャールズのウェブサイトを参照してください</a>。</p>
+      <div class="BCL-subsection">
+        <h3>チャールズの最低要件</h3>
+        <ul>
+          <li>チャールズは、Windows、Mac、Linuxと互換性があります</li>
+          <li>iOSおよび/またはAndroidデバイス</li>
+        </ul>
+      </div>
+      <div class="BCL-subsection">
+        <h3>マシンにチャールズをセットアップする</h3>
+        <p>チャールズをマシンで実行するには、以下の手順に従ってください。</p>
+        <ol>
+          <li><a href="//www.charlesproxy.com/download/">お使いのマシンにチャールズをダウンロードしてインストールします</a>。</li>
+          <li>コンピュータで、<strong>チャールズを実行します</strong>。メニューから、[ <strong> &gt; プロキシ設定</strong> ] を選択します。ポート（8888 など）が割り当てられ、<strong>透過的な HTTP プロキシを有効にするオプションが選択されていることを確認します</strong>。
+            <figure class="bcls-figure"><img class="bcls-image" alt="プロキシ設定" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/proxy-settings.png"/>
+              <figcaption class="bcls-caption--image">プロキシ設定</figcaption>
+            </figure>
+          </li>
+          <li><strong>「OK」</strong>を選択して変更を保存し、ダイアログを閉じます。</li>
+          <li>メニューから、[ <strong>プロキシ &gt; SSL プロキシ設定] </strong>を選択します。<strong>[ SSL プロキシを有効にする</strong> ] オプションが選択されていることを確認します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="SSL プロキシの設定" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-proxy-settings.png"/>
+              <figcaption class="bcls-caption--image">SSL プロキシの設定</figcaption>
+            </figure>
+          </li>
+          <li>[ <strong>場所</strong> ] セクションで、[ <strong>追加</strong> ] ボタンを選択します。[ <strong>ロケーションを編集</strong> ] ダイアログで、[ <strong>ポート</strong> ] フィールドにナビゲートし、<strong> 443 </strong>と入力します。<strong>「OK」</strong>を選択して、この変更を保存します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="ロケーションポート 443" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/port-443.png"/>
+              <figcaption class="bcls-caption--image">ロケーションポート 443</figcaption>
+            </figure>
+          </li>
+          <li><strong>「OK」を選択して、「</strong><strong>ロケーションの編集</strong>」ダイアログを閉じます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="SSL 設定 (場所付き)" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-settings-location.png"/>
+              <figcaption class="bcls-caption--image">SSL 設定 (場所付き)</figcaption>
+            </figure>
+          </li>
+          <li><strong>「OK」</strong>を選択して、「<strong> SSL プロキシ設定</strong>」ダイアログを終了します。</li>
+          <li>[ <strong>ヘルプ] [&gt; SSL プロキシによるモバイルデバイスまたはリモートブラウザへの Charles &gt; ルート証明書のインストール</strong> ] に移動します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="ルート証明書をインストールする" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/01-root-certificate.png"/>
+              <figcaption class="bcls-caption--image">ルート証明書をインストールする</figcaption>
+            </figure>
+          </li>
+          <li>デバイスのセットアップに使用するローカルサーバ IP およびポート番号（8888）を識別するメッセージが表示されます。また、証明書をダウンロードしてインストールする URL も表示されます。後で使用するために、これらのファイルをコンピュータにコピーします。
+            <figure class="bcls-figure"><img class="bcls-image" alt="証明書メッセージ" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/02-certificate-msg.png"/>
+              <figcaption class="bcls-caption--image">証明書メッセージ</figcaption>
+            </figure>
+            <aside class="bcls-aside bcls-aside--information language-editable">Charles 証明書を信頼できるようにするには、有効にする必要があることに注意してください。</aside>
+          </li>
+        </ol>
+      </div>
+      <div class="BCL-subsection">
+        <h3>デバイスにチャールズを設定する</h3>
+        <p>このセクションでは、コンピュータ上でCharlesと連携するようにiOSおよび/またはAndroidデバイスをセットアップする方法を学びます。</p>
+        <h4>iOS デバイスをセットアップする</h4>
+        <ol>
+          <li>デバイスで、コンピュータと同じネットワークに接続されていることを確認します。この設定を確認するには、<strong>設定 &gt; Wifi </strong>に移動し、ネットワーク名を選択して詳細オプションを表示します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="デバイスネットワーク" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/03-device-network.png"/>
+              <figcaption class="bcls-caption--image">デバイスネットワーク</figcaption>
+            </figure>
+          </li>
+          <li>下部の [HTTP] セクションで、[ <strong>手動モード</strong> ] を選択します。次に、前の手順で Charles からコピーしたサーバー IP とポート番号 (8888) を追加します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="無線LANの詳細" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/04-wifi-details.png"/>
+              <figcaption class="bcls-caption--image">無線LANの詳細</figcaption>
+            </figure>
+          </li>
+          <li>端末でブラウザを開き、<a href="//www.charlesproxy.com/getssl/"> http://www.charlesproxy.com/getssl </a>に移動します。デバイス設定にリダイレクトされ、<strong> Charles Proxy カスタムルート証明書プロファイルをインストールするように求められます</strong>。[ <strong>インストール</strong> ] ボタンを選択して、デバイスに Charles 証明書をインストールします。
+            <figure class="bcls-figure"><img class="bcls-image" alt="チャールズ証明書をインストールする" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/06-charles-install.png"/>
+              <figcaption class="bcls-caption--image">チャールズ証明書をインストールする</figcaption>
+            </figure>
+          </li>
+          <li>Charles 証明書をインストールするには、手順に従います。完了したら、[ <strong>完了</strong> ] を選択します。
+            <figure class="bcls-figure"><img class="bcls-image" alt="チャールズプロファイルがインストールされました" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/09-profile-installed.png"/>
+              <figcaption class="bcls-caption--image">チャールズプロファイルがインストールされました</figcaption>
+            </figure>
+          </li>
+          <li>次に、デバイスが Charles 証明書を信頼していることを確認する準備が整いました。デバイスで、[ <strong>全般] [&gt; &gt; 証明書の信頼設定について</strong> ] に移動します。ここでは、チャールズプロキシ証明書を見つける必要があります。
+            <figure class="bcls-figure"><img class="bcls-image" alt="証明書の信頼の設定" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/certificate-trust-settings.png"/>
+              <figcaption class="bcls-caption--image">証明書の信頼の設定</figcaption>
+            </figure>
+          </li>
+          <li>チャールズ証明書を有効にします。警告メッセージに注意してください。Charles でデバッグしないときは、この証明書を無効にすることができます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="信頼証明書を有効にする" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/enable-trust.png"/>
+              <figcaption class="bcls-caption--image">信頼証明書を有効にする</figcaption>
+            </figure>
+          </li>
+          <!-- <li>On your device, return to the browser and open any web page. Charles will alert you about the connection attempt. You should allow this.
+    <figure class="bcls-figure"><img class="bcls-image" alt="Allow Charles connection" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/10-connection-alert.png" />
+    <figcaption class="bcls-caption--image">Allow Charles connection</figcaption>
+    </figure>
+    </li> -->
+          <li>これで、チャールズで送受信されたデータを見ることができます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="チャールズのデータを参照" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/11-charles-data.png"/>
+              <figcaption class="bcls-caption--image">チャールズのデータを参照</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <h4>Android デバイスをセットアップする</h4>
+        <aside class="bcls-aside bcls-aside--information language-editable">これらの手順は、Android 2.3 以降を実行しているデバイスでのみ機能します。</aside>
+        <ol>
+          <li>端末でブラウザを開き、<a href="//www.charlesproxy.com/getssl/"> //chls.pro/ssl </a>に移動します。</li>
+          <li><strong>証明書名のダイアログが表示されます</strong>。証明書の名前を指定し、[ <strong>使用先</strong> ] フィールドを [ <strong> Wi-Fi </strong> ] に設定します。<strong>［OK］</strong>を選択して証明書をインストールします。
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="チャールズ証明書をインストールする" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-charles.png"/>
+              <figcaption class="bcls-caption--image">チャールズ証明書をインストールする</figcaption>
+            </figure>
+          </li>
+          <li>次に、[ <strong>設定] の [&gt; Wi-Fi </strong> ] メニューを開きます。デバイス上で接続したネットワークの一覧が表示されます。現在接続しているワイヤレスネットワークを選択します。このネットワークは、コンピュータ上で接続しているネットワークと一致する必要があります。</li>
+          <li>[編集]、[表示]、または [忘れる] の 3 つのオプションを持つ小さなダイアログが開きます。[ <strong>編集</strong> ] を選択します。</li>
+          <li>このダイアログで、下までスクロールし、[ <strong>詳細オプションの表示</strong> ] フィールドを有効にします。これにより、プロキシと IP の設定が表示されます。
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="詳細設定" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-charles.png"/>
+              <figcaption class="bcls-caption--image">詳細設定</figcaption>
+            </figure>
+          </li>
+          <li><strong>[ プロキシ設定] </strong>フィールドを [ <strong>手動</strong> ] に変更します。</li>
+          <li>[ <strong>プロキシホスト名</strong> ] フィールドにコンピュータの IP アドレスと [ <strong>プロキシポート</strong> ] フィールドに入力し、チャールズに設定されたポートと一致させます (デフォルトでは、ポートは 8888 に設定されています)。[ 保存 ] を選択します。
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="IP アドレスの設定" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-charles.png"/>
+              <figcaption class="bcls-caption--image">IP アドレスの設定</figcaption>
+            </figure>
+          </li>
+          <li>デバイスのデフォルトのブラウザで、Web サイトに移動します。チャールズで送受信されたデータを見ることができます。
+            <figure class="bcls-figure"><img class="bcls-image" alt="「データ転送」を参照してください。" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/07-charles.png"/>
+              <figcaption class="bcls-caption--image">「データ転送」を参照してください。</figcaption>
+            </figure>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <!-- div id="charles" --></article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<footer class="bcls-footer" role="contentinfo">  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Brightcove ブサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>

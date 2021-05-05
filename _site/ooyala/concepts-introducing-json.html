@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>JSONのご紹介</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">Brightcove ブのその他のドキュメント</option>
+      
+        
+          <option value="https://support.brightcove.com">ドキュメントホーム</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">Brightcove Social</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">Brightcove ブのプレーヤー開発</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/developer/">開発者</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">JSONのご紹介</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+            <div class="col-sm-3 left-side-bar">
+        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+          <option value="">Brightcove ブのその他のドキュメント</option>
+          
+            
+              <option value="https://support.brightcove.com">ドキュメントホーム</option>
+            
+          
+            
+              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+            
+          
+            
+              <option value="https://beacon.support.brightcove.com">Brightcove ブビーコン</option>
+            
+          
+            
+              <option value="https://campaign.support.brightcove.com">Brightcove ブキャンペーン</option>
+            
+          
+            
+              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+            
+          
+            
+              <option value="https://live.support.brightcove.com">Brightcove ブ・ライブ</option>
+            
+          
+            
+              <option value="https://gallery.support.brightcove.com">Brightcove ブギャラリー</option>
+            
+          
+            
+              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+            
+          
+            
+              <option value="https://social.support.brightcove.com">Brightcove ブソーシャル</option>
+            
+          
+            
+              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+            
+          
+            
+              <option value="https://player.support.brightcove.com">Brightcove ブのプレーヤー開発</option>
+            
+          
+            
+              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+            
+          
+            
+              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
+            
+          
+            
+              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
+            
+          
+            
+              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
+            
+          
+            
+              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+            
+          
+        </select>
+
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">ホーム</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove ブ製品の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
+                  
+                
+                  
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove ブのフォーラムグループとメールリスト</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove ブアナリティクス API への移行</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove ブ DNS サーバの追加</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove ブ API リクエストの認証</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
+                  
+                
+                  
+                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                  
+                
+                  
+                    
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove ブのシステムステータスページの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+
+<article class="bcls-article">
+  <h1>概念:JSONのご紹介</h1>
+  <summary>このトピックでは、このデータを操作するために使用される JSON ファイルとメソッドについて説明します。</summary>
+  <section class="bcls-section">
+    <h2 id="whatsCovered">JSON トピック</h2>
+    <p>このガイドの内容は次のとおりです。</p>
+    <ul>
+      <li>JSON ファイルを使い始める</li>
+      <li>JSON データを操作するためのメソッドの使用</li>
+      <li>JSONテキストを作成するためのツールを使用する</li>
+      <li>JSON データを検証する</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="startingWithJSON">JSONで始まる</h2>
+    <p>JavaScript オブジェクト記法 (JSON) ファイル形式は、サーバーと Web アプリケーション間で構造化データをシリアル化して送信するために使用されるテキストベースのオープン標準形式です。JSON形式は、人間が読み書きするのは簡単です。また、マシンが解析して生成することも簡単です。JavaScript プログラミング言語のサブセットに基づいていますが、完全に言語に依存しません。JSON形式は、XMLよりも小さく、速く、解析が容易です。これらのプロパティのため、JSON 形式は理想的なデータ交換言語です。</p>
+    <p>JSON 形式のデータ型は次のとおりです。</p>
+    <ul>
+      <li><strong>数値</strong> -JavaScriptの倍精度浮動小数点</li>
+      <li><strong>文字列</strong> -二重引用符で囲まれたUnicode（バックスラッシュエスケープ）</li>
+      <li><strong>ブール値</strong> -真または偽</li>
+      <li><strong>配列</strong> -角括弧で囲まれたカンマ区切り値の順序付きシーケンス</li>
+      <li><strong>オブジェクト</strong> -キーと値を区切るコロン「:」を持つ、キーと値のペアの順序付けされていないコレクション。これは、中括弧で囲まれたカンマ区切りのリストです。</li>
+      <li><strong>ヌル</strong> -ヌル値</li>
+    </ul>
+    <p>次の例は、ユーザーの連絡先情報を JSON 形式で記述します。</p>
+    <pre class="line-numbers">
+<code class="language-json" translate="No">{
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25,
+    "address": {
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": 10021
+    },
+    "phoneNumbers": [
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        }
+    ]
+}</code></pre>
+    <p>JSON 形式の詳細については、「JSON と<a href="http://javascript.crockford.com/"> JavaScript ドキュメントの JSON </a><a href="//www.json.org/">の紹介</a>」を参照してください。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="usingJSONMethods">JSON メソッドを使用する</h2>
+    <p>JSON 形式は JavaScript 言語と非常に密接に関連しているため (文字 U+2028 と U+2029 は 2 つの言語では異なって処理されます)、ほとんど手間を使わずに言語で使用できます。JSON テキスト形式は、JavaScript オブジェクトの作成に使用されるコードと同じ構文を使用します。JSON オブジェクトには、値を JSON 形式に変換し、JSON 形式を値に変換するためのメソッドが含まれています。</p>
+    <p>JSON オブジェクトには、次のようなメソッドがあります。</p>
+    <ul>
+      <li>JSON 文字列を JavaScript <code translate="No">parse()</code>オブジェクトまたは配列に変換する方法。
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var jsonstring = '{"firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"]}';
+var contact = JSON.parse(jsonstring);
+console.log(contact.lastName + ", " + contact.firstName);
+//Output: Smith, John</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836466%28v=vs.94%29.aspx"> JSON.PARSE 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
+      <li>JavaScript 値 (通常はオブジェクトまたは配列) を JSON <code translate="No">stringify()</code>文字列に変換する方法。
+        <p>例1: </p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var contact = new Object();
+contact.firstName = "John";
+contact.lastName = "Smith";
+contact.phone = ["555-0100","555-0120"];
+var jsonstring = JSON.stringify(contact);
+console.log(jsonstring);
+//Output: { "firstName":"John","lastName":"Smith","phone":["555-0100","555-0120"] }</code></pre>
+        <p>例2: （内部文字列にはエスケープ文字が使用されていることに注意してください）</p>
+        <pre class="line-numbers">
+<code class="language-javascript" translate="No">var foo = new Object();
+foo.template = '&lt;p class="bar"&gt;Hello&lt;/p&gt;';
+var jsonstring = JSON.stringify(foo);
+console.log(jsonstring);
+//Output: {"template":"&lt;p class=\"bar\"&gt;Hello&lt;/p&gt;"}</code></pre>
+        <p>詳細については、<a href="//msdn.microsoft.com/en-us/library/ie/cc836459%28v=vs.94%29.aspx"> JSON.stringify 関数 (JavaScript) </a>ドキュメントを参照してください。</p>
+      </li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="createJSONText">JSON テキストを作成する</h2>
+    <p>JSON 形式のテキストファイルを多数使用して作成している場合は、JSON エディタを使用してそれらの表示、編集、書式設定を行うことができます。</p>
+    <p>ダウンロード可能なJSONエディタは次のとおりです。</p>
+    <ul>
+      <li><a href="//tickplant.com/" translate="No">Power JSON Editor</a></li>
+      <li><a href="//sourceforge.net/projects/eclipsejsonedit/" translate="No">Eclipse JSON Editor Plugin</a></li>
+      <li><a href="//chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?hl=en-US" translate="No">Chrome Web Store JSON Editor</a></li>
+    </ul>
+    <p>オンラインJSONエディタもあります：</p>
+    <ul>
+      <li><a href="//www.jsoneditoronline.org/" translate="No">JSON Editor Online</a></li>
+      <li><a href="//jsonmate.com/" translate="No">JSONmate</a></li>
+      <li><a href="http://json.parser.online.fr" translate="No">JSON Parser Online</a></li>
+    </ul>
+    <p>JSON形式のファイルを扱うのに役立つ無料のツールがたくさんあります。他のアプリケーションを検索するには、ブラウザを使用します。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="validateJSONData">JSON データを検証する</h2>
+    <p>は JSON <a href="//json-schema.org/" translate="No">JSON schema</a>データの構造を定義し、JSON データを検証し、が<a href="//json.org/"> json.org </a>で定義されている標準に準拠していることを確認するために使用されます。JSON ファイルを検証するためのオンラインツールがあります。</p>
+    <p>JSONバリデーターをいくつか挙げます：</p>
+    <ul>
+      <li><a href="//jsonlint.com" translate="No">JSONLint</a></li>
+      <li><a href="//jsonformatter.curiousconcept.com/" translate="No">JSON Formatter &amp; Validator</a></li>
+    </ul>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<footer class="bcls-footer" role="contentinfo">  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Brightcove ブサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
