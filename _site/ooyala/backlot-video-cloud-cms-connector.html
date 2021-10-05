@@ -1,27 +1,33 @@
-﻿<!doctype html>
-<html lang="ja">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Backlot CMS API アダプタは、Video Cloud API への移行中にインテグレーションとアプリを継続的に動作させるために、Backlot API オペレーションの選択セットをサポートします。Video Cloud プラットフォーム API の詳細については、「Brightcove  API の使用を開始する」を参照してください。注:このトピックは、Video Cloud に移行する Ooyala カスタマーにのみ適用されます。">
+  <meta name="description" content="Backlot  CMS APIアダプタは、Video Cloud API への移行中にインテグレーションとアプリを動作させるのに役立つように、 Backlot APIオペレーションの選択セットをサポートします。Video Cloud プラットフォーム API の詳細については、「Brightcove API の使用を開始する」を参照してください。 注:このトピックは、Video Cloud に移行される Ooyala のお客様にのみ適用されます。">
   
-  <title>Backlot/Video CloudCMSコネクタ</title>
+  <title>バックロット/ビデオクラウドCMSコネクタ</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55736414-4"></script>
+<script>
+  window.DataLayer = window.DataLayer || []; 関数{dataLayer.push(arguments);} gtag ('js', new Date ()); gtag ('config', 'UA-55736414-4');
+</script>
+
   <script src="/assets/js/sajari-head.js"></script>
 </head>
 
@@ -29,428 +35,216 @@
 
 <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Video_Cloud_Logo_RGB_K.svg" alt="Brightcove"></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">英語</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">フランス語</option><option value="en|de" translate="No">ドイツ銀行</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">スペイン語</option></select>
 
 <script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
+/*<![CDATA[ */ 関数 dogTranslate (lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;} /*]]> */
 </script>
 
-    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-      <option value="">Brightcove のその他のドキュメント</option>
-      
-        
-          <option value="https://support.brightcove.com">ドキュメントホーム</option>
-        
-      
-        
-          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-        
-      
-        
-          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
-        
-      
-        
-          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
-        
-      
-        
-          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-        
-      
-        
-          <option value="https://live.support.brightcove.com">Brightcove Live</option>
-        
-      
-        
-          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-        
-      
-        
-          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-        
-      
-        
-          <option value="https://social.support.brightcove.com">Brightcove Social</option>
-        
-      
-        
-          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-        
-      
-        
-          <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-        
-      
-        
-          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-        
-      
-        
-          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
-        
-      
-        
-          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
-        
-      
-        
-          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
-        
-      
-        
-          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-        
-      
-    </select>
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
 
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/ooyala/">Ooyalaからの移行</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">Backlot/Video CloudCMSコネクタ</li>
-    </ol>
+    
+    <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+     
+        <li class="breadcrumb-item"><a href="/ooyala/">Ooyala</a></li>
+        
+        <li class="breadcrumb-item active" aria-current="page">バックロット/ビデオクラウドCMSコネクタ</li>
+       
   </nav>
 </header>
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
+           
             <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;一般情報</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/brightcove-product-overview.html">Brightcove 製品の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove のフォーラムグループとメールリスト</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove アナリティクス API への移行</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove  DNS サーバの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove  API リクエストの認証</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
+                 
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove製品の概要</a></li>
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuum 概要</a></li>
+                    
+                    <li><a href="/general/roku-trick-play.html">Roku TrickPlayのBrightcoveビデオ</a></li>
+                    
+                    <li><a href="/general/brightcove-open-source-projects.html">Brightcove オープンソースプロジェクト</a></li>
+                    
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/developer/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;開発者</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                    
+                    <li><a href="/developer/concepts-introducing-json.html">JSONの紹介</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScriptデバッグの基本</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScriptモジュールのデザインパターン</a></li>
+                    
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                    
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScriptPromisesの使用</a></li>
+                    
+                    <li><a href="/developer/create-json-web-token.html">JSON ウェブトークン (JWT) の作成</a></li>
+                    
+                    <li><a href="/developer/create-jwt.html">JSON Web Token（JWT）の作成-非推奨</a></li>
+                    
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                    
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTRの使用（私のtraceroute）</a></li>
+                    
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用したネットワークトラフィックの追跡</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Ooyalaからの移行</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                    
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove AnalyticsAPIへの移行</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプター：CSV マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプター：アスペラで摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプター：FTPS で取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプター：OIS2.5で摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプター：バックロット API を使用した取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプター：MRSS によるリモートアセットの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプター：ホストされた MRSS からの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">バックロット/ビデオクラウドCMSコネクタ</a></li>
+                    
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプター：マニフェストファイル形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプター：XML マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプター：サポートされているインジェスト形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcoveDNSサーバーの追加</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">BrightcoveAPIリクエストの認証</a></li>
+                    
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンドレポートリファレンス</a></li>
+                    
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">ビデオクラウドコンテンツにOoyalaプレーヤーを使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/utilities/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;ユーティリティ</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/utilities/base-64-encoding-tool.html">Base64エンコーディングツール</a></li>
+                    
+                    <li><a href="/utilities/date-converter.html">日付コンバーター</a></li>
+                    
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                    
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:ビデオクラウドの概要</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:ビデオクラウド分析の概要</a></li>
+                    
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:ビデオクラウドの基本</a></li>
+                    
+                    <li><a href="/training/video-cloud-studio-training-videos.html">ビデオクラウドスタジオトレーニングビデオ</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                    
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
 
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 
 <!-- search bar -->
 <div id="nav-search-box" style="margin-top: 1rem;"></div>
@@ -461,53 +255,49 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-
-<h1>Backlot/Video CloudCMSコネクタ</h1>
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
+ <h1>バックロット/ビデオクラウドCMSコネクタ</h1>
 <article class="bcls-article">
-  <summary><p>Backlot <span translate="No">CMS API</span>アダプタは、Video Cloud API への移行中にインテグレーションとアプリを継続的に動作させるため、<span translate="No">Backlot API</span>一連の操作をサポートします。Video Cloud プラットフォーム API の詳細については、「<a href="https://apis.support.brightcove.com/getting-started/getting-started-brightcove-apis.html">Brightcove  API の使用を開始する</a>」を参照してください。</p> <aside class="bcls-aside bcls-aside--information language-editable">注:このトピックは、Video Cloud に移行する Ooyala <strong>カスタマーにのみ適用されます</strong>。</aside></summary>
+  <summary><p>Backlot <span translate="No"> CMS API</span>アダプタは、Video Cloud API への移行中にインテグレーションとアプリを動作させるのに役立つように、<span translate="No"> Backlot API</span>オペレーションの選択セットをサポートします。Video Cloud プラットフォーム API の詳細については、「<a href="https://apis.support.brightcove.com/getting-started/getting-started-brightcove-apis.html">Brightcove API の使用を開始する</a>」を参照してください。</p> <aside class="bcls-aside bcls-aside--information">注:このトピックは、Video Cloud に移行される Ooyala <strong></strong>のお客様にのみ適用されます。</aside></summary>
   <section class="bcls-section">
     <h2 id="requirements">要件</h2>
     
-    <aside class="bcls-aside bcls-aside--information language-editable">再生アダプタが動作するためには、CXMと連携してコンピュータとデバイスの DNS 設定を調整する必要があります。詳細については<a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">、「Brightcove  DNS サーバの追加</a>」を参照してください。</aside>
+    <aside class="bcls-aside bcls-aside--information">再生アダプターを機能させるには、CXMを使用して、コンピューターとデバイスのDNS設定を調整する必要があることに注意してください。詳細については、ブライトコーブ DNS <a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html"></a>サーバーの追加を参照してください。</aside>
     </section>
     
     <section class="bcls-section">
     <h2 id="ad_set_apis">広告セットのエンドポイント</h2>
     
-    <p>Video Cloud にはの概念はありませんが<code translate="No">ad_set</code>、動画に関連付けられた広告セットデータはに移行され<code translate="No">cue_points</code>、<code translate="No">ad_set_id</code>はそのカスタムフィールドに保存されます。名前を付けて、広告セットに関連付けられた動画を識別できるようにします。</p>
+    <p>Video Cloud にはという概念はありませんが<code translate="No">ad_set</code>、動画に関連付けられている広告セットデータはに移行され<code translate="No">cue_points</code>、<code translate="No">ad_set_id</code>は、広告セットに関連付けられている動画を識別できるように、その名前のカスタムフィールドに格納されます。</p>
     
-    <p>「<a href="/ooyala/migrating-video-cloud-ad-sets.html"> Video Cloud への移行」を参照してください。広告セットデータをさまざまな広告ソースのキューポイントにマッピングする方法については</a>、「広告セット」を参照してください。</p>
+    <p>「Video Cloud <a href="/ooyala/migrating-video-cloud-ad-sets.html">への移行」を参照してください。広告セットデータをさまざまな広告ソースのキューポイントにマッピングする方法については</a>、「広告セット」を参照してください。</p>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">ad_sets</code>サポートされている操作を示します。</p>
+    <p>次の表に、<span translate="No">サポートされているBacklot API </span><code translate="No">ad_sets</code>オペレーションを示します。</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">ad_sets エンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td rowspan="2"><code translate="No">v2/ad_sets</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud には、広告セットという概念はありません。各広告セットに関連付けられた情報の一部は、広告セットが関連付けられている動画のキューポイントデータとして移行されます。詳細については、<a href="/ooyala/migrating-video-cloud-ad-sets.html">広告セットを参照してください</a></li>
+            <li>Video Cloud には広告セットの概念がありません。各広告セットに関連付けられている情報の一部は、広告セットが関連付けられた動画のキューポイントデータとして移行されます。詳細については、「<a href="/ooyala/migrating-video-cloud-ad-sets.html">広告セット</a>」を参照してください。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
             <li>Video Cloud には広告セットの概念がないため、広告セットを作成しようとすると失敗します</li>
@@ -517,16 +307,16 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td rowspan="3"><code translate="No">v2/ad_sets/{set_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud には、広告セットという概念はありません。各広告セットに関連付けられた情報の一部は、広告セットが関連付けられている動画のキューポイントデータとして移行されます。詳細については、<a href="/ooyala/migrating-video-cloud-ad-sets.html">広告セットを参照してください</a></li>
+            <li>Video Cloud には広告セットの概念がありません。各広告セットに関連付けられている情報の一部は、広告セットが関連付けられた動画のキューポイントデータとして移行されます。詳細については、「<a href="/ooyala/migrating-video-cloud-ad-sets.html">広告セット</a>」を参照してください。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>このリクエストは、関連する動画のキューポイントデータを更新します</li>
@@ -535,7 +325,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>このリクエストは、関連する動画のキューポイントデータを削除します</li>
@@ -545,7 +335,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td rowspan="3"><code translate="No">v2/ad_sets/{set_id}ads</code></td>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>関連動画にキューポイントを追加します</li>
@@ -554,7 +344,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>関連動画からキューポイントを削除します。</li>
@@ -568,84 +358,84 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="asset_apis">資産エンドポイント</h2>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">asset</code>サポートされている操作を示します。</p>
+    <p>次の表に、<span translate="No">サポートされているBacklot API </span><code translate="No">asset</code>オペレーションを示します。</p>
     
-    <p>SQL <a href="http://api.ooyala.com/docs/v2/query_api">ステートメントを使用してアセット操作のフィルタリングを提供するクエリ API </a>は、部分的にしかサポートされていません。<code translate="No">where<code translate="No">orderby</code></code><strong>とクエリはサポートされていません</strong>。<code translate="No">limit</code>クエリは動作するはずです。</p>
+    <p>SQL ステートメントを使用してアセットオペレーションのフィルタリングを提供する<a href="http://api.ooyala.com/docs/v2/query_api"> Query API</a>は、一部しかサポートされていないことに注意してください。<code translate="No">where</code><code translate="No">orderby</code><strong></strong>およびクエリはサポートされていません。<code translate="No">limit</code>クエリはうまくいくはずです。</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">資産エンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">ad</code>タイプの動画は、Video Cloud の通常の動画になります<code translate="No">ooyala_my_ads</code></li>
-            <li><code translate="No">youtube</code>タイプの動画は Video Cloud に移行されません</li>
-            <li><code translate="No">external_id</code> Video Cloud に移行中ですが、再生 API で使用できる読み取り専用フィールドになります（Video Cloud コンテンツを配信する Ooyala プレーヤー用）</li>
+            <li><code translate="No">ad</code> type videos はタグ付きのビデオクラウドで通常の動画になります<code translate="No">ooyala_my_ads</code></li>
+            <li><code translate="No">youtube</code>タイプビデオは Video Cloud に移行されません</li>
+            <li><code translate="No">external_id</code>は Video Cloud に移行されていますが、Playback API で使用できる読み取り専用フィールドになります（ビデオクラウドコンテンツを配信する Ooyala プレーヤー用）</li>
             <li>定期的な時間制限と IP 制限が Video Cloud に移行されない</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>詳細については、「<a href="/ooyala/backlot-video-cloud-cms-connector.html"> Backlot API を使用した取り込み</a>」を参照してください。</li>
-            <li>Video Cloud の取り込みでは、が 5 MB <code translate="No">chunk_size</code>以上である必要があります（最後のチャンクを除く）。<code translate="No">chunk_size</code>が小さい値に設定されている場合、エラーが返されます。</li>
-            <li><code translate="No">youtube</code>動画の種類は Video Cloud ではサポートされていないため、これらのタイプのビデオを作成しようとすると、エラーが返されます。<code translate="No">ad</code>タイプの動画は、タグを持つ通常の動画として作成できます<code translate="No">ooyala_my_ads</code>。</li>
-            <li><code translate="No">youtube</code>タイプの動画は Video Cloud に移行されません</li>
+            <li>詳細については、Backlot API <a href="/ooyala/backlot-video-cloud-cms-connector.html"></a>を使用した取り込みを参照してください。</li>
+            <li>Video Cloud の取り込みでは、5 MB 以上（最後のチャンクを除く）である必要があります。を低く設定するとエラーが返されます。<code translate="No">chunk_size</code><code translate="No">chunk_size</code>値</li>
+            <li>Video Cloud <code translate="No">youtube</code>ではタイプビデオはサポートされていないため、これらのタイプのビデオを作成しようとすると、エラーが返されます。<code translate="No">ad</code>タイプビデオは、タグを持つ通常の動画として作成できます<code translate="No">ooyala_my_ads</code>。</li>
+            <li><code translate="No">youtube</code>タイプビデオは Video Cloud に移行されません</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/assets/{asset_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">ad</code>タイプの動画は、Video Cloud の通常の動画になります<code translate="No">ooyala_my_ads</code></li>
-            <li><code translate="No">youtube</code>タイプの動画は Video Cloud に移行されません</li>
+            <li><code translate="No">ad</code> type videos はタグ付きのビデオクラウドで通常の動画になります<code translate="No">ooyala_my_ads</code></li>
+            <li><code translate="No">youtube</code>タイプビデオは Video Cloud に移行されません</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>経由でのみプロパティを更新する<code translate="No">PATCH</code></li>
+            <li>プロパティを更新するだけ<code translate="No">PATCH</code></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud に移行されたプロパティのみを更新できるのは、「<a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html"> Backloot」と「Video Cloud」を参照してください。動画と再生リストのフィールド</a></li>
+            <li>Video Cloud に移行されたプロパティのみ更新できるのは、<a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html"> Backlot と Video Cloud を参照してください。ビデオとプレイリストフィールド</a></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>動画が再生リストに属している場合、Video Cloud <strong>では削除できないことに注意してください</strong></td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/ad_set</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li><a href="https://apis.support.brightcove.com/cms/references/cms-api-video-fields-reference.html#cuepoint">広告セットはキューポイントとして</a> Video Cloud に移行されます</li>
@@ -655,7 +445,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td rowspan="3"><code translate="No">/v2/assets/{asset_id}/closed_captions</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>このリクエストは、キャプションコンテンツに設定された場所を持つ HTTP 302 応答を返します。Video Cloud は、DFXP ではなく HTML5 のキャプションの標準形式である WebVTT を返すことに注意してください。</li>
@@ -664,15 +454,15 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>既存のWebVTTテキストトラックを置き換えます。WebVTTまたはDFXPキャプションをアップロードできることに注意してください-DFXPはWebVTTに変換されます
-            <p><strong>注:</strong>Video Cloud に移行された DFXP キャプションは WebVTT テキストトラックに変換されます。これは Brightcove Player で使用されています。データの移行に関する2つの重要な注意事項：</p>
+            <p><strong>注:</strong>Video Cloud に移行された DFXP キャプションは WebVTT テキストトラックに変換されます。これは Brightcove Player で使用されています。データの移行に関する重要な注意事項は 2 つあります。</p>
     
             <ul>
-              <li>複数の言語のキャプションがDFXPに格納されている場合、それは分割され、異なる言語の複数のWebVTTテキストトラックに変換されます。英語のテキストトラックがデフォルトとして設定されます。必要に応じて、<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html"> Studioでデフォルトの言語を変更できます</a>。</li>
-              <li>テキストトラックは言語識別子を必要とするため、DFXP ファイルに言語識別子が含まれていない場合は、変換された WebVTT <code translate="No">en</code>キャプションに割り当てられます。この言語が正しくない場合は、クローズドキャプションメニューに正しい言語が表示されるように、<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html#edit_captions"> Studioでテキストトラックのプロパティを編集して修正する必要があります</a>。</li>
+              <li>複数の言語のキャプションがDFXPに格納されている場合、それは分割され、異なる言語の複数のWebVTTテキストトラックに変換されます。英語のテキストトラックがデフォルトとして設定されます。デフォルトの言語はで変更できます<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html">スタジオ</a>必要に応じて。</li>
+              <li>テキストトラックには言語識別子が必要なため、DFXP ファイルに言語識別子が含まれていない場合、変換された WebVTT <code translate="No">en</code>キャプションに割り当てられます。これが正しい言語でない場合は、クローズドキャプションメニューに正しい言語が表示されるように、<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html#edit_captions"></a> Studioでテキストトラックのプロパティを編集して修正する必要があります。</li>
             </ul>
             </li>
           </ul>
@@ -680,32 +470,32 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/{asset_id}/drm_attributes/{drm_type}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud の DRM は、<code translate="No">drm_disabled</code>フィールドにパッケージ化されないフラグが付けられた場合を除き、DRM 対応アカウント内のすべての動画に適用されます。</li>
+            <li>Video Cloud の DRM は、<code translate="No">drm_disabled</code>フィールドにパッケージ化されないようにフラグが設定されていない限り、DRM 対応アカウントのすべてのビデオに適用されます。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud の DRM は、<code translate="No">drm_disabled</code>フィールドにパッケージ化されないフラグが付けられた場合を除き、DRM 対応アカウント内のすべての動画に適用されます。</li>
+            <li>Video Cloud の DRM は、<code translate="No">drm_disabled</code>フィールドにパッケージ化されないようにフラグが設定されていない限り、DRM 対応アカウントのすべてのビデオに適用されます。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/generated_preview_images</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
             <li>Video Cloud に複数のサムネイル画像を保存しない</li>
@@ -715,178 +505,178 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/{asset_id}/labels</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">labels</code>すべてがに移行されるため<code translate="No">tags</code>、このリクエストはビデオタグを返します</li>
+            <li><code translate="No">labels</code>すべてがに移行されるため<code translate="No">tags</code>、このリクエストはビデオタグを返します。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">labels</code>すべてがに移行されるため<code translate="No">tags</code>、このリクエストではビデオタグが追加されます。Video Cloud <strong>でのラベルの直接更新はサポートされていません</strong>。</li>
+            <li><code translate="No">labels</code>すべてがに移行されるため<code translate="No">tags</code>、このリクエストはビデオタグを追加します。Video Cloud <strong></strong>でのラベルの直接更新はサポートされていないことに注意してください。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/{asset_id}/labels/{label_id}</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>これにより、Video Cloud のラベル (a <code translate="No">tag</code> ) が置き換えられます。Video Cloud <strong>でのラベルの直接更新はサポートされていません</strong>。</li>
+            <li>これにより、Video Cloud のラベル (a <code translate="No">tag</code> ) が置き換えられます。Video Cloud <strong></strong>でのラベルの直接更新はサポートされていないことに注意してください。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>これにより、Video Cloud のラベル (a <code translate="No">tag</code> ) が削除されます。Video Cloud <strong>でのラベルの直接更新はサポートされていません</strong>。</li>
+            <li>これにより、Video Cloud のラベル (a <code translate="No">tag</code> ) が削除されます。Video Cloud <strong></strong>でのラベルの直接更新はサポートされていないことに注意してください。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/assets/{asset_id}/metadata</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">metadata<code translate="No">tags</code></code>アイテムはフォーム内でに移行されます<code translate="No">meta:;:{key}:;:{value}</code>。各タグの長さは、シングルバイト文字が 128 文字に制限されています。</li>
+            <li><code translate="No">metadata</code><code translate="No">tags</code>アイテムはフォーム内でに移行されます<code translate="No">meta:;:{key}:;:{value}</code>。各タグの長さは、シングルバイト文字が 128 文字に制限されています。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">metadata</code>アイテムは、<code translate="No">tags</code>の形式で<code translate="No">meta:;:{key}:;:{value}</code>に移行されます-このリクエストは、その形式のタグを追加または置換します。各タグの長さは、シングルバイト文字が 128 文字に制限されています。</li>
+            <li><code translate="No">metadata</code><code translate="No">tags</code>アイテムはフォームに移行されます<code translate="No">meta:;:{key}:;:{value}</code> -これリクエストは、その形式のタグを追加または置換します。各タグの長さは、シングルバイト文字が 128 文字に制限されています。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">metadata<code translate="No">tags</code></code>アイテムはフォーム内でに移行されます<code translate="No">meta:;:{key}:;:{value}</code> -このリクエストはその形式のタグを変更します</li>
+            <li><code translate="No">metadata</code><code translate="No">tags</code>アイテムはフォームに移行されます<code translate="No">meta:;:{key}:;:{value}</code> -これリクエストはその形式でタグを変更します</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">metadata<code translate="No">tags</code></code>アイテムはフォームに移行されます<code translate="No">meta:;:{key}:;:{value}</code> -このリクエストでは、その形式のタグがすべて削除されます</li>
+            <li><code translate="No">metadata</code><code translate="No">tags</code>アイテムはフォームに移行されます<code translate="No">meta:;:{key}:;:{value}</code> -これリクエストはその形式のすべてのタグを削除します</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/{asset_id}/movie_urls</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">movie_urls</code>はVideo Cloudでは<code translate="No">sources</code>です</li>
+            <li><code translate="No">movie_urls</code><code translate="No">sources</code>ビデオクラウドにいる</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloudでも同じように動作します-このリクエストはビデオにリモート<code translate="No">rendition</code>（したがって<code translate="No">source</code>）を追加します</li>
+            <li>Video Cloud でも同じように動作します-このリクエストはビデオにリモート<code translate="No">rendition</code>（したがって<code translate="No">source</code>）を追加します</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/movie_urls/{type}</code></td>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>この要求は、<strong>指定されたタイプのリモートレンディションのみを削除します</strong></li>
+            <li>このリクエストは、<strong></strong>指定されたタイプのリモートレンディションのみを削除します。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/player</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はプレーヤーをビデオに関連付けないため、このリクエストはデフォルトの Ooyala プレーヤー構造を返します。代わりに、ビデオによって任意のプレーヤーインスタンスに関連付けることができます<code translate="No">id</code>。<a href="https://apis.support.brightcove.com/player-management/">プレーヤー管理 API 経由でVideo Cloudプレーヤーを入手できます</a></li>
+            <li>Video Cloud はプレーヤーをビデオに関連付けないため、このリクエストはデフォルトの Ooyala プレーヤーコンストラクトを返します。代わりに、ビデオによって任意の動画を任意のプレーヤーインスタンスに関連付けることができます<code translate="No">id</code>。ビデオクラウドプレーヤーは、<a href="https://apis.support.brightcove.com/player-management/">プレーヤー管理 API 経由で入手できます。</a></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/player/{player_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はプレーヤーをビデオに関連付けません。代わりに、ビデオによって任意のプレーヤーインスタンスに関連付けることができます<code translate="No">id</code>。<a href="https://apis.support.brightcove.com/player-management/">プレーヤー管理 API 経由でVideo Cloudプレーヤーを入手できます</a></li>
+            <li>Video Cloud は、プレーヤーをビデオに関連付けることはありません。代わりに、ビデオによって、任意の動画を任意のプレーヤーインスタンスに関連付けることができます<code translate="No">id</code>。ビデオクラウドプレーヤーは、<a href="https://apis.support.brightcove.com/player-management/">プレーヤー管理 API 経由で入手できます。</a></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/assets/{asset_id}/preview_image_urls</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud は複数のサムネイル画像を保存しないので、<code translate="No">poster</code>このリクエストは画像を返します</li>
+            <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストは画像を返します</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストではリストの最初の画像を使用して画像が設定されます</li>
+            <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストはリストの最初の画像を使用して画像を設定します。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストではリストの最初の画像を使用して画像が設定されます</li>
+            <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストはリストの最初の画像を使用して画像を設定します。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はポスター画像を 1 つだけ保存し、置き換えることはできますが、削除することはできません</li>
+            <li>Video Cloud は単一のポスター画像のみを保存し、置き換えることはできますが、削除することはできません。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/preview_image_files/{image_id}</code></td>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はポスター画像を 1 つだけ保存し、置き換えることはできますが、削除することはできません</li>
+            <li>Video Cloud は単一のポスター画像のみを保存し、置き換えることはできますが、削除することはできません。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/assets/{asset_id}/preview_image_files</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>Video Cloud は複数のサムネイル画像を保存しないため、<code translate="No">poster</code>このリクエストは画像の URL を返します</li>
@@ -895,55 +685,55 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud は複数のサムネイル画像を保存しないため、このリクエストでは、リストの最初の画像 URL を使用してリモートアセットとして画像が設定されます<code translate="No">poster</code></li>
+            <li>Video Cloud は複数のサムネイル画像を保存しないため、このリクエストでは、リスト内の最初の画像 URL をリモートアセットとして使用して画像を設定します。<code translate="No">poster</code></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud は複数のサムネイル画像を保存しないため、このリクエストでは、リストのリスト URL の最初の画像をリモートアセットとして使用して画像を設定します<code translate="No">poster</code></li>
+            <li>Video Cloud は複数のサムネイル画像を保存しないため、このリクエストでは、リスト内のリスト URL の最初の画像をリモートアセットとして設定します。<code translate="No">poster</code></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はポスター画像を 1 つだけ保存し、置き換えることはできますが、削除することはできません</li>
+            <li>Video Cloud は単一のポスター画像のみを保存し、置き換えることはできますが、削除することはできません。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/primary_preview_image</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はポスター画像を 1 つだけ保存するため、このリクエストは</li>
+            <li>Video Cloud は単一のポスター画像しか保存しないため、このリクエストではそれを返します。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/primary_preview_image</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud はポスター画像を 1 つだけ保存するため、このリクエストはポスターを置き換えます</li>
+            <li>Video Cloud は単一のポスター画像しか保存しないため、このリクエストはポスターを置き換えます</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/publishing_rule</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
             <li>Video Cloud が動画ではなくプレーヤーに他の再生制限を設定するため、地理制限とスケジューリングのみが返されます</li>
@@ -953,111 +743,111 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/publishing_rule/{rule_id}</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud には、公開ルールの概念はありません。ビデオの地情報制限とスケジューリングプロパティのみを更新できます。公開ルール ID は、名前のカスタムフィールドに格納されます<code translate="No">publishing_rule_id</code></li>
+            <li>Video Cloud には、公開ルールの概念はありません。ビデオの地情報制限とスケジューリングプロパティのみを更新できます。公開ルール ID は、名前のカスタムフィールドに格納されます。<code translate="No">publishing_rule_id</code></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/source_file_info</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/streams</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloudを返します<code translate="No">sources</code></li>
+            <li>ビデオクラウドを返す<code translate="No">sources</code></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/uploading_urls</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><span translate="No">Backlot API</span><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">および取り込みアダプタを介してサポート</a></li>
+            <li><span translate="No">Backlot API </span><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">と取り込みアダプタでサポート</a></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">/v2/assets/{asset_id}/upload_status</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><span translate="No">Backlot API</span><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">および取り込みアダプタを介してサポート</a></li>
+            <li><span translate="No">Backlot API </span><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">と取り込みアダプタでサポート</a></li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="3"><code translate="No">/v2/assets/{asset_id}/youtube</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud ではサポートされていません-Video Cloudの代替案については、<a href="https://social.support.brightcove.com">Brightcove Socialをご覧ください</a></li>
+            <li>Video Cloud ではサポートされていません- <a href="https://social.support.brightcove.com"> Brightcove Social</a> for Video Cloud の代替案を参照してください</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud ではサポートされていません-Video Cloudの代替案については、<a href="https://social.support.brightcove.com">Brightcove Socialをご覧ください</a></li>
+            <li>Video Cloud ではサポートされていません- <a href="https://social.support.brightcove.com"> Brightcove Social</a> for Video Cloud の代替案を参照してください</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>
           <ul>
-            <li>Video Cloud ではサポートされていません-Video Cloudの代替案については、<a href="https://social.support.brightcove.com">Brightcove Socialをご覧ください</a></li>
+            <li>Video Cloud ではサポートされていません- <a href="https://social.support.brightcove.com"> Brightcove Social</a> for Video Cloud の代替案を参照してください</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/{asset_id}/lineup</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="2"><code translate="No">/v2/assets/lineup/{asset_id}</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="3"><code translate="No">/v2/assets/{asset_id}/closed_captions</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">text_track</code>ビデオのデフォルトを返します。<code translate="No">text_track</code>移行された動画には1つしかありません。Video Cloudから追加することもできます。テキストトラックをさらに追加する場合は、このリクエストで返されるようにデフォルトトラックを設定します。
-            <p><strong>注:</strong>Video Cloud に移行された DFXP キャプションは WebVTT テキストトラックに変換されます。これは Brightcove Player で使用されています。データの移行に関する2つの重要な注意事項：</p>
+            <li><code translate="No">text_track</code>ビデオのデフォルトを返します。<code translate="No">text_track</code>移行した動画には1つしかありません。Video Cloud で追加できます。テキストトラックをさらに追加する場合は、このリクエストで返されるようにデフォルトトラックを設定します。
+            <p><strong>注:</strong>Video Cloud に移行された DFXP キャプションは WebVTT テキストトラックに変換されます。これは Brightcove Player で使用されています。データの移行に関する重要な注意事項は 2 つあります。</p>
     
             <ul>
-              <li>複数の言語のキャプションが DFXP に格納されている場合、WebVTT は 1 つのファイルで複数の言語のキャプションをサポートしていないため、英語のキャプションのみが WebVTT テキストトラックに格納されます。追加の言語でキャプションを作成する場合は、それらを個々の DFXP ファイルに分割し、Studio を使用して取り込む必要があります。</li>
-              <li>テキストトラックは言語識別子を必要とするため、DFXP ファイルに言語識別子が含まれていない場合は、変換された WebVTT <code translate="No">en</code>キャプションに割り当てられます。この言語が正しくない場合は、クローズドキャプションメニューに正しい言語が表示されるように、<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html#edit_captions"> Studioでテキストトラックのプロパティを編集して修正する必要があります</a>。</li>
+              <li>DFXP に複数の言語キャプションが格納されている場合、WebVTT では 1 つのファイルで複数の言語キャプションがサポートされていないため、英語のキャプションだけがWebVTT テキストトラックに格納されます。追加の言語でキャプションを作成する場合は、それらを個々の DFXP ファイルに分割し、Studio を使用して取り込む必要があります。</li>
+              <li>テキストトラックには言語識別子が必要なため、DFXP ファイルに言語識別子が含まれていない場合、変換された WebVTT <code translate="No">en</code>キャプションに割り当てられます。これが正しい言語でない場合は、クローズドキャプションメニューに正しい言語が表示されるように、<a href="https://studio.support.brightcove.com/media/adding-captions-videos-using-media-module.html#edit_captions"></a> Studioでテキストトラックのプロパティを編集して修正する必要があります。</li>
             </ul>
             </li>
           </ul>
@@ -1065,19 +855,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">text_track</code>ビデオのデフォルトを置き換えます-取り込まれたキャプションは WebVTT または DFXP 形式にすることができます。DFXP は WebVTT に変換されます。</li>
+            <li><code translate="No">text_track</code>ビデオのデフォルトを置き換えます。取り込んだキャプションは WebVTT または DFXP 形式にすることができます。DFXP は WebVTT に変換されます。</li>
           </ul>
           </td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>
           <ul>
-            <li><code translate="No">text_track</code>動画のデフォルトを削除します</li>
+            <li><code translate="No">text_track</code>動画のデフォルトを削除する予定</li>
           </ul>
           </td>
         </tr>
@@ -1088,21 +878,21 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="drm_policies">DRMポリシー</h2>
     
-    <p>DRM <strong>ポリシーのエンドポイントはサポートされていません</strong>。</p>
+    <p>DRM <strong></strong>ポリシーエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="deleted_assets">アセットエンドポイントの削除</h2>
     
-    <p><strong>削除されたアセットのエンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>削除済みアセットエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="labels_endpoints">端点にラベルを付けます</h2>
     
-    <p>ラベルは Video Cloud にとして移行されます<code translate="No">tags</code>。ラベルとは異なり、タグは個々の動画に設定されます。アカウントレベルの「タグセット」はなく、タグは階層化されません。ラベル階層は、次のように Video Cloud タグに保存されます。</p>
+    <p>ラベルは Video Cloud <code translate="No">tags</code>にとして移行されます。ラベルとは異なり、タグは個々の動画に設定されます。アカウントレベルの「タグセット」はなく、タグは階層化されません。ラベル階層は、次のように Video Cloud タグに保存されます。</p>
     
-    <figure class="bcls-figure"><img class="bcls-image" alt="ラベルをタグに" src="/assets/images/ooyala/labels2tags.png"/>
+    <figure class="bcls-figure"><img class="bcls-image" alt="Labels to Tags" src="/assets/images/ooyala/labels2tags.png" />
     <figcaption class="bcls-caption--image">ラベルをタグに</figcaption>
     </figure>
     
@@ -1110,77 +900,77 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     
     <ul>
       <li>タグのセットの一部、すべて、またはまったくない動画を検索する</li>
-      <li>実行時に<a href="https://studio.support.brightcove.com/media/introduction-playlists.html">「スマート」プレイリストの動画を選択する</a></li>
+      <li>の動画の選択<a href="https://studio.support.brightcove.com/media/introduction-playlists.html">「スマート」プレイリスト</a>実行時</li>
     </ul>
     
-    <aside class="bcls-aside bcls-aside--information language-editable"><code translate="No">/labels</code>すべてのエンドポイントがサポートされていますが、一部の操作（特に多数の動画があるアカウントの場合）には時間がかかります。</aside>
+    <aside class="bcls-aside bcls-aside--information"><code translate="No">/labels</code>すべてのエンドポイントがサポートされていますが、特に多数の動画を持つアカウントでは、一部の操作に時間がかかることに注意してください。</aside>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">labels</code>サポートされているエンドポイントを示します。</p>
+    <p>次の表に、<span translate="No">サポートされているBacklot API </span><code translate="No">labels</code>エンドポイントを示します。</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">Backlot API ラベルのエンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><code translate="No">/v2/labels</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels</code></td>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/by_full_path/{paths}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/by_full_path/{paths}</code></td>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/{label_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/{label_id}</code></td>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/{label_id}</code></td>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます。プレイリストによって参照されているラベルは削除されないことに注意してください。</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/{label_id}/children</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/labels/{label_id}/assets</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
-          <td>ラベルは Video Cloud <code translate="No">tags</code>のように表示されます</td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
+          <td><code translate="No">tags</code>ラベルはビデオクラウドのように表示されます</td>
         </tr>
       </tbody>
     </table>
@@ -1189,18 +979,18 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="packages_endpoints">パッケージエンドポイント</h2>
     
-    <p><strong>パッケージのエンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>パッケージエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="players_endpoints">プレイヤーのエンドポイント</h2>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">players</code>サポートされている操作を示します。</p>
+    <p>次の表に、<span translate="No">サポートされているBacklot API </span><code translate="No">players</code>オペレーションを示します。</p>
     
-    <aside class="bcls-aside bcls-aside--information language-editable">注
+    <aside class="bcls-aside bcls-aside--information">注意:
     <ul>
-      <li>GET のみがサポートされています。Ooyala選手を作成または更新することはできません</li>
-      <li>移行前にプレーヤーに関連付けられている動画の場合、プレーヤーの ID は、Ooyala <code translate="No">player_id</code>プレーヤーとの関連付けを維持するために呼び出される Video Cloud カスタムフィールドに保存されます。詳細については、「<a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">Video Cloudビデオで Ooyala プレーヤーを使用する</a>」を参照してください。</li>
+      <li>GET のみがサポートされています。ウーヤラ選手を作成または更新することはできません</li>
+      <li>移行前にプレイヤーに関連付けられていた動画の場合、プレイヤーの ID は Ooyala <code translate="No">player_id</code>プレーヤーとの関連付けを維持するために呼び出される Video Cloud カスタムフィールドに格納されます。詳細については、「<a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">Video Cloudビデオで Ooyala プレーヤーを使用する</a>」を参照してください。</li>
     </ul>
     </aside>
     
@@ -1208,92 +998,92 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <caption class="bcls-caption--table">Backlot API プレーヤーエンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td rowspan="2"><code translate="No">/v2/players</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="3"><code translate="No">/v2/players/{player_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/players/{player_id}/metadata</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/players/{player_id}/scrubber_image</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/players/{player_id}/watermark</code></td>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/players/{player_id}/third_party_modules/{module_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="いいえ" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png"/></td>
+          <td style="text-align:center;"><img alt="No" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/x16.png" /></td>
           <td>&nbsp;</td>
         </tr>
       </tbody>
@@ -1303,49 +1093,49 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="playlist_endpoints">プレイリストのエンドポイント</h2>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">playlists</code>サポートされている操作を示します。Ooyala と Video Cloud <a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">プレイリストの違いについては、プレイリストのフィールドも参照してください</a>。</p>
+    <p>次の表に、<span translate="No">サポートされているBacklot API </span><code translate="No">playlists</code>オペレーションを示します。Ooyala と Video Cloud <a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">プレイリストの違いについては、プレイリストのフィールドも参照してください</a>。</p>
     
     <table class="bcls-table">
-      <caption class="bcls-caption--table">Backlot API プレイリストエンドポイント</caption>
+      <caption class="bcls-caption--table">バックロット API プレイリストエンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td rowspan="2"><code translate="No">/v2/playlists</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">POST</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td rowspan="4"><code translate="No">/v2/playlists/{playlist_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PUT</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">PATCH</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">DELETE</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
       </tbody>
@@ -1355,19 +1145,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="processing_profiles_endpoints">プロファイルの処理エンドポイント</h2>
     
-    <p>次の表に、<span translate="No">Backlot API</span><code translate="No">playlists</code><strong>サポートされていない操作を示します</strong>。Video Cloud <a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">の取り込みプロファイルの仕組みをよりよく理解するには、「Ingest Profiles <a href="https://apis.support.brightcove.com/ingest-profiles/"> API </a>インジェストプロファイルの管理</a>」も参照してください。アカウントは動的配信アカウントであるため、従来の取り込みシステムのドキュメントに注意する必要はありません。</p>
+    <p>下の表は何を示しています<span translate="No">バックロットAPI</span><code translate="No">playlists</code>操作は<strong>いいえ</strong>サポートされています。こちらもご覧ください<a href="https://apis.support.brightcove.com/ingest-profiles/">プロファイルAPIの取り込み</a><a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">取り込みプロファイルの管理</a> Video Cloudの取り込みプロファイルがどのように機能するかをよりよく理解するために、アカウントはDynamic Deliveryアカウントであるため、従来の取り込みシステムに関するドキュメントに注意を払う必要はありません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="provider_level_drm_policies">プロバイダーレベルの DRM ポリシーのエンドポイント</h2>
     
-    <p>プロバイダーレベルの DRM <strong>ポリシーのエンドポイントはサポートされていません</strong>。</p>
+    <p>プロバイダーレベルの DRM <strong></strong>ポリシーエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="providers">プロバイダーのエンドポイント</h2>
     
-    <p><strong>プロバイダーのエンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>プロバイダのエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
@@ -1385,29 +1175,29 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       </dd>
     </dl>
     
-    <p>地理制限とスケジュールに関連する Ooyala 公開ルールのプロパティは、公開ルールに関連付けられたビデオに適用され、という名前のカスタムフィールドに格納されます<code translate="No">publishing_rule_id</code>。<code translate="No">id</code><span translate="No">Backlot API</span>公開ルールの操作は、公開ルールに関連付けられたすべてのビデオで機能しますが、スケジュールまたは地理制限のみが返されます。</p>
+    <p>Ooyala パブリッシングルールの地理的制限とスケジュールに関連するプロパティは、公開ルールに関連付けられたビデオに適用され、<code translate="No">id</code>その名前のカスタムフィールドに格納されます。<code translate="No">publishing_rule_id</code>。<span translate="No">Backlot API</span>公開ルール操作は、公開ルールに関連付けられているすべての動画で機能しますが、スケジュール設定または地理的制限のみが返されます。</p>
     
     <table class="bcls-table">
       <caption class="bcls-caption--table">Backlot API 処理プロファイルエンドポイント</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Backlot API エンドポイント</th>
+          <th>バックロット API エンドポイント</th>
           <th>方法</th>
-          <th>サポート</th>
-          <th>注</th>
+          <th>サポートされている</th>
+          <th>備考</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><code translate="No">/v2/processing_profiles</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
         <tr>
           <td><code translate="No">/v2/processing_profiles/{profile_id}</code></td>
           <td><code translate="No">GET</code></td>
-          <td style="text-align:center;"><img alt="はい" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png"/></td>
+          <td style="text-align:center;"><img alt="Yes" src="//learning-services-media.brightcove.com/doc-assets/site-assets/images/site/check16.png" /></td>
           <td>&nbsp;</td>
         </tr>
       </tbody>
@@ -1417,29 +1207,28 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     <section class="bcls-section">
     <h2 id="resellers_endpoints">リセラーエンドポイント</h2>
     
-    <p><strong>リセラーのエンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>リセラーエンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="statistics_endpoints">統計エンドポイント</h2>
     
-    <p><strong>統計エンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>統計エンドポイントはサポートされていません。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="syndications_endpoints">シンジケーションのエンドポイント</h2>
     
-    <p><strong>シンジケーションエンドポイントはサポートされていません</strong>。ただし、Brightcove グローバルサービスでは、Ooyala サービスに合わせてシンジケーションサービスを構築できます。詳細については、アカウントマネージャーにお問い合わせください。</p>
+    <p><strong></strong>シンジケーションエンドポイントはサポートされていません。ただし、ブライトコーブグローバルサービスでは、Ooyala サービスに合わせてシンジケーションサービスを構築できます。詳細については、アカウントマネージャーにお問い合わせください。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="Third_Party_Modules_endpoints">サードパーティモジュールのエンドポイント</h2>
     
-    <p><strong>統計エンドポイントはサポートされていません</strong>。</p>
+    <p><strong></strong>統計エンドポイントはサポートされていません。</p>
     </section>
     </article>
-    
-
+   
 <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
@@ -1454,11 +1243,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページの最終更新日21 May 2021
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
-        <h2>Brightcove サポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -1485,14 +1282,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -1511,12 +1308,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ Inc. すべての権利を保有</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -1526,27 +1323,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </div>
   </div>
 </footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
+
 <script>
-
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-
+      
+  var searchBox = sajari.init ( { mode: "search-box", project: "1588255093746585379", // Set this to your project. collection: "brightcove-documenation", // Set this to your collection. instantPipeline: "autocomplete", // Pipeline used as you type inputPlaceholder: "Search", // Input element placeholder maxSuggestions: 5, // Maximum number of suggestions to show attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to } ); SearchBox (「サブ」,「pipeline.search-sent」, 関数 (_, クエリ) { window.location = "/search.html?q=" + encodeURIComponent(query.q); } );
+  
 
 </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
@@ -1572,30 +1353,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
+    asj-paginator__page-number.sj-paginator__page-number { background-color: lightblue; }—current.css-so0ov7 { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab div.sj-tabs__tab { border-bottom-color: crimson; background-color: #f8f8f8; }—選択されたp.sj-result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text。css-31l7gp h3 { color: navy; font-size: 1.4rem; }
     </style>
 
 </body>

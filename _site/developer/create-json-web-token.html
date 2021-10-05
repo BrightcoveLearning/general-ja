@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="の作成このトピックでは、ブライトコーブプレイバックで使用できる JSON Web トークン (JWT) の作成方法を学習します。制限事項。">
+  
+  <title>JSON Web トークン (JWT) </title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55736414-4"></script>
+<script>
+  window.DataLayer = window.DataLayer || []; 関数{dataLayer.push(arguments);} gtag ('js', new Date ()); gtag ('config', 'UA-55736414-4');
+</script>
+
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Video_Cloud_Logo_RGB_K.svg" alt="Brightcove"></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">英語</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">フランス語</option><option value="en|de" translate="No">ドイツ銀行</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">スペイン語</option></select>
+
+<script>
+/*<![CDATA[ */ 関数 dogTranslate (lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;} /*]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+    
+    <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+     
+        <li class="breadcrumb-item"><a href="/developer/">Developer</a></li>
+        
+        <li class="breadcrumb-item active" aria-current="page">JSON Web トークン (JWT) </li>
+       
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
+        <nav class="sidenav" id="side_nav">
+           
+            <h5><a href="/index.html">ホーム</a></h5>
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;一般情報</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove製品の概要</a></li>
+                    
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuum 概要</a></li>
+                    
+                    <li><a href="/general/roku-trick-play.html">Roku TrickPlayのBrightcoveビデオ</a></li>
+                    
+                    <li><a href="/general/brightcove-open-source-projects.html">Brightcove オープンソースプロジェクト</a></li>
+                    
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/developer/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;開発者</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                    
+                    <li><a href="/developer/concepts-introducing-json.html">JSONの紹介</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScriptデバッグの基本</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScriptモジュールのデザインパターン</a></li>
+                    
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                    
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScriptPromisesの使用</a></li>
+                    
+                    <li><a href="/developer/create-json-web-token.html">JSON ウェブトークン (JWT) の作成</a></li>
+                    
+                    <li><a href="/developer/create-jwt.html">JSON Web Token（JWT）の作成-非推奨</a></li>
+                    
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                    
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTRの使用（私のtraceroute）</a></li>
+                    
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用したネットワークトラフィックの追跡</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Ooyalaからの移行</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                    
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove AnalyticsAPIへの移行</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプター：CSV マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプター：アスペラで摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプター：FTPS で取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプター：OIS2.5で摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプター：バックロット API を使用した取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプター：MRSS によるリモートアセットの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプター：ホストされた MRSS からの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">バックロット/ビデオクラウドCMSコネクタ</a></li>
+                    
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプター：マニフェストファイル形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプター：XML マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプター：サポートされているインジェスト形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcoveDNSサーバーの追加</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">BrightcoveAPIリクエストの認証</a></li>
+                    
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンドレポートリファレンス</a></li>
+                    
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">ビデオクラウドコンテンツにOoyalaプレーヤーを使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/utilities/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;ユーティリティ</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/utilities/base-64-encoding-tool.html">Base64エンコーディングツール</a></li>
+                    
+                    <li><a href="/utilities/date-converter.html">日付コンバーター</a></li>
+                    
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                    
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:ビデオクラウドの概要</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:ビデオクラウド分析の概要</a></li>
+                    
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:ビデオクラウドの基本</a></li>
+                    
+                    <li><a href="/training/video-cloud-studio-training-videos.html">ビデオクラウドスタジオトレーニングビデオ</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                    
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
+ <h1>JSON Web トークン (JWT) </h1>
+<article class="bcls-article">
+  <summary>の作成このトピックでは、ブライトコーブプレイバックで使用できる<span translate="No"> JSON Web トークン</span> (JWT) の作成方法を学習します。制限事項。</summary> 
+  <!-- <br>
+  <aside class="bcls-aside bcls-aside--tip">This feature is available for a specific set of customers with access to the Limited Availability phase of Brightcove Playback Restrictions.</aside> -->
+
+  <section class="bcls-section">
+    <h2 id="Introduction">はじめに</h2>
+
+    <p>ビデオライブラリにアクセスするときに保護のレベルを追加したり、コンテンツにユーザーレベルの制限を適用したりするには、<span translate="No"> JSON Web Token（JWT）</span> Brightcove PlaybackAPIを呼び出します。トークンを作成するには、次の手順を実行します。</p>
+    <ol class="bcls-tasklist">
+      <li><a href="#Generate_public_private_key_pair">公開鍵と秘密キーのペアを生成する</a></li>
+      <li>
+        <a href="#Register_public_key">Brightcoveに公開鍵を登録する</a>
+      </li>
+      <li>
+        <a href="#Create_a_JSON_Web_Token"><span translate="No">JSON ウェブトークンの作成</span></a>
+      </li>
+      <li>
+        <a href="#Test_playback">テスト再生</a>
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Generate_public_private_key_pair">公開鍵と秘密鍵のペアを生成</h2>
+
+    <p>公開者（パブリッシャー）は公開鍵と秘密鍵のペアを生成し、その公開鍵をブライトコーブに提供します。トークンに署名するには、秘密キーを使用します。プライベートキーはブライトコーブと共有されません。</p>
+
+    <p>
+      公開鍵と秘密鍵のペアを生成する方法は多数あります。以下にいくつかの例を挙げます。
+    </p>
+    <h3>
+      bash スクリプトの例:
+    </h3>
+    <aside class="bcls-aside bcls-aside--information">以下のスクリプトは JSON の解析に<strong> jq</strong>パッケージを使用することに注意してください。jq がインストールされていない場合は、<a href="https://github.com/stedolan/jq/wiki/Installation">インストール手順を参照してください</a>。</aside>
+    <p>
+      キーペアを生成するスクリプト例:
+    </p>
+    <pre class="line-numbers"><code class="language-bash" translate="No">#!/bin/bash
+set -euo pipefail
+
+NAME=${1:-}
+test -z "${NAME:-}" &amp;&amp; NAME="brightcove-playback-auth-key-$(date +%s)"
+mkdir "$NAME"
+
+PRIVATE_PEM="./$NAME/private.pem"
+PUBLIC_PEM="./$NAME/public.pem"
+PUBLIC_TXT="./$NAME/public_key.txt"
+
+ssh-keygen -t rsa -b 2048 -m PEM -f "$PRIVATE_PEM" -q -N ""
+openssl rsa -in "$PRIVATE_PEM" -pubout -outform PEM -out "$PUBLIC_PEM" 2&gt;/dev/null
+openssl rsa -in "$PRIVATE_PEM" -pubout -outform DER | base64 &gt; "$PUBLIC_TXT"
+
+rm "$PRIVATE_PEM".pub
+
+echo "Public key to saved in $PUBLIC_TXT"
+</code></pre>
+    <p>
+      スクリプトを実行します。
+    </p>
+    <pre><code class="language-bash" translate="No">$ bash keygen.sh
+</code></pre>
+
+    <details id="Example_using_Go">
+      <summary><span translate="No">Go の使用例</span></summary>
+      <p>
+        <span translate="No">Go</span>プログラミング言語を使用してキーペアを生成する例:
+      </p>
+      <aside class="bcls-aside bcls-aside--tip">初めての方<span translate="No">行け</span>、を参照してください<a href="https://golang.org/">NS <span translate="No">行け</span>プログラミング言語</a>ホームページ。</aside>
+      <pre class="line-numbers"><code class="language-bash" translate="No">package main
+  
+  import (
+    "crypto/rand"
+    "crypto/rsa"
+    "crypto/x509"
+    "encoding/base64"
+    "encoding/pem"
+    "flag"
+    "fmt"
+    "io/ioutil"
+    "os"
+    "path"
+    "strconv"
+    "time"
+  )
+  
+  func main() {
+    var out string
+  
+    flag.StringVar(&amp;out, "output-dir", "", "Output directory to write files into")
+    flag.Parse()
+  
+    if out == "" {
+      out = "rsa-key_" + strconv.FormatInt(time.Now().Unix(), 10)
+    }
+  
+    if err := os.MkdirAll(out, os.ModePerm); err != nil {
+      panic(err.Error())
+    }
+  
+    priv, err := rsa.GenerateKey(rand.Reader, 2048)
+    if err != nil {
+      panic(err.Error())
+    }
+  
+    privBytes := x509.MarshalPKCS1PrivateKey(priv)
+  
+    pubBytes, err := x509.MarshalPKIXPublicKey(priv.Public())
+    if err != nil {
+      panic(err.Error())
+    }
+  
+    privOut, err := os.OpenFile(path.Join(out, "private.pem"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+    if err != nil {
+      panic(err.Error())
+    }
+  
+    if err := pem.Encode(privOut, &amp;pem.Block{Type: "RSA PRIVATE KEY", Bytes: privBytes}); err != nil {
+      panic(err.Error())
+    }
+  
+    pubOut, err := os.OpenFile(path.Join(out, "public.pem"), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
+    if err != nil {
+      panic(err.Error())
+    }
+  
+    if err := pem.Encode(pubOut, &amp;pem.Block{Type: "PUBLIC KEY", Bytes: pubBytes}); err != nil {
+      panic(err.Error())
+    }
+  
+    var pubEnc = base64.StdEncoding.EncodeToString(pubBytes)
+  
+    var pubEncOut = path.Join(out, "public_key.txt")
+    if err := ioutil.WriteFile(pubEncOut, []byte(pubEnc+"\n"), 0600); err != nil {
+      panic(err.Error())
+    }
+  
+    fmt.Println("Public key saved in " + pubEncOut)
+  }
+  </code></pre>
+    </details>
+    <br>
+
+    <details id="Example_using_node_js">
+      <summary>node.js の使用例</summary>
+      <p>
+        node.js を使用してキーペアを生成する例:
+      </p>
+      <aside class="bcls-aside bcls-aside--tip">このスクリプト例には、ノードバージョン11以降が必要です。</aside>
+      <pre class="line-numbers"><code class="language-javascript" translate="No">var crypto = require("crypto");
+  var fs = require("fs");
+  
+  var now = Math.floor(new Date() / 1000);
+  var dir = "rsa-key_" + now;
+  fs.mkdirSync(dir);
+  
+  crypto.generateKeyPair(
+    "rsa",
+    {modulusLength: 2048},
+    (err, publicKey, privateKey) =&gt; {
+      fs.writeFile(
+        dir + "/public.pem",
+        publicKey.export({ type: "spki", format: "pem" }),
+        err =&gt; {}
+      );
+      fs.writeFile(
+        dir + "/public_key.txt",
+        publicKey.export({ type: "spki", format: "der" }).toString("base64") +
+          "\n",
+        err =&gt; {}
+      );
+      fs.writeFile(
+        dir + "/private.pem",
+        privateKey.export({ type: "pkcs1", format: "pem" }),
+        err =&gt; {}
+      );
+    }
+  );
+  
+  console.log("Public key saved in " + dir + "/public_key.txt");</code></pre>
+    </details>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Register_public_key">公開鍵を登録する</h2>
+    <p>秘密鍵を所有しており、その秘密鍵を使用して署名付きトークンを生成します。公開鍵をブライトコーブと共有し、トークンを確認します。キー API を使用すると、パブリックキーをブライトコーブに登録できます。</p>
+
+    <p>API の詳細については、「認証 API <a href="https://apis.support.brightcove.com/playback-restrictions/guides/authentication-apis.html">の使用」</a>ドキュメントを参照してください。</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Create_a_JSON_Web_Token"><span translate="No">JSON ウェブトークンの作成</span></h2>
+
+    <p>パブリッシャーは<a href="https://jwt.io/introduction/" translate="No"> JSON ウェブトークン</a> (JWT) を作成します。トークンは、SHA-256ハッシュアルゴリズム（JWT仕様では「」として識別されるRSAアルゴリズムで署名されています。<a href="https://ldapwiki.com/wiki/RS256"> RS256</a> "）他のJWTアルゴリズムはサポートされません。</p>
+    <p>
+      標準的な<a href="https://auth0.com/docs/tokens/jwt-claims" translate="No"> JSON Web トークンのクレームのサブセットと、</a>ブライトコーブによって定義されたいくつかのプライベートクレームが使用されます。を作成します<span translate="No">JSONWebトークン</span>秘密鍵で署名しました。
+    </p>
+  </section>
+
+    <section class="bcls-section">
+      <h2 id="Claims_for_Static_URL_Delivery">静的 URL 配信のクレーム</h2>
+      <p>
+        Brightcoveの静的 URL 配信では、次のクレームを使用できます。
+      </p>
+      <aside class="bcls-aside bcls-aside--tip">静的URL配信にはクレームは必要ないことに注意してください。</aside>
+
+      <table class="bcls-table">
+        <thead class="bcls-table__head">
+          <tr>
+            <th>フィールド</th>
+            <th>タイプ</th>
+            <th>必須</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody class="bcls-table__body">
+          <tr>
+            <td><code translate="No">accid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>再生中のコンテンツを所有するアカウント ID</td>
+          </tr>
+          <tr>
+            <td><code translate="No">drules</code></td>
+            <td>文字列 []</td>
+            <td></td>
+            <td>適用する配信ルールのアクション ID のリスト。詳細については、「<a href="https://apis.support.brightcove.com/delivery-rules/getting-started/implementing-delivery-rules.html"></a>配信ルールの実装」を参照してください。config_id クエリパラメータも設定されている場合、この要求がオーバーライドされるため、無視されます。</td>
+          </tr>
+          <tr>
+            <td><code translate="No">exp</code></td>
+            <td>整数</td>
+            <td></td>
+            <td>このトークンが有効でなくなる時間（エポックからの秒単位）。から 30 日以内にする必要があります。<code translate="No">iat</code></td>
+          </tr>
+          <tr>
+            <td><code translate="No">iat</code></td>
+            <td>整数</td>
+            <td></td>
+            <td>このトークンが発行された時間（エポックからの秒単位）</td>
+          </tr>
+          <tr>
+            <td><code translate="No">conid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>存在する場合、このトークンは特定の Video Cloud ビデオ ID のライセンス取得のみを許可します。
+              <br><br>
+              有効な動画IDである必要があります。参照IDはサポートされていないことに注意してください。
+            </td>
+          </tr>
+          <tr>
+            <td><code translate="No">pro</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>1 つのビデオで複数のビデオを使用できる場合の保護タイプを指定します。
+              <br><br>
+              値:
+              <ul>
+                <li>
+                  「」(コンテンツをクリアするためのデフォルト)
+                </li>
+                <li>
+                  「aes128"
+                </li>
+                <li>
+                  「Widevine」
+                </li>
+                <li>
+                  「playready」
+                </li>
+                <li>
+                  フェアプレイ
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><code translate="No">vod</code></td>
+            <td>オブジェクト</td>
+            <td></td>
+            <td>ビデオオンデマンドの特定の設定オプションが含まれています。</td>
+          </tr>
+          <tr>
+            <td><code translate="No">vod.ssai</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>サーバーサイド広告挿入 (SSAI) の設定ID。<strong>この要求は、HLS または DASH VMAP のいずれかを取得するために必要です</strong>。</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <p>
+        以下に、使用できる<span translate="No"> JSON Web トークン</span> (JWT) の主張の例を示します。
+      </p>
+      <pre class="line-numbers"><code class="language-json" translate="No">{
+// account id: JWT is only valid for this accounts
+"accid":"4590388311111",
+// drules: list of delivery rule IDs to be applied
+"drules": ["0758da1f-e913-4f30-a587-181db8b1e4eb"]
+// expires: timestamp when JWT expires
+"exp":1577989732,
+// issued at: timestamp when the JWT was created
+"iat":1575484132,
+// content id: JWT is only valid for video ID
+"conid":"5805807122222",
+// protection: specify a protection type in the case where multiple are available for a single video
+"pro":"aes128",
+// VOD specific configuration options
+"vod":{
+// SSAI configuration to apply
+"ssai":"efcc566-b44b-5a77-a0e2-d33333333333"
+}
+}</code></pre>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Claims_for_Playback_Restrictions">再生制限に関する申し立て</h2>
+      <p>
+        <a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html">ブライトコーブの再生制限では、以下のクレームを使用できます</a>。
+      </p>
+      <aside class="bcls-aside bcls-aside--information">DRMで再生権を使用する場合、AES-128は使用できません。</aside><aside class="bcls-aside bcls-aside--information">一般必須フィールドは、すべての機能に必要です。</aside> 
+
+      <table class="bcls-table">
+        <thead class="bcls-table__head">
+          <tr>
+            <th style="border-bottom:1px solid #707070;">機能</th>
+            <th style="border-bottom:1px solid #707070;">フィールド</th>
+            <th style="border-bottom:1px solid #707070;">タイプ</th>
+            <th style="border-bottom:1px solid #707070;">機能には必須</th>
+            <th style="border-bottom:1px solid #707070;">DRMのみ</th>
+            <th style="border-bottom:1px solid #707070;">説明</th>
+          </tr>
+        </thead>
+        <tbody class="bcls-table__body">
+          <tr>
+            <td rowspan="5" style="background-color:#dbdbdb;font-weight: bold;border-bottom:1px solid #707070;">将軍</td>
+            <td><code translate="No">accid</code></td>
+            <td>ストリング</td>
+            <td>はい</td>
+            <td></td>
+            <td>再生中のコンテンツを所有するアカウント ID</td>
+          </tr>
+          <tr>
+            <td><code translate="No">exp</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td></td>
+            <td>このトークンが有効でなくなる時間（エポックからの秒単位）。から 30 日以内にする必要があります。<code translate="No">iat</code></td>
+          </tr>
+          <tr>
+            <td><code translate="No">iat</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td></td>
+            <td>このトークンが発行された時間（エポックからの秒単位）</td>
+          </tr>
+          <tr>
+            <td><code translate="No">ua</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td></td>
+            <td>存在する場合、このトークンは、このユーザーエージェントからの要求に対してのみ有効です。
+              <br><br>
+              このフィールドは、特定の形式に従う必要はありません。
+              <br>
+              <strong></strong>ライセンスキー保護を有効にする必要があります。
+            </td>
+          </tr>
+          <tr>
+            <td><code translate="No">conid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td></td>
+            <td>存在する場合、このトークンは特定の Video Cloud ビデオ ID のライセンス取得のみを許可します。
+              <br><br>
+              有効な動画IDである必要があります
+              <br>
+              <strong></strong>ライセンスキー保護を有効にする必要があります。
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="5" style="background-color:#dbdbdb;font-weight: bold;border-bottom:1px solid #707070;">再生権限</td>
+            <td><code translate="No">pkid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td></td>
+            <td>このトークンの検証に使用される公開キー ID。
+              <br><br>
+              BrightcoveのPlaybackAuthorization Serviceに登録されている公開鍵は、RSA鍵形式を使用する必要があります。以前に作成された EC キーは機能しません。
+              <br><br>
+              このフィールドは必須ではなく、検証されていません
+            </td>
+          </tr>
+           <tr>
+            <td><code translate="No">nbf</code></td>
+            <td>整数</td>
+            <td></td>
+            <td></td>
+            <td>このトークンが有効になる時間 (エポックからの秒単位)</td>
+          </tr>
+          <tr>
+            <td><code translate="No">prid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td></td>
+            <td>A <code translate="No">playback_rights_id</code>。このビデオのカタログに設定されているIDを上書きするために使用されます
+              <br><br>
+              このフィールドは検証されていません
+            </td>
+          </tr>
+           <tr>
+            <td><code translate="No">tags</code></td>
+            <td>Array &lt;Strings&gt;</td>
+            <td></td>
+            <td></td>
+            <td>存在する場合、このトークンは、リストされたタグ値を持つ動画に対してのみ有効です。これらのビデオのみが再生が許可されます。</td>
+          </tr>
+          <tr>
+            <td><code translate="No">vids</code></td>
+            <td>Array &lt;Strings&gt;</td>
+            <td></td>
+            <td></td>
+            <td>存在する場合、このトークンは、一連のビデオ ID のライセンス取得のみを許可します。</td>
+          </tr>
+          <tr>
+            <td rowspan="6" style="background-color:#dbdbdb;font-weight: bold;border-bottom:1px solid #707070;">同時ストリーム</td>
+            <td><code translate="No">uid</code></td>
+            <td>ストリング</td>
+            <td>はい</td>
+            <td>はい</td>
+            <td>エンドビューアのユーザー ID。このフィールドは、ストリーム同時実行を強制するために、複数のセッションを相関させるために使用されます。
+              <br><br>
+              <strong></strong>デバイス登録に必要
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">climit</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td>はい</td>
+            <td>このフィールドを指定すると、ライセンス更新要求とともにストリーム同時実行チェックが有効になります。この値は、許可される同時ウォッチャーの数を示します。
+              <br><br>
+              <strong></strong>セッションの同時実行に必要
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">cbeh</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>はい</td>
+            <td><code translate="No">BLOCK_NEW</code>値をに設定すると、ストリームの最大数に達したときに、同じユーザーからの新しい要求をブロックする同時ストリーム制限が有効になります。
+              <br><br>
+              ストリームの最大数に達したときにのみ、<code translate="No">BLOCK_NEW_USER</code>新しいユーザーからの新しいリクエストをブロックするには、値をに設定します。
+              <br><br>
+              デフォルトでは、ストリームの最大数に達すると、最も古いストリームがブロックされます。
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>   
+          <tr>
+            <td><code translate="No">cexp</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>はい</td>
+            <td>セッションの同時実行の有効期限-デフォルトはコンテンツ期間の 2 倍です。
+              <br><br>
+              これは、セッションが有効である期間を定義します。その後、エンドビューアは、再生を続行するために新しいセッションを開始する必要があります。例: <code translate="No">2h</code>または<code translate="No">42m</code>
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">sid</code></td>
+            <td>ストリング</td>
+            <td></td>
+            <td>はい</td>
+            <td>現在のストリームのセッション ID を指定すると、セッションの定義方法を制御できます。デフォルトでは、セッションはユーザーエージェント（ブラウザ）+ IPアドレス+ビデオIDとして定義されます。
+              <br><br>
+                たとえば、IPアドレス+ビデオIDへのセッションの定義を緩めることができます
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">maxu</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td></td>
+            <td>
+              存在する場合、このトークンはこの数のライセンス要求に対してのみ有効です。
+              <br><br>
+              <ul>
+                <li>
+                  HLSE の場合、プレーヤーはビデオの再生時に複数のリクエストを行います。通常、レンディションごとに 1 つずつリクエストされます。は、<code translate="No">maxu</code>これらの追加要求を考慮するのに十分な高さに設定する必要があります。
+                </li>
+                <!-- <li>
+                  For DRM, one license request is made per playback
+                </li> -->
+              </ul>
+              <strong>セッショントラッキングに必要</strong>。HLSe（AES-128）のみ
+              <br>
+              <strong></strong>ライセンスキー保護を有効にする必要があります。
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="3" style="background-color:#dbdbdb;font-weight: bold;border-bottom:1px solid #707070;">デバイスの制限</td>
+            <td><code translate="No">uid</code></td>
+            <td>ストリング</td>
+            <td>はい</td>
+            <td>はい</td>
+            <td>エンドビューアのユーザー ID。このフィールドは、ストリーム同時実行を強制するために、複数のセッションを相関させるために使用されます。
+              <br><br>
+              <strong></strong>デバイス登録に必要
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">dlimit</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td>はい</td>
+            <td>このフィールドを含めると、指定されたユーザに関連付けることができるデバイスの数を制御します（<code translate="No">uid</code>）。値はでなければなりません &gt; <code translate="No">0</code>。
+              <br><br>
+              以前に許可されたデバイスは、<code translate="No">dlimit</code>後の要求で値がドロップされた場合でも、引き続き動作します。
+              <br><br>
+              例:値がに設定されている場合<code translate="No">3</code>、ユーザーはデバイス A、B、C でプレイできます (すべて許可されます)。デバイス D で再生しようとすると拒否されます。
+              <br><br>
+              値がに変更された場合でも<code translate="No">1</code>、Playback Rights API でデバイスを管理してデバイスを手動で取り消さない限り、ユーザーは 3 つのデバイス A、B、C <a href="https://apis.support.brightcove.com/playback-rights/references/devices-api/reference.htmlc/#operation/GetDevices">すべてで再生できます。</a>。
+              <br><br>
+              <strong></strong>デバイス登録に必要
+            </td>
+            <!-- <td>DRM only</td> -->
+          </tr>
+          <tr>
+            <td><code translate="No">maxip</code></td>
+            <td>整数</td>
+            <td>はい</td>
+            <td></td>
+            <td>存在する場合、このトークンは、この番号の異なるIPアドレスでのみ使用できます。 
+              <br><br>
+              <strong>セッショントラッキングに必要</strong>。HLSe（AES-128）のみ
+              <br>
+              <strong></strong>ライセンスキー保護を有効にする必要があります。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Generate_a_token">トークンを生成する</h2>
+      <p>
+        JWTトークンを生成するためのライブラリは一般的に利用可能です。詳細については、<a href="https://jwt.io/" translate="No"> JSON Web</a>トークンのサイトを参照してください。
+      </p>
+      <h4>
+        bash スクリプトの例:
+      </h4>
+      <p>
+        JWT トークンを生成するスクリプト例:
+      </p>
+      <pre class="line-numbers"><code class="language-bash" translate="No">#! /usr/bin/env bash
+# Static header fields.
+HEADER='{
+	"type": "JWT",
+	"alg": "RS256"
+}'
+
+payload='{
+	"accid": "{your_account_id}"
+}'
+
+# Use jq to set the dynamic `iat` and `exp`
+# fields on the payload using the current time.
+# `iat` is set to now, and `exp` is now + 1 second.
+PAYLOAD=$(
+	echo "${payload}" | jq --arg time_str "$(date +%s)" \
+	'
+	($time_str | tonumber) as $time_num
+	| .iat=$time_num
+	| .exp=($time_num + 60 * 60)
+	'
+)
+
+function b64enc() { openssl enc -base64 -A | tr '+/' '-_' | tr -d '='; }
+
+function rs_sign() { openssl dgst -binary -sha256 -sign playback-auth-keys/private.pem ; }
+
+JWT_HDR_B64="$(echo -n "$HEADER" | b64enc)"
+JWT_PAY_B64="$(echo -n "$PAYLOAD" | b64enc)"
+UNSIGNED_JWT="$JWT_HDR_B64.$JWT_PAY_B64"
+SIGNATURE=$(echo -n "$UNSIGNED_JWT" | rs_sign | b64enc)
+
+echo "$UNSIGNED_JWT.$SIGNATURE"
+</code></pre>
+      <p>
+        スクリプトを実行します。
+      </p>
+      <pre><code class="language-bash" translate="No">$ bash jwtgen.sh
+</code></pre>
+      <br>
+
+      <details>
+        <summary>
+          <span translate="No">Go の使用例</span>
+        </summary>
+        <p>サードパーティライブラリを使用せずにトークンを生成するための (CLI ツールとして) リファレンス<span translate="No"> Go</span>実装の例を次に示します。</p>
+        <pre class="line-numbers"><code class="language-bash" translate="No">package main
+
+import (
+	"crypto"
+	"crypto/ecdsa"
+	"crypto/rand"
+	"crypto/rsa"
+	"crypto/sha256"
+	"crypto/x509"
+	"encoding/base64"
+	"encoding/json"
+	"encoding/pem"
+	"flag"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"strings"
+	"time"
+)
+
+// Header is the base64UrlEncoded string of a JWT header for the RS256 algorithm
+const RSAHeader = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
+
+// Header is the base64UrlEncoded string of a JWT header for the EC256 algorithm
+const ECHeader = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9"
+
+// Claims represents constraints that should be applied to the use of the token
+type Claims struct {
+	Iat   float64 `json:"iat,omitempty"`   // Issued At
+	Exp   float64 `json:"exp,omitempty"`   // Expires At
+	Accid string  `json:"accid,omitempty"` // Account ID
+	Conid string  `json:"conid,omitempty"` // Content ID
+	Maxu  float64 `json:"maxu,omitempty"`  // Max Uses
+	Maxip float64 `json:"maxip,omitempty"` // Max IPs
+	Ua    string  `json:"ua,omitempty"`    // User Agent
+}
+
+func main() {
+	var key, algorithm string
+
+	c := Claims{Iat: float64(time.Now().Unix())}
+
+	flag.StringVar(&amp;key, "key", "", "Path to private.pem key file")
+	flag.StringVar(&amp;c.Accid, "account-id", "", "Account ID")
+	flag.StringVar(&amp;c.Conid, "content-id", "", "Content ID (eg, video_id or live_job_id)")
+	flag.Float64Var(&amp;c.Exp, "expires-at", float64(time.Now().AddDate(0, 0, 1).Unix()), "Epoch timestamp (in seconds) for when the token should stop working")
+	flag.Float64Var(&amp;c.Maxu, "max-uses", 0, "Maximum number of times the token is valid for")
+	flag.Float64Var(&amp;c.Maxip, "max-ips", 0, "Maximum number of unique IP addresses the token is valid for")
+	flag.StringVar(&amp;c.Ua, "user-agent", "", "User Agent that the token is valid for")
+	flag.StringVar(&amp;algorithm, "algo", "", "Key algorithm to use for signing. Valid: ec256, rsa256")
+	flag.Parse()
+
+	if key == "" {
+		fmt.Printf("missing required flag: -key\n\n")
+		flag.Usage()
+		os.Exit(1)
+	}
+
+	if algorithm == "" {
+		fmt.Printf("missing required flag: -algo\n\n")
+		flag.Usage()
+		os.Exit(2)
+	}
+
+	if algorithm != "rsa256" &amp;&amp; algorithm != "ec256" {
+		fmt.Printf("missing valid value for -algo flag. Valid: rsa256, ec256\n\n")
+		flag.Usage()
+		os.Exit(3)
+	}
+
+	if c.Accid == "" {
+		fmt.Printf("missing required flag: -account-id\n\n")
+		flag.Usage()
+		os.Exit(4)
+	}
+
+	bs, err := json.Marshal(c)
+	if err != nil {
+		fmt.Println("failed to marshal token to json", err)
+		os.Exit(5)
+	}
+
+	kbs, err := ioutil.ReadFile(key)
+	if err != nil {
+		fmt.Println("failed to read private key", err)
+		os.Exit(6)
+	}
+
+	if algorithm == "rsa256" {
+		processRSA256(kbs, bs)
+	} else {
+		processEC256(kbs, bs)
+	}
+}
+
+func processRSA256(kbs, bs []byte) {
+	block, _ := pem.Decode(kbs)
+	if block == nil {
+		fmt.Println("failed to decode PEM block containing private key")
+		os.Exit(7)
+	}
+
+	if block.Type != "RSA PRIVATE KEY" {
+		fmt.Println("failed to decode PEM block containing private key")
+		os.Exit(8)
+	}
+
+	pKey, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+	if err != nil {
+		fmt.Println("failed to parse rsa private key", err)
+		os.Exit(9)
+	}
+
+	message := RSAHeader + "." + base64.RawURLEncoding.EncodeToString(bs)
+
+	hash := crypto.SHA256
+	hasher := hash.New()
+	_, _ = hasher.Write([]byte(message))
+	hashed := hasher.Sum(nil)
+
+	r, err := rsa.SignPKCS1v15(rand.Reader, pKey, hash, hashed)
+	if err != nil {
+		fmt.Println("failed to sign token", err)
+		os.Exit(10)
+	}
+
+	sig := strings.TrimRight(base64.RawURLEncoding.EncodeToString(r), "=")
+
+	fmt.Println(message + "." + sig)
+}
+
+func processEC256(kbs, bs []byte) {
+	block, _ := pem.Decode(kbs)
+	if block == nil {
+		fmt.Println("failed to decode PEM block containing private key")
+		os.Exit(7)
+	}
+
+	if block.Type != "EC PRIVATE KEY" {
+		fmt.Println("failed to decode PEM block containing private key")
+		os.Exit(8)
+	}
+
+	pkey, err := x509.ParseECPrivateKey(block.Bytes)
+	if err != nil {
+		fmt.Println("failed to parse ec private key", err)
+		os.Exit(9)
+	}
+
+	message := ECHeader + "." + base64.RawURLEncoding.EncodeToString(bs)
+	hash := sha256.Sum256([]byte(message))
+
+	r, s, err := ecdsa.Sign(rand.Reader, pkey, hash[:])
+	if err != nil {
+		fmt.Println("failed to sign token", err)
+		os.Exit(10)
+	}
+
+	curveBits := pkey.Curve.Params().BitSize
+
+	keyBytes := curveBits / 8
+	if curveBits%8 &gt; 0 {
+		keyBytes++
+	}
+
+	rBytes := r.Bytes()
+	rBytesPadded := make([]byte, keyBytes)
+	copy(rBytesPadded[keyBytes-len(rBytes):], rBytes)
+
+	sBytes := s.Bytes()
+	sBytesPadded := make([]byte, keyBytes)
+	copy(sBytesPadded[keyBytes-len(sBytes):], sBytes)
+
+	out := append(rBytesPadded, sBytesPadded...)
+
+	sig := base64.RawURLEncoding.EncodeToString(out)
+	fmt.Println(message + "." + sig)
+}
+</code></pre>
+</details>
+
+      <h4>結果</h4>
+      <p>
+        <a href="https://jwt.io/">https://JWT.io を使用してデコードされたトークンの例を以下に示します。</a>クレームの全セットを指定します。
+      </p>
+      <p>
+        ヘッダー:
+      </p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "alg": "RS256",
+  "type": "JWT"
+}
+</code></pre>
+
+      <p>
+        ペイロード:
+      </p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+  "accid": "1100863500123",
+  "conid": "51141412620123",
+  "exp": 1554200832,
+  "iat": 1554199032,
+  "maxip": 10,
+  "maxu": 10,
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36"
+}
+</code></pre>
+    </section>
+
+    <section class="bcls-section">
+      <h2 id="Test_playback">テスト再生</h2>
+
+      <p>必須ではありませんが、プレーヤーを設定する前にビデオ再生をテストすることをお勧めします。</p>
+      <p>
+        再生をリクエスト:
+      </p>
+      <pre class="line-numbers"><code class="language-http" translate="No">curl -X GET \
+ -H 'Authorization: Bearer {JWT}' \
+ https://edge-auth.api.brightcove.com/playback/v1/accounts/{your_account_id}/videos/{your_video_id}
+</code></pre>
+</section>
+</article>
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページの最終更新日05 Oct 2021
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
+
+        <h2>ブライトコーブのサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>ブライトコーブ</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ Inc. すべての権利を保有</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+      
+  var searchBox = sajari.init ( { mode: "search-box", project: "1588255093746585379", // Set this to your project. collection: "brightcove-documenation", // Set this to your collection. instantPipeline: "autocomplete", // Pipeline used as you type inputPlaceholder: "Search", // Input element placeholder maxSuggestions: 5, // Maximum number of suggestions to show attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to } ); SearchBox (「サブ」,「pipeline.search-sent」, 関数 (_, クエリ) { window.location = "/search.html?q=" + encodeURIComponent(query.q); } );
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style>
+    asj-paginator__page-number.sj-paginator__page-number { background-color: lightblue; }—current.css-so0ov7 { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab div.sj-tabs__tab { border-bottom-color: crimson; background-color: #f8f8f8; }—選択されたp.sj-result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text。css-31l7gp h3 { color: navy; font-size: 1.4rem; }
+    </style>
+
+</body>
+
+</html>

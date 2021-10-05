@@ -1,27 +1,33 @@
-﻿<!doctype html>
-<html lang="ja">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>Ooyala-Video Cloud取り込みアダプタ:XML マニフェストファイル</title>
+  <title>Ooyala-ビデオクラウド取り込みアダプター：XML マニフェストファイル</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55736414-4"></script>
+<script>
+  window.DataLayer = window.DataLayer || []; 関数{dataLayer.push(arguments);} gtag ('js', new Date ()); gtag ('config', 'UA-55736414-4');
+</script>
+
   <script src="/assets/js/sajari-head.js"></script>
 </head>
 
@@ -29,428 +35,216 @@
 
 <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Video_Cloud_Logo_RGB_K.svg" alt="Brightcove"></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">英語</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">フランス語</option><option value="en|de" translate="No">ドイツ銀行</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">スペイン語</option></select>
 
 <script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
+/*<![CDATA[ */ 関数 dogTranslate (lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;} /*]]> */
 </script>
 
-    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-      <option value="">Brightcove のその他のドキュメント</option>
-      
-        
-          <option value="https://support.brightcove.com">ドキュメントホーム</option>
-        
-      
-        
-          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-        
-      
-        
-          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
-        
-      
-        
-          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
-        
-      
-        
-          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-        
-      
-        
-          <option value="https://live.support.brightcove.com">Brightcove Live</option>
-        
-      
-        
-          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-        
-      
-        
-          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-        
-      
-        
-          <option value="https://social.support.brightcove.com">Brightcove Social</option>
-        
-      
-        
-          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-        
-      
-        
-          <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-        
-      
-        
-          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-        
-      
-        
-          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
-        
-      
-        
-          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
-        
-      
-        
-          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
-        
-      
-        
-          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-        
-      
-    </select>
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
 
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/ooyala/">Ooyalaからの移行</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">Ooyala-Video Cloud取り込みアダプタ:XML マニフェストファイル</li>
-    </ol>
+    
+    <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+     
+        <li class="breadcrumb-item"><a href="/ooyala/">Ooyala</a></li>
+        
+        <li class="breadcrumb-item active" aria-current="page">Ooyala-ビデオクラウド取り込みアダプター：XML マニフェストファイル</li>
+       
   </nav>
 </header>
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
+           
             <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;一般情報</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/brightcove-product-overview.html">Brightcove 製品の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove のフォーラムグループとメールリスト</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove アナリティクス API への移行</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove  DNS サーバの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove  API リクエストの認証</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
+                 
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove製品の概要</a></li>
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuum 概要</a></li>
+                    
+                    <li><a href="/general/roku-trick-play.html">Roku TrickPlayのBrightcoveビデオ</a></li>
+                    
+                    <li><a href="/general/brightcove-open-source-projects.html">Brightcove オープンソースプロジェクト</a></li>
+                    
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/developer/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;開発者</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                    
+                    <li><a href="/developer/concepts-introducing-json.html">JSONの紹介</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScriptデバッグの基本</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScriptモジュールのデザインパターン</a></li>
+                    
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                    
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScriptPromisesの使用</a></li>
+                    
+                    <li><a href="/developer/create-json-web-token.html">JSON ウェブトークン (JWT) の作成</a></li>
+                    
+                    <li><a href="/developer/create-jwt.html">JSON Web Token（JWT）の作成-非推奨</a></li>
+                    
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                    
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTRの使用（私のtraceroute）</a></li>
+                    
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用したネットワークトラフィックの追跡</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Ooyalaからの移行</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                    
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove AnalyticsAPIへの移行</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプター：CSV マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプター：アスペラで摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプター：FTPS で取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプター：OIS2.5で摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプター：バックロット API を使用した取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプター：MRSS によるリモートアセットの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプター：ホストされた MRSS からの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">バックロット/ビデオクラウドCMSコネクタ</a></li>
+                    
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプター：マニフェストファイル形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプター：XML マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプター：サポートされているインジェスト形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcoveDNSサーバーの追加</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">BrightcoveAPIリクエストの認証</a></li>
+                    
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンドレポートリファレンス</a></li>
+                    
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">ビデオクラウドコンテンツにOoyalaプレーヤーを使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/utilities/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;ユーティリティ</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/utilities/base-64-encoding-tool.html">Base64エンコーディングツール</a></li>
+                    
+                    <li><a href="/utilities/date-converter.html">日付コンバーター</a></li>
+                    
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                    
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:ビデオクラウドの概要</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:ビデオクラウド分析の概要</a></li>
+                    
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:ビデオクラウドの基本</a></li>
+                    
+                    <li><a href="/training/video-cloud-studio-training-videos.html">ビデオクラウドスタジオトレーニングビデオ</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                    
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
 
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 
 <!-- search bar -->
 <div id="nav-search-box" style="margin-top: 1rem;"></div>
@@ -461,27 +255,23 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-
-<h1>Ooyala-Video Cloud取り込みアダプタ:XML マニフェストファイル</h1>
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
+ <h1>Ooyala ビデオクラウド取り込みアダプタ:XML マニフェストファイル</h1>
 <article class="bcls-article">
   <summary>引き続き XML マニフェストで FTP、Aspera、または MRSS を使用して Video Cloud に動画を取り込むことができます。このトピックでは、XML の構造について説明します。</summary>
-  <aside class="bcls-aside bcls-aside--information language-editable">注:このトピックは、Video Cloud に移行した Ooyala <strong>カスタマーにのみ適用されます</strong>。</aside>
+  <aside class="bcls-aside bcls-aside--information">注:このトピックは、Video Cloud に移行した Ooyala <strong></strong>のお客様にのみ適用されます。</aside>
   
   <section class="bcls-section">
     <h2 id="introduction">はじめに</h2>
     <p class="shortdesc">ビデオを取り込むときは、XML マニフェストファイルを使用して、追加のメタデータ（動画のタイトル、説明、フライト時間、ラベル、カスタムメタデータを含む）、およびサムネイルファイルとクローズドキャプションファイルを指定できます。FTP、Aspera、または MRSS を使用してコンテンツを取り込む場合は、XML マニフェストファイルを使用できます。</p>
-    <div class="note note"><span class="notetitle">注:</span>このトピックは、OIS v2.5 に適用されます。</div>
+    <div class="note note"><span class="notetitle">注:</span>このトピックは OIS v2.5 に適用されます。</div>
   </section>
   <section class="bcls-section">
     <h2 id="Handling_of_metadata">メタデータの処理</h2>
-    <p><code translate="No">metadata</code>ビデオを取り込むときに含めると、次の 2 つの方法のいずれかで Video Cloud 動画フィールドにマップされます。</p>
+    <p><code translate="No">metadata</code>取り込み時にビデオに含めると、次の 2 つの方法のいずれかで Video Cloud ビデオフィールドにマッピングされます。</p>
     <ol>
-      <li><strong>デフォルト</strong>では、各<code translate="No">metadata</code>キー/値のペアは、<em>タグ</em>として<code translate="No">meta::key::value</code>の形式で追加されます。たとえば、<code translate="No">&lt;ooyala:metadata name="category"&gt;cooking&lt;/ooyala:metadata&gt;</code>はタグを生成します<code translate="No">meta::category::cooking</code></li>
-      <li><code translate="No">custom_fields</code>を使用してメタデータを保存する場合は、Brightcove サポートがアカウントの設定を変更して変更することができます。次の点に注意してください。
+      <li><strong>デフォルトでは</strong>、<code translate="No">metadata</code>各キー/値のペアは <em>tag</em> の形で: <code translate="No">meta::key::value</code>。たとえば、<code translate="No">&lt;ooyala:metadata name="category"&gt;cooking&lt;/ooyala:metadata&gt;</code>タグが生成されます。<code translate="No">meta::category::cooking</code></li>
+      <li><code translate="No">custom_fields</code>メタデータの保存に使う場合は、ブライトコーブサポートがアカウントの設定を変更してそのようにすることができます。次の点に注意してください。
         <ul>
           <li>メタデータキーに対応する名前を持つカスタムフィールドを作成する必要があります。</li>
           <li>カスタムフィールドの数は既定で 10 に制限されています。そのため、メタデータを格納するためにそれ以上のカスタムフィールドが必要な場合は、サポートから追加のカスタムフィールドを要求する必要があります。</li>
@@ -506,117 +296,114 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td><samp translate="No">&lt;channel&gt; </samp></td>
-          <td>1 <samp translate="No">&lt;item&gt;</samp>つまたは複数の要素が含まれています。</td>
+          <td><samp translate="No">&lt;チャンネル &gt; </samp></td>
+          <td>1 つ以上を含む <samp translate="No">&lt;アイテム &gt;</samp> 要素。</td>
           <td>必須</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;item&gt;</samp></td>
-          <td>取り込む単一のビデオを表します。XML マニフェストファイルでは、複数の動画（<samp translate="No">&lt;item&gt;</samp>タグ）を指定できます。このテーブルの残りのタグが含まれます。</td>
+          <td><samp translate="No">&lt;アイテム &gt;</samp></td>
+          <td>取り込む単一のビデオを表します。複数の動画を指定できます（<samp translate="No">&lt;アイテム &gt;</samp> タグ）XMLマニフェストファイル内。このテーブルの残りのタグが含まれます。</td>
           <td>必須</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:content&gt;</samp></td>
+          <td><samp translate="No">&lt;メディア：コンテンツ&gt;</samp></td>
           <td>取り込むビデオを指定します。次のいずれかの操作を行います。
             <ul class="ul">
               <li>アップロードした動画のファイル名。</li>
-              <li>MRSS を介した取り込み（「<a class="xref" title="メディア RSS (MRSS) を使用すると、Ooyala が公開した MRSS フィードから自分のシステムからコンテンツをプルすることができます。Backlot は MRSS フィードからメタデータを取り出し、リモートアセットまたはダウンロード（ホストされている場所）を作成し、動画と関連ファイル（サムネイル、クローズドキャプションファイルなど）を処理します。" href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">リモートホストされた MRSS フィードからの取り込み</a>」を参照）では、ビデオが配置されている URL。URL には、<samp translate="No">http://</samp>またはを含めることができます<samp translate="No">https://</samp>。</li>
+              <li>MRSS を介した取り込み（「<a class="xref" title="You can use Media RSS (MRSS) to have Ooyala pull your content from your own system from an MRSS feed that you publish. Backlot pulls the metadata from the MRSS feed and either creates a remote asset or downloads (from where they are hosted) and processes the videos and any associated files (thumbnails, closed caption files, etc.)." href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">リモートホストされた MRSS フィードからの取り込み</a>」を参照）では、ビデオが配置されている URL。URLには次のものを含めることができます <samp translate="No">http：//</samp> または <samp translate="No">https：//</samp>。</li>
             </ul>
-            リモートアセットの場合は、<samp translate="No">&lt;ooyala:remoteasset&gt;</samp>代わりにを使用します。</td>
+            リモートアセットの場合は、 <samp translate="No">&lt;ooyala：remoteasset&gt;</samp> 代わりは。</td>
           <td>必須（リモートアセットを除く）</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:title&gt;</samp></td>
+          <td><samp translate="No">&lt;メディア：タイトル&gt;</samp></td>
           <td>ビデオの名前またはタイトル。</td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:thumbnail&gt;</samp></td>
+          <td><samp translate="No">&lt;メディア：サムネイル&gt;</samp></td>
           <td>サムネイル (プレビューイメージ) を指定します。次のいずれかの操作を行います。
             <ul class="ul">
               <li>アップロードしたサムネイルのファイル名。</li>
-              <li>サムネイルが配置されている URL。URL には、<samp translate="No">http://</samp>またはを含めることができます<samp translate="No">https://</samp>。</li>
+              <li>サムネイルが配置されている URL。URLには次のものを含めることができます <samp translate="No">http：//</samp> または <samp translate="No">https：//</samp>。</li>
             </ul></td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:subTitle&gt;</samp></td>
-          <td>クローズドキャプションファイルを指定します（DFXP、WebVTT、および SRT ファイルでサポートされます）。<a class="xref" title="Backlot または Ooyala 取り込みサービス (OIS) 経由でクローズドキャプションファイルを取り込むことができます。" href="/ooyala/migrating-video-cloud-ingestion-adapter.html">クローズドキャプションファイルの取り込みを参照してください</a>。属性:
+          <td><samp translate="No">&lt;メディア：subTitle&gt;</samp></td>
+          <td>クローズドキャプションファイルを指定します（DFXP、WebVTT、および SRT ファイルでサポートされます）。<a class="xref" title="You can ingest closed caption files via Backlot or the Ooyala Ingestion Service (OIS)." href="/ooyala/migrating-video-cloud-ingestion-adapter.html">クローズドキャプションファイルの取り込みを参照してください</a>。属性:
             <ul class="ul">
-              <li><samp translate="No">href</samp> ( 必須)-次のいずれかを指定します。
+              <li><samp translate="No">href</samp> （必須）-次のいずれか：
                 <ul class="ul">
-                  <li>アップロードしたクローズドキャプションファイルのファイル名。例: <samp translate="No">caption-1.dfxp</samp></li>
-                  <li>クローズドキャプションファイルが格納されている URL。URL には、<samp translate="No">http://</samp>またはを含めることができます<samp translate="No">https://</samp>。</li>
+                  <li>アップロードしたクローズドキャプションファイルのファイル名。例： <samp translate="No">キャプション-1.dfxp</samp></li>
+                  <li>クローズドキャプションファイルが格納されている URL。URLには次のものを含めることができます <samp translate="No">http：//</samp> または <samp translate="No">https：//</samp>。</li>
                 </ul>
-                <samp translate="No">lang</samp> ( オプション)-クローズドキャプションファイルの言語。2文字のコード。<a class="xref" title="クローズドキャプションファイルを Backlot にアップロードする前に、サポートされている言語とファイル形式を使用していることを確認してください。" href="/ooyala/migrating-video-cloud-ingestion-adapter.html">サポートされているクローズドキャプションを参照してください</a>。</li>
-              <li><samp translate="No">frameRate</samp>（オプション）-クローズドキャプションファイルのフレームレート。単位はフレーム/秒 (FPS) です。デフォルトは 30 です。古いクローズドキャプションファイルは 24 である可能性があります。</li>
+                <samp translate="No">lang</samp> （オプション）-クローズドキャプションファイルの言語。2 文字のコード。<a class="xref" title="Before uploading closed caption files to Backlot, verify that you are using a supported language and file format." href="/ooyala/migrating-video-cloud-ingestion-adapter.html">サポートされているクローズドキャプションを参照してください</a>。</li>
+              <li><samp translate="No">フレームレート</samp> （オプション）-クローズドキャプションファイルのフレームレート。単位はフレーム/秒 (FPS) です。デフォルトは 30 です。古いクローズドキャプションファイルは 24 である可能性があります。</li>
             </ul>
-            <div class="note note"><span class="notetitle">注:</span>指定した場合、<samp translate="No">lang</samp><samp translate="No">frameRate</samp>およびに有効な値を入力するのはユーザーの責任です。有効な値は DFXP ファイルに追加されます。非準拠の値は無視されます。どちらの方法でも、クローズドキャプションファイルが Backlot に追加され、アセットにリンクされます。</div></td>
+            <div class="note note"><span class="notetitle">注:</span>指定されている場合、有効な値を提供するのはあなたの責任です <samp translate="No">lang</samp> かつ <samp translate="No">フレームレート</samp>。有効な値は DFXP ファイルに追加されます。非準拠の値は無視されます。どちらの方法でも、クローズドキャプションファイルが Backlot に追加され、アセットにリンクされます。</div></td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:description&gt;</samp></td>
+          <td><samp translate="No">&lt;メディア：説明&gt;</samp></td>
           <td>ビデオの説明。</td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;link&gt;</samp></td>
-          <td>ビデオを埋め込む永続的な URL。<samp translate="No">hosted_at</samp>作成したアセットのプロパティにマップします。</td>
+          <td><samp translate="No">&lt;リンク&gt;</samp></td>
+          <td>ビデオを埋め込む永続的な URL。作成されたアセットにマップします <samp translate="No">hosted_at</samp> 財産。</td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;dcterms:valid&gt;</samp></td>
-          <td>アセットを再生できる開始時間と終了時間を表すフライト時間。例:
+          <td><samp translate="No">&lt;dcterms: 有効 &gt;</samp></td>
+          <td>アセットを再生できる開始時間と終了時間を表すフライト時間。例：
             <pre class="pre codeblock">
-  &lt;dcterms: &gt; 有効な開始=2011-06-28T 15:15:00-07:00;
-                 end=2022-12-01T 16:00:00-07:00; scheme=w3C-DTF
-  &lt;/dcterms: 有効 &gt;</pre></td>
+   &lt;  dcterms: valid&gt;start=2011-06-28T 15:15:00-07:00; end=2022-12-01T 16:00:00-07:00; scheme=w3c-dtf  &lt;  /dcterms: valid &gt;</pre></td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:labels&gt;</samp></td>
-          <td>カンマで区切られた 1 つまたは複数のラベル。例: <samp translate="No">/sports,/sports/jogging</samp>。背景については、「<a class="xref" title="外部公開ターゲットに追加すると、外部に公開するビデオ、チャンネル、チャンネルセットがラベルで指定されます。" href="/ooyala/migrating-video-cloud-ingestion-adapter.html">ラベル</a>」を参照してください。</td>
+          <td><samp translate="No">&lt;ooyala：labels&gt;</samp></td>
+          <td>カンマで区切られた 1 つ以上のラベル。例： <samp translate="No">/ sports、/ sports / jogging</samp>。背景については、「<a class="xref" title="When added to external publishing targets, labels specify which videos, channels, and channel sets to publish externally." href="/ooyala/migrating-video-cloud-ingestion-adapter.html">ラベル</a>」を参照してください。</td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;media:keywords&gt;</samp></td>
+          <td><samp translate="No">&lt;メディア：キーワード&gt;</samp></td>
           <td>ラベルを定義する別の方法（スラッシュなし）。コンマで区切られたコンテンツは、動画にタグとして追加されます。新しいタグは、同じ名前のタグがまだ存在しない場合にのみ作成されます。
-            <p>たとえば、<samp translate="No">&lt;media:keywords&gt;</samp><samp translate="No">label2</samp>次のタグの場合、<samp translate="No">label1</samp>ラベルとが作成され、タグとしてビデオに追加されます。<samp translate="No">parentlabel</samp>という名前のラベルも作成され、<samp translate="No">childlabel</samp>その内部にラベルがネストされています。</p>
+            <p>たとえば、次の場合 <samp translate="No">&lt;メディア：キーワード&gt;</samp> タグ、ラベル <samp translate="No">label1</samp> かつ <samp translate="No">label2</samp> 作成され、タグとしてビデオに追加されます。名前の付いたラベル <samp translate="No">親ラベル</samp> ラベル付きで作成されます <samp translate="No">チャイルドラベル</samp> その中にネストされています。</p>
             <pre class="pre codeblock">
-  &lt;メディア:キーワード &gt; label1、label2、
-      親ラベル/子ラベル &lt; /メディア:キーワード &gt;</pre>
-            <div class="note note"><span class="notetitle">注:</span><samp translate="No">&lt;media:keywords&gt;</samp>タグがXMLマニフェストファイルまたはMRSSに含まれている場合、<samp translate="No">&lt;ooyala:labels&gt;</samp>の内容は無視されます。</div></td>
+   &lt; メディア:キーワード &gt; ラベル 1、ラベル 2、親ラベル/子ラベル &lt;  /メディア：キーワード &gt;</pre>
+            <div class="note note"><span class="notetitle">注:</span>の内容 <samp translate="No">&lt;メディア：キーワード&gt;</samp> が無視される場合 <samp translate="No">&lt;ooyala：labels&gt;</samp> タグは、XMLマニフェストファイルまたはMRSSに含まれています。</div></td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:embedcode&gt;</samp></td>
+          <td><samp translate="No">&lt;ooyala：embedcode&gt;</samp></td>
           <td>Video Cloud動画 ID。</td>
           <td>オプション（新しい動画を追加するのではなく、動画を更新する場合は必須）</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:profileguid&gt;</samp></td>
+          <td><samp translate="No">&lt;ooyala：profileguid&gt;</samp></td>
           <td>処理プロファイルの ID。トランスコーディング中にマスタービデオを変換する必要がある形式を定義するエンコードのグループです。詳細については、Ooyala サポート担当者にお問い合わせください。</td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:metadata&gt;</samp></td>
-          <td>ビデオのカスタムメタデータ。メタデータの種類ごとに 1 つの要素を設定できます。<code translate="No">metadata</code>が特別なタグとして動画に追加される方法の詳細については、<a href="#Handling_of_metadata">メタデータの取り扱いセクションを参照してください</a>。例: <code translate="No">&lt;ooyala:metadata name="category"&gt;cooking&lt;/ooyala:metadata&gt;</code></td>
+          <td><samp translate="No">&lt;ooyala：メタデータ&gt;</samp></td>
+          <td>ビデオのカスタムメタデータ。メタデータのタイプごとに 1 つの要素を持つことができます。を参照してください<a href="#Handling_of_metadata">メタデータの処理</a>方法の詳細についてはセクション<code translate="No">metadata</code>特別なタグとして動画に追加されます。例: <code translate="No">&lt;ooyala:metadata name="category"&gt;cooking&lt;/ooyala:metadata&gt;</code></td>
           <td>オプショナル</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:remoteasset&gt;</samp></td>
+          <td><samp translate="No">&lt;ooyala：remoteasset&gt;</samp></td>
           <td>取り込むリモートアセットを指定します。リモートアセットとは、Backlot 以外の場所でホストされている動画です。次の属性を指定します。
             <ul class="ul">
-              <li><samp translate="No">durationInMs</samp> : メディア継続時間 (ミリ秒)</li>
-              <li><samp translate="No">url</samp> :リモートアセットの URL。URL には、<samp translate="No">http://</samp>またはを含めることができます<samp translate="No">https://</samp>。</li>
+              <li><samp translate="No">期間InMs</samp>: メディア継続時間 (ミリ秒)</li>
+              <li><samp translate="No">url</samp>:リモートアセットの URL。URLには次のものを含めることができます <samp translate="No">http：//</samp> または <samp translate="No">https：//</samp>。</li>
             </ul>
-            この設定は、<samp translate="No">hosted_at</samp>リモートアセットのプロパティの値にマップされます。例: <samp translate="No">&lt;ooyala:remoteasset durationInMs='5000' url="http://your_website/your_remote_assets.mp4" /&gt;</samp>
-            <div class="note note"><span class="notetitle">注:</span>リモートアセットが作成された後、さまざまな CDN への伝播が 60 秒以上遅れることがあります。リモートアセットの作成後にあまりにも早く要求すると、結果は CDN によってキャッシュされ、クリアには数分かかる場合があります。ベストプラクティス：作成後 30 秒または 60 秒待ち、<span class="ph"> Backlot API </span><samp translate="No">[GET] /v2/assets/<var class="keyword varname">asset_id</var></samp>ルートでクエリを実行し、リモートアセットの埋め込みコード（コンテンツ ID またはアセット ID）を取得した後、アセットの埋め込みに進みます。</div></td>
+            この設定は、の値にマップされます <samp translate="No">hosted_at</samp> リモートアセットのプロパティ。例： <samp translate="No"> &lt;  ooyala: remoteasset durationinms='5000'  url=」http://your_website/your_remote_assets.mp4 "/&gt;</samp>
+            <div class="note note"><span class="notetitle">注:</span>リモートアセットが作成された後、さまざまな CDN への伝播が 60 秒以上遅れることがあります。リモートアセットの作成後にあまりにも早く要求すると、結果は CDN によってキャッシュされ、クリアには数分かかる場合があります。ベストプラクティス:作成後 30 秒または 60 秒待って、<span class="ph"> Backlot API でクエリを実行します。</span> <samp translate="No">[GET] /v2/assets/<var class="keyword varname">asset_id</var></samp> ルートを設定し、リモートアセットの埋め込みコード（コンテンツIDまたはアセットID）を取得した後、アセットの埋め込みに進みます。</div></td>
           <td>必須（リモートアセットのみ）</td>
         </tr>
         <tr>
-          <td><samp translate="No">&lt;ooyala:profileguid&gt;</samp></td>
-          <td>ビデオ処理に使用する Video Cloud インジェストプロファイルを指定します。アカウントのデフォルトプロファイルを使用しない場合は、代わりに使用するプロファイルを指定する必要があります。「<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">取り込みプロファイルの管理</a>」を参照してください。</td>
+          <td><samp translate="No">&lt;ooyala：profileguid&gt;</samp></td>
+          <td>ビデオ処理に使用する Video Cloud インジェストプロファイルを指定します。アカウントのデフォルトプロファイルを使用しない場合は、代わりに使用するプロファイルを指定する必要があります。「<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">取り込みプロファイルの管理」を参照してください</a>。</td>
           <td>オプショナル</td>
         </tr>
       </tbody>
@@ -624,27 +411,9 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </section>
   <section class="bcls-section">
     <h2 id="example">例</h2>
-    <p><strong class="ph b">XML マニフェストファイルの例 (OIS v2.5) </strong></p>
+    <p><strong class="ph b">XML マニフェストファイルの例 (OIS v2.5)</strong></p>
     <pre class="pre codeblock">
-  &lt;？xml version= "1.0" エンコード=" utf-8"？&gt;
-  &lt;rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/」
-    xmlns: dcterms=」http://purl.org/dc/terms/」
-    xmlns: fh=」http://purl.org/syndication/history/1.0」
-    xmlns: ooyala=」http://www.ooyala.com/mrss/ "&gt;
-    &lt;チャンネル &gt;
-      &lt;アイテム &gt;
-        &lt;メディア:コンテンツ URL =」test.mp4 "&gt; &lt; /メディア:コンテンツ &gt;
-        &lt;メディア:サブタイトル href = "my_caption.dfxp」&gt; &lt; /メディア:サブタイトル &gt;
-        &lt;メディア:サムネール=」my_thumbnail.jpg "ファイルサイズ=" 35712" &gt; &lt; /メディア:サムネイル &gt;
-        &lt;メディア:&gt; タイトルテスト XML &lt; /メディア:タイトル &gt;
-        &lt;メディア:&gt; 説明これは例です &lt; /メディア:説明 &gt;
-        &lt;おいら:&gt; ラベル/テスト, /例, /xml &lt; /ooyala: ラベル &gt;
-        &lt;dcterms: &gt; 有効な開始=2016-01-01T 15:15:00-07:00;
-          end=2022-01-01T 16:00:00-07:00 &lt; /dcterms: 有効 &gt;
-        &lt;ooyala: profileguid &gt; 57d5a5a10f654fe79ef954dc8d29a108 &lt; /ooyala: profileguid &gt;
-      &lt;/アイテム &gt;
-    &lt;/チャンネル &gt;
-  &lt;/rss &gt; </pre>
+   &lt; ？xml version= "1.0" エンコーディング=" utf-8"？&gt;  &lt;  rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/ "xmlns: dcterms=」http://purl.org/dc/terms/ "xmlns: fh=」"xmlns: ooyala=」vech「&gt; http://purl.org/syndication/history/1.0 http://www.ooyala.com/mrss/  &lt;  channel  &lt;  &gt; アイテム &gt;  &lt; メディア:コンテンツ url=」test.mp4 "&gt;  &lt;  /メディア:コンテンツ &gt;  &lt; メディア:subtitle href= "my_caption.dfxp" &gt;  &lt;  /media: subtitle &gt;  &lt;  media: サムネイル url=」my_thumbnail.jpg "filesize=" 35712"&gt;  &lt;  /media: サムネイル &gt;  &lt;  media: title &gt;テスト XML  &lt;  /メディア:タイトル &gt;  &lt; メディア:説明&gt;これは例である &lt;  /media: 説明 &gt;  &lt;  ooyala: labels &gt;/test, /example,  &lt;  /xml /ooyala: labels &gt;  &lt;  dcterms: valid&gt;start=2016-01T 15:15:00-07:00; end=202-01-01T 16:00:00-07:00  &lt;  /dcterms: 有効 &gt;  &lt;  ooyala: profileguid &gt;57d5a5a10f654fe79ef954ef954dc8d29a108  &lt;  /ooyala: profileguid &gt;  &lt;  /item &gt;  &lt;  /channel &gt;  &lt;  /rss &gt;</pre>
   </section>
   <section class="bcls-section">
     <h2 id="step_by_step">ステップバイステップ</h2>
@@ -655,58 +424,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>XML を検証するテキストエディタ (できれば) を開きます。</li>
       <li>必要な XML ヘッダーを追加します。例は次のとおりです。
         <pre class="pre codeblock">
-   &lt;？xml version= "1.0" エンコード=" utf-8"？&gt;
-  &lt;rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/」
-       xmlns: dcterms=」http://purl.org/dc/terms/」
-       xmlns: fh=」http://purl.org/syndication/history/1.0」
-       xmlns: ooyala=」http://www.ooyala.com/mrss/ "&gt;</pre>
+   &lt; ？xml version= "1.0" エンコーディング=" utf-8"？&gt;  &lt;  rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/ "xmlns: dcterms=」http://purl.org/dc/terms/ "xmlns: fh=」"xmlns: ooyala=」vech「&gt; http://purl.org/syndication/history/1.0 http://www.ooyala.com/mrss/</pre>
       </li>
-      <li><samp translate="No">channel</samp>コンテナを作成します。</li>
-      <li><samp translate="No">item</samp>上記の表の目的の要素を含む各ビデオのエントリを作成します。
-        <p>次の例では、XML は 2 つのビデオのメタデータを指定します。最初の動画では、ファイルとサムネイルはアップロードサーバー上に配置され、そのサーバーから取り出されます。2 番目のビデオでは、ファイルとサムネイルは既に Ooyala サーバーにアップロードされています。2番目のビデオには飛行時間もあります。</p>
+      <li>を作成します <samp translate="No">チャネル</samp> 容器。</li>
+      <li>を作成します <samp translate="No">アイテム</samp> 上記の表の必要な要素を含む、各ビデオのエントリ。
+        <p>次の例では、XML は 2 つのビデオのメタデータを指定します。最初の動画では、ファイルとサムネイルはアップロードサーバー上に配置され、そのサーバーから取り出されます。2 番目のビデオでは、ファイルとサムネイルがすでに Ooyala サーバーにアップロードされています。2番目のビデオには飛行時間もあります。</p>
         <pre class="pre codeblock">
-   &lt;？xml version= "1.0" エンコード=" utf-8"？&gt;
-  &lt;rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/」
-       xmlns: dcterms=」http://purl.org/dc/terms/」
-       xmlns: fh=」http://purl.org/syndication/history/1.0」
-       xmlns: ooyala=」http://www.ooyala.com/mrss/ "&gt;
-  
-       &lt;チャンネル &gt;
-             &lt;アイテム &gt;
-              &lt;メディア:content url=」http://mysite.com/upload/lacrosse_70.mov "/&gt;
-              &lt;メディア:サムネール=」http://mysite.com/upload/lacrosse_70_previewimage.jpg "/&gt;
-              &lt;メディア:&gt; タイトル本当に存在するスポーツ:&lt;ラクロス/メディア:タイトル &gt;
-              &lt;メディア:&gt; 説明私のビデオの説明 &lt; /メディア:説明 &gt;
-              &lt;ooyala: &gt; ラベル/スポーツ/ラクロス、&lt; /ホビーズ/ラクロス/Ooyala:ラベル &gt;
-              &lt;リンク &gt; http://mysite.com/videos/sports/real_sports.html &lt; /link &gt;
-              &lt;おいやな:メタデータ名= "Video_ID」&gt; 70 &lt; /ooyala: メタデータ &gt;
-              &lt;おいやな:メタデータ名= "season_number」&gt; 1 &lt; /おいやな:メタデータ &gt;
-             &lt;/アイテム &gt;
-  
-             &lt;アイテム &gt;
-              &lt;メディア:コンテンツ URL =」curling_71.mov "/&gt;
-              &lt;メディア:サムネール=」curling_71_previewimage.jpg「/&gt;
-              &lt;メディア:&gt; タイトル本当に存在するスポーツ:&lt;カーリング/メディア:タイトル &gt;
-              &lt;メディア:&gt; 説明私のビデオの説明 &lt; /メディア:説明 &gt;
-              &lt;ooyala: &gt; ラベル/スポーツ/カーリング、&lt; /ホビーズ/カーリング/ooyala: ラベル &gt;
-              &lt;リンク &gt; http://mysite.com/videos/sports/real_sports.html &lt; /link &gt;
-              &lt;Ooyala:メタデータ名= "Video_ID」&gt; 71 &lt; /おいやな:メタデータ &gt;
-              &lt;おいやな:メタデータ名= "season_number」&gt; 1 &lt; /おいやな:メタデータ &gt;
-              &lt;!— フライト時間を設定する — &gt;
-              &lt;dcterms: &gt; 有効な開始=2011-06-28T 15:15:00-07:00;
-                  end=2022-12-01T 16:00:00-07:00; scheme=w3C-DTF
-                  &lt;/dcterms: 有効 &gt;
-  
-             &lt;/アイテム &gt;
-       &lt;/チャンネル &gt;
-  &lt;/rss &gt;     </pre>
+   &lt; ？xml version= "1.0" エンコーディング=" utf-8"？&gt;  &lt;  rss version= "2.0" xmlns: media=」http://search.yahoo.com/mrss/ "xmlns: dcterms=」http://purl.org/dc/terms/ "xmlns: fh=」"xmlns: ooyala=」vech「&gt; http://purl.org/syndication/history/1.0 http://www.ooyala.com/mrss/  &lt;  channel&gt;  &lt;  item&gt;  &lt;  media: content url=」http://mysite.com/upload/lacrosse_70.mov "/&gt;  &lt;  media: サムネール url=」http://mysite.com/upload/lacrosse_70_previewimage.jpg "/&gt;  &lt; メディア:title&gt;本当に存在するスポーツ:ラクロス &lt;  /メディア:タイトル &gt;  &lt; メディア:説明 &gt;私のビデオの私の説明 &lt;  /メディア:説明 &gt;  &lt;  ooyala: ラベル &gt;/スポーツ/ラクロス,/趣味/ラクロス &lt;  /ooyala: ラベル &gt;  &lt; リンク &gt; http://mysite.com/videos/sports/real_sports.html  &lt;  /リンク &gt;  &lt;  ooyala: メタデータ名=」Video_ID "&gt;70  &lt;  /ooyala: メタデータ &gt;  &lt;  ooyala: メタデータ名=" season_number" &gt;1  &lt;  /ooyala: メタデータ &gt;  &lt;  /アイテム &gt;  &lt;  item&gt;  &lt;  media: content url=」curling_71.mov "/&gt;  &lt; メディア:サムネイル url=」curling_71_previewimage.jpg "/&gt;  &lt; メディア：タイトル&gt;本当に存在するスポーツ： &lt; カーリング/メディア:タイトル &gt;  &lt; メディア:説明 &gt;私のビデオの私の説明 &lt;  /メディア:説明 &gt;  &lt;  ooyala: ラベル &gt;/スポーツ/カーリング,/趣味/カーリング &lt;  /ooyala: ラベル &gt;  &lt; リンク&gt; http://mysite.com/videos/sports/real_sports.html  &lt;  /リンク &gt;  &lt;  ooyala: メタデータ名=」Video_id "&gt;71  &lt;  /ooyala: メタデータ &gt;  &lt;  ooyala: メタデータ名=" season_number" &gt;1  &lt;  /ooyala: メタデータ &gt;  &lt;  !— 飛行時間を設定する —&gt;  &lt;  dcterms: valid&gt;start=2011-06-28T 15:15:00-07:00; end=2022-12-01T 16:00:00-07:00; scheme=w3c-dtf  &lt;  /dcterms: valid &gt;  &lt;  /item &gt;  &lt;  /channel &gt;  &lt;  /rss &gt;    </pre>
       </li>
-      <li><span>ファイルを XML として保存します。必ず一意の名前を指定してください。同じ名前の 2 つのファイルを指定し、もう一方のファイルを処理中にアップロードすると、2 つ目は無視されます。</span></li>
-      <li><span>選択したアップロード方法を使用して、ビデオのアップロード時にXMLマニフェストファイルをアップロードします。<a class="xref" title="FTPS（推奨）または FTP（非推奨）を使用して、動画、サムネイル、クローズドキャプション、マニフェストファイルを Backlot にアップロードできます。" href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">FTP </a>または<a class="xref" title="Aspera ファイル転送ソフトウェアを使用して、動画、サムネイル、クローズドキャプション、マニフェストファイルを Backlot にアップロードできます。" href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html"> Aspera </a>のいずれかを参照してください。</span></li>
+      <li><span>ファイルを XML として保存します。必ず一意の名前を指定してください。同じ名前のファイルを 2 つ指定し、もう一方のファイルを処理中にアップロードすると、2 番目のファイルは無視されることがあります。</span></li>
+      <li><span>選択したアップロード方法を使用して、ビデオのアップロード時にXMLマニフェストファイルをアップロードします。<a class="xref" title="You can use FTPS (recommended) or FTP (deprecated) to upload videos, thumbnails, closed captions, and manifest files to Backlot." href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">FTP</a>または<a class="xref" title="You can use Aspera file transfer software to upload videos, thumbnails, closed captions and manifest files to Backlot." href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html"> Aspera を参照してください</a>。</span></li>
     </ol>
   </section>
 </article>
-
 <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
@@ -721,11 +451,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページの最終更新日21 May 2021
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
-        <h2>Brightcove サポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -752,14 +490,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -778,12 +516,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ Inc. すべての権利を保有</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -793,27 +531,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </div>
   </div>
 </footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
+
 <script>
-
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-
+      
+  var searchBox = sajari.init ( { mode: "search-box", project: "1588255093746585379", // Set this to your project. collection: "brightcove-documenation", // Set this to your collection. instantPipeline: "autocomplete", // Pipeline used as you type inputPlaceholder: "Search", // Input element placeholder maxSuggestions: 5, // Maximum number of suggestions to show attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to } ); SearchBox (「サブ」,「pipeline.search-sent」, 関数 (_, クエリ) { window.location = "/search.html?q=" + encodeURIComponent(query.q); } );
+  
 
 </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
@@ -839,30 +561,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
+    asj-paginator__page-number.sj-paginator__page-number { background-color: lightblue; }—current.css-so0ov7 { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab div.sj-tabs__tab { border-bottom-color: crimson; background-color: #f8f8f8; }—選択されたp.sj-result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text。css-31l7gp h3 { color: navy; font-size: 1.4rem; }
     </style>
 
 </body>

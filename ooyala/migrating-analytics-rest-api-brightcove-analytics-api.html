@@ -1,660 +1,197 @@
-﻿<!doctype html>
-<html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="このトピックでは、Ooyala アナリティクス REST API から Video Cloud Analytics API への移行に関するガイダンスを提供します。注:このトピックは、Video Cloud に移行した Ooyala カスタマーにのみ適用されます。">
-  
-  <title>アナリティクス REST API からBrightcove アナリティクス API への移行</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
-  <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
-  <script src="/assets/js/sajari-head.js"></script>
-</head>
-
-<body class="body">
-
-<header>
-  <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
-
-<script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
-</script>
-
-    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-      <option value="">Brightcove のその他のドキュメント</option>
-      
-        
-          <option value="https://support.brightcove.com">ドキュメントホーム</option>
-        
-      
-        
-          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-        
-      
-        
-          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
-        
-      
-        
-          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
-        
-      
-        
-          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-        
-      
-        
-          <option value="https://live.support.brightcove.com">Brightcove Live</option>
-        
-      
-        
-          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-        
-      
-        
-          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-        
-      
-        
-          <option value="https://social.support.brightcove.com">Brightcove Social</option>
-        
-      
-        
-          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-        
-      
-        
-          <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-        
-      
-        
-          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-        
-      
-        
-          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
-        
-      
-        
-          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
-        
-      
-        
-          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
-        
-      
-        
-          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-        
-      
-    </select>
-
-
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
-
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/ooyala/">Ooyalaからの移行</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">アナリティクス REST API からBrightcove アナリティクス API への移行</li>
-    </ol>
-  </nav>
-</header>
-<div class="container">
-    <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
-        <nav class="sidenav" id="side_nav">
-          
-            
-            <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/brightcove-product-overview.html">Brightcove 製品の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove のフォーラムグループとメールリスト</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove アナリティクス API への移行</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove  DNS サーバの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove  API リクエストの認証</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
-              </ul>
-            
-          
-      </nav>
-    </div>
-    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
-  <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
-
-<!-- search bar -->
-<div id="nav-search-box" style="margin-top: 1rem;"></div>
-<!-- in-page navigation for narrow screens -->
-<details class="centered-inpage-nav" id="centered_inpage_nav">
-  <summary><h6 class="toc">ページコンテンツ</h6></summary>
-  <nav id="centered_toc"></nav>
-  <ul id="centered_in_page_toc" class="list-none"></ul>
-</details>
-<!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-
+---
+title: 'Analytics RESTAPIからBrightcoveAnalyticsAPIへの移行'
+description: 'このトピックでは、Ooyala Analytics RESTAPIからVideoCloud AnalyticsAPIへの移行に関するガイダンスを提供します。<aside class="bcls-aside bcls-aside--information">注:このトピックは、Video Cloud に移行した Ooyala <strong></strong>のお客様にのみ適用されます。</aside>'
+parent: Migrating from Ooyala
+---
 <article class="bcls-article">
-  <h1>アナリティクス REST API からBrightcove アナリティクス API への移行</h1>
+  <h1>{{ page.title }}</h1>
   <summary>
-    このトピックでは、Ooyala アナリティクス REST API から Video Cloud Analytics API への移行に関するガイダンスを提供します。 <aside class="bcls-aside bcls-aside--information language-editable">注:このトピックは、Video Cloud に移行した Ooyala <strong>カスタマーにのみ適用されます</strong>。</aside>
+    {{ page.description }}
   </summary>
   <section class="bcls-section">
     <h2 id="Introduction">はじめに</h2>
     
-    <p><span translate="No">Analytics API</span>Video Cloudは、Ooyalaアナリティクス REST API とよく似ています。</p>
+    <p><span translate="No">ビデオクラウド分析 API</span>は、Ooyala アナリティクス REST API と非常によく似ています。</p>
     
     <p>また、Video Cloud Studio <a href="https://studio.support.brightcove.com/analytics/creating-custom-analytics-reports.html">の分析モジュールには堅牢なカスタムレポートビルダーが含まれているため</a>、多くの場合、API をまったく使用する必要がない場合があります。</p>
     
     <p>以下のセクションは、2 つの API のさまざまな側面に対応しています。</p>
     
     <ul>
-      <li><a href="#Authentication">[ 認証] </a></li>
+      <li><a href="#Authentication">認証</a></li>
       <li><a href="#Reports">レポート</a></li>
-      <li><a href="#Parameters">パラメータ</a></li>
-      <li><a href="#Dimensions">[ 寸法] </a></li>
-      <li><a href="#Filters">[ フィルタ] </a></li>
-      <li><a href="#Metrics">メトリックス</a></li>
+      <li><a href="#Parameters">パラメーター</a></li>
+      <li><a href="#Dimensions">寸法</a></li>
+      <li><a href="#Filters">フィルタ</a></li>
+      <li><a href="#Metrics">メトリック</a></li>
     </ul>
     </section>
     
     <section class="bcls-section">
-    <h2 id="Authentication">認証</h2>
+    <h2 id="Authentication">[認証]</h2>
     
-    <p>Brightcove  API リクエストの認証は、Ooyala REST API の場合とは少し異なります。詳細については<a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">、「Brightcove  API リクエストの認証</a>」を参照してください。</p>
+    <p>ブライトコーブ API リクエストの認証は、Ooyala REST API の場合とは少し異なります。詳細については、ブライトコーブ API <a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html"></a>リクエストの認証を参照してください。</p>
     </section>
     
     <section class="bcls-section">
     <h2 id="Reports">レポート</h2>
     
-    <p>Ooyala アナリティクス REST API の 1 <code translate="No">/reports</code>つのエンドポイントは、<span translate="No">Analytics API</span><code translate="No">/data</code>Brightcove のエンドポイントに非常に密接に対応しています。主な違いは、Ooyala API <code translate="No">GET</code>ではとの両方が可能であり<code translate="No">POST</code>、後者はURLパラメータではなくリクエスト本文にいくつかのデータを渡すために使用され、長いデータ文字列を可能にします。</p>
+    <p>Ooyala アナリティクス REST API <code translate="No">/reports</code>の単一のエンドポイントは、<span translate="No">ブライトコーブアナリティクス API に非常に密接に対応しています。</span><code translate="No">/data</code>エンドポイント。主な違いは、Ooyala <code translate="No">GET</code> APIはとの両方を許可し<code translate="No">POST</code>、後者はURLパラメータではなくリクエスト本文にいくつかのデータを渡すために使用されていることです。長いデータ文字列を許可します。</p>
     </section>
     
     <section class="bcls-section">
-    <h2 id="Parameters">パラメーター</h2>
+    <h2 id="Parameters">パラメータ</h2>
     
-    <p>リクエストのパラメーターは、2 つの API で類似しています。相違点がどこにあるかを示すために、以下の表で詳しく説明しています。</p>
+    <p>リクエストのパラメーターは、2 つの API でも同様です。相違点がどこにあるかを示すために、以下の表で詳しく説明しています。</p>
     
     <table class="bcls-table">
-      <caption class="bcls-caption--table">パラメーター</caption>
+      <caption class="bcls-caption--table">パラメータ</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Ooyalaパラメータ</th>
-          <th>Brightcove のパラメータ</th>
+          <th>ウーヤラパラメータ</th>
+          <th>ブライトコーブのパラメータ</th>
           <th>ドキュメント</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
-          <td>なし</td>
-          <td><code translate="No">accounts</code> -複数のアカウントに関するすべてのレポートにパラメータとして含まれます</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td>無し</td>
+          <td><code translate="No">accounts</code> -複数のアカウントのすべてのレポートにパラメータとして含まれる</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">report_type</code></td>
-          <td>なし。ただし、Brightcove  API には、エンゲージメントレポートとライブ分析レポート用のエンドポイントがいくつか追加されています</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/overview-analytics-api-v1.html">概要:アナリティクス API </a></td>
+          <td>なし。ただし、ブライトコーブ API には、エンゲージメントレポートとライブ分析レポート用のエンドポイントがいくつか追加されています</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/overview-analytics-api-v1.html">概要:アナリティクス API</a></td>
         </tr>
         <tr>
           <td><code translate="No">start_date</code></td>
-          <td><code translate="No">from</code> 2 つのパラメーターは類似しており、どちらも形式で値を受け入れます<samp translate="No">YYYY-MM-DD</samp>。Brightcove のパラメーターは、ミリ秒単位のエポック日付と<samp translate="No">-3d</samp></td>
+          <td><code translate="No">from</code> 2 つのパラメータは似ており、どちらも次の形式の値を受け入れます。 <samp translate="No">YYYY-MM-DD</samp>; Brightcoveパラメータは、ミリ秒単位のエポック日付と次のような相対日付も受け入れます。 <samp translate="No">-3d</samp></td>
           <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">end_date</code></td>
-          <td><code translate="No">to</code> 2 つのパラメーターは類似しており、どちらも形式で値を受け入れます<samp translate="No">YYYY-MM-DD</samp>。Brightcove のパラメーターは、ミリ秒単位のエポック日付と<samp translate="No">-3d</samp></td>
+          <td><code translate="No">to</code> 2 つのパラメータは似ており、どちらも次の形式の値を受け入れます。 <samp translate="No">YYYY-MM-DD</samp>; Brightcoveパラメータは、ミリ秒単位のエポック日付と次のような相対日付も受け入れます。 <samp translate="No">-3d</samp></td>
           <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">metrics</code></td>
-          <td><code translate="No">fields</code> -2 つのパラメーターは基本的に同じです。Brighcove API は Live Analytics リクエストにも使用します<code translate="No">metrics</code>。<a href="#Metrics">利用可能なメトリックスについては</a>、メトリックスを参照してください。</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">fields</code> -2 つのパラメータは本質的に同じです。Brighcove API <code translate="No">metrics</code>はライブ分析リクエストにも使用します。<a href="#Metrics"></a>使用可能なメトリックスの詳細については、メトリック</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">dimensions</code></td>
-          <td><code translate="No">dimensions</code> -2 つのパラメータは基本的に同じです。Brighcove API は Live Analytics リクエストにも使用します<code translate="No">metrics</code>。<a href="#Dimensions">使用できるディメンションについては</a>、ディメンションを参照してください。</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">dimensions</code> -2 つのパラメータは本質的に同じです。Brighcove API <code translate="No">metrics</code>はライブ分析リクエストにも使用します。<a href="#Dimensions"></a>使用できるディメンションについては、ディメンション</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">filters</code></td>
-          <td><code translate="No">where</code> -名前とは別に、2つのパラメータは本質的に同じです。詳細については、<a href="#Filters">以下のフィルタを参照してください</a></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">where</code> -名前とは別に、2 つのパラメータは本質的に同一です。詳細については、<a href="#Filters"></a>以下のフィルタを参照してください。</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">time_segment</code></td>
-          <td>なし-Brightcove  API には、<code translate="No">date</code><code translate="No">date_hour</code>同様の時間セグメントを提供するディメンションと、過去 32 日間の期間のエンゲージメントエンドポイントがあります。これにより、ビデオ</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td>なし-ブライトコーブ API には、<code translate="No">date</code><code translate="No">date_hour</code>同様の時間セグメント化を提供するディメンションと、期間のエンゲージメントエンドポイントがあります。過去 32 日以内に、ビデオの 100 番目の各部分の視聴回数が表示される</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">sort</code></td>
-          <td><code translate="No">sort</code> Ooyala APIは複数のメトリックでソートできることを除いて、パラメータは同じです</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">sort</code>パラメータは同じですが、Ooyala API が複数の指標でソートできる点が異なります。</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">limit</code></td>
-          <td><code translate="No">limit</code> -パラメータはOoyala APIパラメータの1000の制限を除いて同一です</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">limit</code> -Ooyala API パラメーターの 1000 の制限を除いて、パラメーターは同じです。</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
           <td><code translate="No">page</code></td>
-          <td><code translate="No">offset</code> -パラメータは異なる値を取るが、データセットのページングのために同様に働く</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><code translate="No">offset</code> -params は異なる値を取るが、データセットのページングでも同様に機能する</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
-          <td>なし</td>
-          <td><code translate="No">reconciled</code> -分析データは異なるスケジュールの異なるソースから取得されるため、Brightcove API は、更新中に最新の分析データを「一時的な」バケットに入れ、「履歴」バケットに転送します。param ではこれらのバケット間</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td>無し</td>
+          <td><code translate="No">reconciled</code> -分析データは異なるスケジュールの異なるソースから得られるため、ブライトコーブ API は最新の分析データを「調整されていない」バケットにまだ更新されている間に配置し、歴史」バケット。パラメータを使用すると、これらのバケットを選択できます。</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
-          <td>なし</td>
-          <td><code translate="No">bucket_limit</code> -Live Analytics リクエストにのみ適用されます。これらの関数は<code translate="No">bucket_duration</code>、Ooyala API <code translate="No">time_segment</code>パラメータと多少似ています</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td>無し</td>
+          <td><code translate="No">bucket_limit</code> -ライブアナリティクスのリクエストにのみ適用されます。これらを組み合わせて<code translate="No">bucket_duration</code>、Ooyala API と多少似た方法で機能します。<code translate="No">time_segment</code>パラメーター</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">bucket_duration</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、パラメータの概要</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">ディメンション、フィールド、およびパラメータの概要</a></td>
         </tr>
       </tbody>
     </table>
     </section>
     
     <section class="bcls-section">
-    <h2 id="Dimensions">サイズ</h2>
+    <h2 id="Dimensions">[寸法]</h2>
     
-    <p>Ooyala および Brightcove Analytics API はいずれも、データを「ディメンション」と呼ばれるバケットにグループ化しています。これらは同様の方法で使用されますが、API には複数のディメンションを組み合わせる方法に関するルールが多少異なります。Brightcove には、より広範なディメンションセットがあります。Brightcove  API の詳細については、「<a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#supported_dimension_combinations">サポートされるディメンションの組み合わせ</a>」を参照してください。以下の表に、詳細な比較を示します。</p>
+    <p>Ooyala および Brightcove Analytics API はいずれも、データを「ディメンション」と呼ばれるバケットにグループ化しています。これらは同様の方法で使用されますが、API には複数のディメンションを組み合わせる方法に関するルールが多少異なります。ブライトコーブには、より広範なディメンションセットがあります。見る<a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#supported_dimension_combinations">サポートされている寸法の組み合わせ</a> BrightcoveAPIの詳細については。以下の表に、詳細な比較を示します。</p>
     
     <table class="bcls-table">
-      <caption class="bcls-caption--table">サイズ</caption>
+      <caption class="bcls-caption--table">[寸法]</caption>
       <thead class="bcls-table__head">
         <tr>
-          <th>Ooyala次元</th>
-          <th>Brightcove ディメンション</th>
+          <th>ウーヤラ次元</th>
+          <th>ブライトコーブディメンション</th>
           <th>ドキュメント</th>
         </tr>
       </thead>
       <tbody class="bcls-table__body">
         <tr>
           <td><code translate="No">asset</code></td>
-          <td><code translate="No">video</code> - <code translate="No">video</code>Brightcove のディメンションは VOD アセットのみをカバーします。<code translate="No">live_stream</code>ディメンションもあります。</td>
+          <td><code translate="No">video</code> - <code translate="No">video</code>ブライトコーブのディメンションは VOD アセットのみを対象としています。<code translate="No">live_stream</code>次元</td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-video.html">ビデオディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">country</code></td>
-          <td><code translate="No">country</code> -寸法は基本的に同一です</td>
+          <td><code translate="No">country</code> -寸法は本質的に同一である</td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-country.html">国次元</a></td>
         </tr>
         <tr>
           <td><code translate="No">region</code></td>
-          <td><code translate="No">region</code> -寸法は基本的に同じです。ただし、Brightcove のディメンションには米国の州が含まれます</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">リージョン・ディメンション</a></td>
+          <td><code translate="No">region</code> -ブライトコーブの次元が米国の州を含むことを除いて、寸法は本質的に同一である</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">リージョンディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">dma</code></td>
+          <td>無し</td>
           <td>なし</td>
-          <td>該当しません</td>
         </tr>
         <tr>
           <td><code translate="No">state</code></td>
-          <td><code translate="No">region</code> -Brightcove  API には、<code translate="No">region</code>ディメンションに米国の州が含まれています</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">リージョン・ディメンション</a></td>
+          <td><code translate="No">region</code> -ブライトコーブ API には、<code translate="No">region</code>ディメンションに米国の州が含まれています</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">リージョンディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">device_type</code></td>
-          <td><code translate="No">device_type</code> -寸法は基本的に同一です</td>
+          <td><code translate="No">device_type</code> -寸法は本質的に同一である</td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicetype.html">デバイスタイプの寸法</a></td>
         </tr>
         <tr>
           <td><code translate="No">domain</code></td>
           <td><code translate="No">destination_domain</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">宛先ドメインディメンション</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">デスティネーションドメインディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">url</code></td>
           <td><code translate="No">device_os</code> -本質的に同じ</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-deviceos.html">デバイス OS ディメンション</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-deviceos.html">デバイス OS の寸法</a></td>
         </tr>
         <tr>
           <td><code translate="No">os</code></td>
-          <td><code translate="No">destination_domain</code> -まったく同じではありませんが、最も近い同等の</td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">宛先ドメインディメンション</a></td>
+          <td><code translate="No">destination_domain</code> -まったく同じではありませんが、最も近い同等物</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">デスティネーションドメインディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">pcode</code></td>
           <td><code translate="No">account</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicetype.html">勘定科目次元</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicetype.html">勘定ディメンション</a></td>
         </tr>
         <tr>
           <td><code translate="No">player_id</code></td>
@@ -662,53 +199,53 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-player.html">プレイヤーディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">browser_type</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-browsertype.html">ブラウザタイプ次元</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-browsertype.html">ブラウザータイプのディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">date</code></td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-date.html">日付ディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">date_hour</code></td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-datehour.html">日付/時間ディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">device_manufacturer</code></td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicemanufacturer.html">デバイス製造元の寸法</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">referrer_domain</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-referrerdomain.html">参照ドメインディメンション</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-referrerdomain.html">リファラードメインディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">search_terms</code></td>
           <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-searchterms.html">検索用語のディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">social_platform</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-socialplatform.html">ソーシャルプラットフォームのディメンション</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-socialplatform.html">ソーシャル・プラットフォーム・ディメンション</a></td>
         </tr>
         <tr>
-          <td>なし</td>
+          <td>無し</td>
           <td><code translate="No">source_type</code></td>
-          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-sourcetype.html">ソースタイプ次元</a></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-sourcetype.html">ソースタイプディメンション</a></td>
         </tr>
       </tbody>
     </table>
     </section>
     
     <section class="bcls-section">
-    <h2 id="Filters">フィルタ</h2>
+    <h2 id="Filters">[フィルタ]</h2>
     
-    <p>フィルタは、次の点で指定された 2 つの API でほぼ同じように動作します。</p>
+    <p>フィルターは、次の 2 つの API でほぼ同じように機能します。</p>
     
     <pre>
       <code class="language-http" translate="No">
@@ -721,13 +258,13 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </section>
     
     <section class="bcls-section">
-    <h2 id="Metrics">指標</h2>
+    <h2 id="Metrics">メトリックス</h2>
     
-    <p>レポートで返される<code translate="No">metrics</code>（Brightcove API: <code translate="No">fields</code>）は、Brightcove アナリティクス API で要求されるディメンションによって異なります。<a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#metrics">ディメンションと項目に埋め込まれたツールを使用できます</a>を使用して、特定のディメンションまたはディメンションの組み合わせに対して返されるフィールドを確認します。</p>
+    <p>レポートで返される<code translate="No">metrics</code> (ブライトコーブ API の場合: <code translate="No">fields</code> ) は、ブライトコーブ Analytics API で要求されたディメンションによって異なります。<a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#metrics"></a>ディメンションとフィールドに埋め込まれたツール。特定のディメンションまたはディメンションの組み合わせに対して返すことができるフィールドを確認します。</p>
     
-    <p>Ooyala API は、何も指定されていない場合はすべてのメトリックスを返しますが、Brightcove API はリクエストに含める場合を除き、ディメンション（組み合わせ）によって異なる小さなデフォルトメトリックスのセットしか返しません。<code translate="No">fields</code></p>
+    <p>Ooyala API は、何も指定されていない場合はすべてのメトリクスを返しますが、Brightcove API は、リクエストに含めない限り、ディメンション（組み合わせ）によって異なる少数のデフォルトメトリックセットのみを返します。<code translate="No">fields</code></p>
     
-    <p>Brightcove の項目には、以下を除くすべての Ooyala メトリックスと同等の項目が含まれます。</p>
+    <p>ブライトコーブの項目には、以下を除くすべての Ooyala メトリックスと同等の項目が含まれます。</p>
     
     <ul>
       <li><code translate="No">uniq_plays_requested</code></li>
@@ -735,168 +272,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li><code translate="No">uniq_video_starts</code></li>
     </ul>
     
-    <p><span translate="No">Analytics API</span>Brightcove は、Ooyala アナリティクスでは利用できない他の指標の数を返すこともできます。</p>
+    <p>Brightcove <span translate="No"> Analytics API</span>は、Ooyala アナリティクスでは利用できないその他の指標の数を返すこともできます。</p>
     </section>
     </article>
-    
-<!-- complete bootstrap layout -->
-    </div>
-    <div class="col-sm-2 right-side-bar">
-      
-      <nav class="right-side-nav" id="right_side_nav">
-        <h6 class="toc">ページコンテンツ</h6>
-        <ul id="in_page_nav" class="list-none"></ul>
-      </nav>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
-    <div class="region region-footer-top-center col-md-12">
-      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
-
-        <h2>Brightcove サポート</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://status.brightcove.com">システムステータス</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
-          </li>
-          <li>
-            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
-
-        <h2>トレーニング</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
-          </li>
-          <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
-          </li>
-          <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
-
-        <h2>Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://www.brightcove.com">Brightcove.com</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="region region-footer-bottom-center col-md-12">
-      <div class="bcls-copyright footer-menu">
-        <table>
-          <tr>
-            <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
-            </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
-            <td>
-              <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
-<script>
-
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-
-
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
   
-  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
-  
-  <!-- <script src="/assets/js/toc.js"></script> -->
-  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
-  
-  <script src="/assets/js/sites_nav.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
-  <script src="/assets/js/feedback.js"></script>
-  
-  <script src="/assets/js/sajari-search-foot.js"></script>
-  
-  <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
-    </style>
-
-</body>
-
-</html>

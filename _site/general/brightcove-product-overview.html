@@ -1,27 +1,33 @@
-﻿<!doctype html>
-<html lang="ja">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   
-  <title>Brightcove 製品の概要</title>
+  <title>ブライトコーブの製品概要</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55736414-4"></script>
+<script>
+  window.DataLayer = window.DataLayer || []; 関数{dataLayer.push(arguments);} gtag ('js', new Date ()); gtag ('config', 'UA-55736414-4');
+</script>
+
   <script src="/assets/js/sajari-head.js"></script>
 </head>
 
@@ -29,428 +35,216 @@
 
 <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="製品ロゴ" style="max-height: 100px;max-width: 232px;"/></a>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Video_Cloud_Logo_RGB_K.svg" alt="Brightcove"></a>
 <!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">英語</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">フランス語</option><option value="en|de" translate="No">ドイツ銀行</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">スペイン語</option></select>
 
 <script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
+/*<![CDATA[ */ 関数 dogTranslate (lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;} /*]]> */
 </script>
 
-    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-      <option value="">Brightcove のその他のドキュメント</option>
-      
-        
-          <option value="https://support.brightcove.com">ドキュメントホーム</option>
-        
-      
-        
-          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-        
-      
-        
-          <option value="https://beacon.support.brightcove.com">Brightcove Beacon</option>
-        
-      
-        
-          <option value="https://campaign.support.brightcove.com">Brightcove Campaign</option>
-        
-      
-        
-          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-        
-      
-        
-          <option value="https://live.support.brightcove.com">Brightcove Live</option>
-        
-      
-        
-          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-        
-      
-        
-          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-        
-      
-        
-          <option value="https://social.support.brightcove.com">Brightcove Social</option>
-        
-      
-        
-          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-        
-      
-        
-          <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-        
-      
-        
-          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-        
-      
-        
-          <option value="https://sdks.support.brightcove.com">Video Cloudデバイス SDK</option>
-        
-      
-        
-          <option value="https://integrations.support.brightcove.com">インテグレーションおよび CMS コネクタ</option>
-        
-      
-        
-          <option value="https://general.support.brightcove.com">Video Cloudの一般情報</option>
-        
-      
-        
-          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-        
-      
-    </select>
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> サポートに連絡する</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;">| </span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> システムステータス</a></span>
+    <br>
 
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/general/">一般情報</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">Brightcove 製品の概要</li>
-    </ol>
+    
+    <li class="breadcrumb-item first-item"><a href="/">ホーム</a></li>
+     
+        <li class="breadcrumb-item"><a href="/general/">General</a></li>
+        
+        <li class="breadcrumb-item active" aria-current="page">ブライトコーブの製品概要</li>
+       
   </nav>
 </header>
 <div class="container">
     <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Brightcove のその他のドキュメント</option>
-          
-            
-              <option value="https://support.brightcove.com">ドキュメントホーム</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Brightcove ビーコン</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Brightcove キャンペーン</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove ・ライブ</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove ギャラリー</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove ソーシャル</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Brightcove のプレーヤー開発</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
+      <div class="col-sm-3 left-side-bar">
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">Brightcoveのその他のドキュメント</option>
+					 
+							<option value="https://support.brightcove.com">ドキュメンテーションホーム</option>
+						  
+							<option value="">-ビデオクラウド-</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドスタジオ</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブプレイヤー開発</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドプラットフォームAPI</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドデバイスSDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;統合とCMSコネクタ</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ビデオクラウドの一般情報</option>
+						  
+							<option value="">-ビデオエッセンシャル-</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブビーコン</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブライブ</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp; Zencoder</option>
+						  
+							<option value="">-ビデオクラウドアドオン-</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブキャンペーン</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブエンゲージ</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブギャラリー</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブソーシャル</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;ブライトコーブSSAI</option>
+						 
+				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
+           
             <h5><a href="/index.html">ホーム</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;一般情報</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/brightcove-product-overview.html">Brightcove 製品の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuumの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-open-source-projects.html">オープンソースプロジェクト</a></li>
-                  
-                
-                  
-                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Brightcove のフォーラムグループとメールリスト</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/developer/index.html">開発者<strong> + </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-introducing-json.html">JSONのご紹介</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScript デバッグの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScript モジュールのデザインパターン</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScript の約束を使用する</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/create-jwt.html">JSON ウェブトークン (JWT) の作成</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTR (私のトレースルートを使用) </a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用してネットワークトラフィックを追跡する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ooyala/index.html"><strong>Ooyalaからの移行+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove アナリティクス API への移行</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプタ:CSV マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプタ:Asperaで摂取する</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプタ:FTPS で取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプタ:OISで取り込む2.5 </a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプタ:Backlot API を使用した取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプタ:MRSS を介したリモート資産の取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプタ:ホストされた MRSS からの取り込み</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Backlot/Video CloudCMSコネクタ</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプタ:マニフェストファイル形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプタ:XML マニフェストファイル</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプタ:サポートされている取り込み形式</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcove  DNS サーバの追加</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Brightcove  API リクエストの認証</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンド分析レポートリファレンス</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">動画クラウドコンテンツに Ooyala プレーヤーを使用する</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/utilities/index.html"><strong>ユーティリティ+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/utilities/base-64-encoding-tool.html">ベース64エンコーディングツール</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/date-converter.html">日付変換</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html"><strong>トレーニング+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:Video Cloudの概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:Video Cloud Analytics の概要</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:Video Cloudの基本</a></li>
-                  
-                
-                  
-                    <li><a href="/training/video-cloud-studio-training-videos.html">Video Cloud Studioトレーニングビデオ</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
-                  
-                
-                  
+                 
+                    <li><a href="/general/brightcove-product-overview.html">Brightcove製品の概要</a></li>
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove のシステムステータスページの表示</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
-                  
-                
+                    <li><a href="/general/brightcove-continuum-overview.html">Brightcove Continuum 概要</a></li>
+                    
+                    <li><a href="/general/roku-trick-play.html">Roku TrickPlayのBrightcoveビデオ</a></li>
+                    
+                    <li><a href="/general/brightcove-open-source-projects.html">Brightcove オープンソースプロジェクト</a></li>
+                    
+                    <li><a href="/general/mpeg-dash-video.html">MPEG-DASHビデオ</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/developer/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;開発者</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/developer/concepts-cors.html">CORSを理解する</a></li>
+                    
+                    <li><a href="/developer/concepts-introducing-json.html">JSONの紹介</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">JavaScriptデバッグの基本</a></li>
+                    
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">JavaScriptモジュールのデザインパターン</a></li>
+                    
+                    <li><a href="/developer/concepts-set-curl.html">cURL を設定する</a></li>
+                    
+                    <li><a href="/developer/concepts-using-javascript-promises.html">JavaScriptPromisesの使用</a></li>
+                    
+                    <li><a href="/developer/create-json-web-token.html">JSON ウェブトークン (JWT) の作成</a></li>
+                    
+                    <li><a href="/developer/create-jwt.html">JSON Web Token（JWT）の作成-非推奨</a></li>
+                    
+                    <li><a href="/developer/debugging-mobile-devices.html">モバイルデバイスでのデバッグ</a></li>
+                    
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">MTRの使用（私のtraceroute）</a></li>
+                    
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Wiresharkを使用したネットワークトラフィックの追跡</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ooyala/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Ooyalaからの移行</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Ooyalaのお客様向けの移行ドキュメント</a></li>
+                    
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Brightcove AnalyticsAPIへの移行</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Video Cloudへの移行:広告セット</a></li>
+                    
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Video Cloudへの移行:取り込みアダプタ</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">取り込みアダプター：CSV マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">取り込みアダプター：アスペラで摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">取り込みアダプター：FTPS で取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">取り込みアダプター：OIS2.5で摂取する</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">取り込みアダプター：バックロット API を使用した取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">取り込みアダプター：MRSS によるリモートアセットの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">取り込みアダプター：ホストされた MRSS からの取り込み</a></li>
+                    
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">バックロット/ビデオクラウドCMSコネクタ</a></li>
+                    
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">BacklotとVideo Cloud:動画と再生リストのフィールド</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">取り込みアダプター：マニフェストファイル形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">取り込みアダプター：XML マニフェストファイル</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">取り込みアダプター：サポートされているインジェスト形式</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">テスト用のBrightcoveDNSサーバーの追加</a></li>
+                    
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">BrightcoveAPIリクエストの認証</a></li>
+                    
+                    <li><a href="/ooyala/trending-now-report-reference.html">今トレンドレポートリファレンス</a></li>
+                    
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">ビデオクラウドコンテンツにOoyalaプレーヤーを使用する</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/utilities/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;ユーティリティ</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/utilities/base-64-encoding-tool.html">Base64エンコーディングツール</a></li>
+                    
+                    <li><a href="/utilities/date-converter.html">日付コンバーター</a></li>
+                    
+                    <li><a href="/utilities/string-encoder.html">文字列エンコーダ</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;トレーニング</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">すべてのオンライントレーニングコース</a></li>
+                    
+                    <li><a href="/training/register-training.html">インストラクター主導トレーニングへの登録</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">トレーニング:ビデオクラウドの概要</a></li>
+                    
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">トレーニング:ビデオクラウド分析の概要</a></li>
+                    
+                    <li><a href="/training/training-demand-video-cloud-basics.html">トレーニング:ビデオクラウドの基本</a></li>
+                    
+                    <li><a href="/training/video-cloud-studio-training-videos.html">ビデオクラウドスタジオトレーニングビデオ</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove Universityトレーニングコース</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;サポート</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">既知の問題</a></li>
+                    
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcoveのシステムステータスページの表示</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">サポートポータルのパスワードをリセットする</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
 
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 
 <!-- search bar -->
 <div id="nav-search-box" style="margin-top: 1rem;"></div>
@@ -461,71 +255,67 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a> 
 <article class="bcls-article">
-  <h1>Brightcove 製品の概要</h1>
-  <summary>このトピックでは、Brightcove が提供する製品の概要を説明します。</summary>
+  <h1>Brightcove製品の概要</h1>
+  <summary>このトピックでは、Brightcoveが提供する製品の概要を説明します。</summary>
   <section class="bcls-section">
-    <p>Brightcove のドキュメントは製品ごとに整理されています。Brightcoveは、1つ以上の製品を含む<strong>VideoMarketingSuite</strong>や<strong>EnterpriseVideoSuite</strong>などの製品バンドルも提供しています。ドキュメントを使用する場合は、作業している特定の製品と、製品スイートを検索する必要があります。</p>
+    <p>ブライトコーブのドキュメントは製品ごとに整理されています。ブライトコーブは、1 <strong></strong><strong></strong>つ以上の製品を含むビデオマーケティングスイートやエンタープライズビデオスイートなどの製品バンドルも提供しています。ドキュメントを使用する場合は、作業している特定の製品と、製品スイートを検索する必要があります。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="video_cloud">Video Cloud</h2>
+    <h2 id="video_cloud">ビデオクラウド</h2>
     <p>Brightcove Video Cloud は、視聴者に簡単に届くオールインワン動画ホスティングおよびパブリッシングプラットフォームです。Video Cloud を使用すると、ビデオのアップロード、管理、公開が簡単になります。アカウント内の動画のパフォーマンスを簡単に作成してスタイル設定し、レビューできます。</p>
-    <p><a href="https://studio.support.brightcove.com/index.html">Video Cloudの詳細については</a>、こちらをご覧ください。</p>
+    <p><a href="https://studio.support.brightcove.com/index.html"></a>ビデオクラウドの詳細については、こちらをご覧ください。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="gallery">Gallery</h2>
+    <h2 id="gallery">ギャラリー</h2>
     <p>ギャラリーを使用すると、没入感のあるビデオ体験を提供できます。カスタムインタラクティブビデオエクスペリエンス、ブランドポータル、ビデオ中心のランディングページ、ライブストリーミングイベントサイトを数分で作成できます。</p>
-    <p><a href="https://gallery.support.brightcove.com">ギャラリーについて詳しく知る</a>。</p>
+    <p><a href="https://gallery.support.brightcove.com"></a>ギャラリーについて詳しく知る。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="player">Brightcoveプレーヤー</h2>
-    <p>Brightcoveプレーヤーは高性能のクロスプラットフォームHTML5優先動画プレーヤーです。デスクトップとモバイルの両プラットフォームで、高品質のアダプティブビットレートHLS動画を素早くロードし提供できます。また、お気に入りの広告、解析システムと統合できます。</p>
-    <h3>主な特長</h3>
+    <h2 id="player">ブライトコーブプレーヤー</h2>
+    <p>Brightcove Player は、高パフォーマンスのクロスプラットフォーム HTML5 ファースト動画プレーヤーで、すばやくロードでき、デスクトップおよびモバイルプラットフォームにわたって高品質のアダプティブビットレート HLS 動画を配信し、お気に入りの広告や分析システムと統合できます。</p>
+    <h3>主な特徴</h3>
     <ul>
-      <li><strong>HTML5優先</strong> - 新しいBrightcoveプレーヤーのUIは完全にHTML5で書かれ、古いブラウザーでのみFlashに依存します。モバイルデバイスとデスクトップデバイスで、一貫した外観および動作を可能にします</li>
-      <li><strong>レスポンシブ</strong> - デフォルトのプレーヤースキンは標準でレスポンシブ対応しており、Webレイアウトの変更に適合するため、動画のアスペクト比を維持しながら、自動的にサイズを変えます</li>
-      <li><strong>高速ロード</strong> - 一瞬にしてロードし、再生開始までの時間が非常に短いため、視聴者はコンテンツにすぐに集中できます</li>
-      <li><strong>簡単なカスタマイズ</strong> - 標準のWebテクノロジー（CSSおよびJavaScript）を使用できます</li>
-      <li><strong>クロスプラットフォームのHLS</strong> - ネイティブでHLS機能を持たないプラットフォームでも高品質のアダプティブビットレート動画を再生可能にし、最低限のダウンロードで最高の品質を提供します。</li>
-      <li><strong>プレーヤー管理</strong> - Video Cloudまたは新しいPlayer Management APIのいずれかでプレーヤー設定を簡単に追跡し、スタイルやプラグインを変更できます。各ページのコードを変更せずに、サイト全体でプレーヤーを簡単に更新できます。</li>
-      <li><strong>広告および解析の統合</strong> - BrightcoveプレーヤーをGoogle DoubleclickやFreewheelなどの一般的な広告、解析システムと統合できるプラグインが多数あります。</li>
+      <li><strong>HTML5 First</strong> -新しい Brightcove Player の UI は完全にHTML5で書かれており、古いブラウザでのみFlashに依存しているため、モバイルデバイスとデスクトップデバイス間で一貫した外観と動作が可能になります。</li>
+      <li><strong>レスポンブ</strong> -デフォルトのプレイヤースキンはデフォルトでレスポンシブで、動画のアスペクト比を維持しながら、ウェブレイアウトの変更に合わせて自動的にサイズ変更されます。</li>
+      <li><strong>高速読み込み</strong> -瞬時にロードされ、最初のフレームまでの時間が非常に高速で、視聴者はすぐにコンテンツと関わります。</li>
+      <li><strong>標準の Web テクノロジー (CSS と JavaScript)</strong>を使用した簡単なカスタマイズ</li>
+      <li><strong>クロスプラットフォーム HLS</strong> -ネイティブの HLS 機能を持たないプラットフォームでも高画質の適応ビットレートビデオは、最小のダウンロードで最高品質を提供します。</li>
+      <li><strong>プレーヤー管理</strong> -Video Cloud または新しいプレーヤー管理 API を使用して、プレーヤーの設定を簡単に追跡し、スタイルやプラグインに変更を加えることができます。各ページのコードを変更することなく、サイト全体でプレイヤーを簡単に更新できます。</li>
+      <li><strong>広告とアナリティクスの統合</strong> -Google DoubleClick、FreeWheel など、人気のある広告および分析システムと統合するための多くのプラグインを Brightcove Player で利用できます。</li>
     </ul>
-    <p><a href="https://player.support.brightcove.com/index.html">Brightcove プレーヤーの詳細をご覧ください</a>。</p>
+    <p><a href="https://player.support.brightcove.com/index.html"></a>ブライトコーブプレーヤーの詳細をご覧ください。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="live">ライブ</h2>
-    <p>Liveモジュールを使用すると、デスクトップとモバイルデバイスの両方にライブイベントを放送できます。Liveモジュールにお客様のイベント情報を入力した後に、現場のエンコーダーに使用するエンコーダー設定が提供されます。トランスコーディングはすべてクラウドで行われます。したがって、ハードウェアベースのトランスコーダーは必要ありません。</p>
-    <p>Live <a href="https://live.support.brightcove.com">モジュールの詳細については、こちらをご覧ください</a>。</p>
+    <h2 id="live">住む</h2>
+    <p>ライブモジュールを使用すると、デスクトップとモバイルデバイスの両方にライブイベントをブロードキャストできます。イベント情報を Live モジュールに入力すると、オンサイトのエンコーダに接続する一連のエンコーダ設定が提供されます。トランスコーディングはすべてクラウドで実行されるため、ハードウェアベースのトランスコーダは必要ありません。</p>
+    <p><a href="https://live.support.brightcove.com">Live</a>モジュールの詳細については、こちらをご覧ください。</p>
   </section>
   <section class="bcls-section">
     <h2 id="social">ソーシャル</h2>
-    <p>Brightcove Socialでは、YouTube、Facebook、Twitter などの一般的なソーシャルメディアプラットフォームに、動画クラウドアカウントで簡単に動画を公開できます。ビデオは手動で公開することも、自動同期を使用して公開することもできます。自動同期は、動画に関連付けられたタグに基づいて、ビデオをソーシャルメディアチャンネルに自動的に同期するために使用されます。</p>
-    <p>Social <a href="https://social.support.brightcove.com">モジュールの詳細については、こちらをご覧ください</a>。</p>
+    <p>ブライトコーブソーシャルでは、YouTube、Facebook、Twitter などの一般的なソーシャルメディアプラットフォームに、動画クラウドアカウントで簡単に動画を公開できます。ビデオは手動で公開することも、自動同期を使用して公開することもできます。自動同期は、動画に関連付けられたタグに基づいて、ビデオをソーシャルメディアチャンネルに自動的に同期するために使用されます。</p>
+    <p><a href="https://social.support.brightcove.com">Social</a>モジュールの詳細については、こちらをご覧ください。</p>
   </section>
   <section class="bcls-section">
-    <h2 id="audience">Audience</h2>
-    <p>オーディエンスモジュールは、Brightcove の個々の動画視聴分析を Oracle Eloqua、Marketo、HubSpot、およびその他のマーケティング自動化プラットフォームに接続します。さらに、Audience API により、パートナーと顧客は、同じマップ関連データを取得して、選択したデータストレージまたは処理プラットフォームに配信できます。いずれの場合も、デジタルマーケティング担当者は動画の影響を測定し、パーソナライズされたレベルでオーディエンスをエンゲージし、コンバージョンを促進することができます。</p>
-    <p><a href="https://audience.support.brightcove.com">オーディエンスモジュールの詳細については、こちらをご覧ください</a>。</p>
+    <h2 id="audience">聴衆</h2>
+    <p>オーディエンスモジュールは、ブライトコーブの個々の動画視聴分析を Oracle Eloqua、Marketo、HubSpot、およびその他のマーケティング自動化プラットフォームに接続します。さらに、Audience API により、パートナーと顧客は、同じマップ関連データを取得して、選択したデータストレージまたは処理プラットフォームに配信できます。いずれの場合も、デジタルマーケティング担当者は動画の影響を測定し、パーソナライズされたレベルでオーディエンスをエンゲージし、コンバージョンを促進することができます。</p>
+    <p><a href="https://audience.support.brightcove.com">Audience</a>モジュールの詳細については、こちらをご覧ください。</p>
   </section>
   <section class="bcls-section">
     <h2 id="zencoder">Zencoder</h2>
     <p>Brightcove Zencoder は、お客様のニーズに合わせて簡単に拡張できる、高速でシンプルで強力なクラウド動画トランスコーディングソリューションを提供します。Zencoder のビデオエンコーディング API を使用すると、アプリケーションを Amazon の非常に高速でスケーラブルなエンコードプラットフォームとシームレスに統合できます。当社の文書化されたAPI、使いやすい API リクエストビルダー、統合ライブラリ、専用サポートにより、美しくシンプルなソリューションのプロセスが合理化されます。</p>
-    <p>Zencoder <a href="https://zencoder.support.brightcove.com">の詳細をご覧ください</a>。</p>
+    <p><a href="https://zencoder.support.brightcove.com">Zencoder</a>の詳細をご覧ください。</p>
   </section>
   <section class="bcls-section">
     <h2 id="ssai">SSAI</h2>
-    <p>Brightcove の SSAI テクノロジーは、広告をサーバー上のストリームに動的に縫い付けて、コンテンツと広告の両方を 1 つの連続ストリームとして配信します。この方法では、動画を再生できるあらゆるデバイスに広告を配信し、バッファリングやその他の広告挿入アーティファクトを排除することで視聴者のエクスペリエンスを向上させ、広告ブロッカーを管理することで収益を向上させることができます。</p>
-    <p><a href="https://ssai.support.brightcove.com">SSAIについてさらに詳しく</a>。</p>
+    <p>ブライトコーブのSSAIテクノロジーは、広告をサーバー上のストリームに動的にステッチし、コンテンツと広告の両方が1つの連続ストリームとして配信されます。この方法では、動画を再生できるあらゆるデバイスに広告を配信し、バッファリングやその他の広告挿入アーティファクトを排除することで視聴者のエクスペリエンスを向上させ、広告ブロッカーを管理することで収益を向上させることができます。</p>
+    <p><a href="https://ssai.support.brightcove.com">SSAI</a>について詳しく知る。</p>
   </section>
   <section class="bcls-section">
     <h2 id="ottflow">オット・フロー</h2>
-    <p>Accedoを搭載したBrightcove  OTT フローは、美しいマルチプラットフォームの OTT サービスの立ち上げに伴う技術的な複雑さと市場参入障壁を減らします。Brightcove <a href="#video-cloud"> Video Cloud </a>は、業界をリードする動画プレーヤー、取り込み、トランスコーディング、メタデータ管理、SDK を備えた OTT Flow のバックボーンを提供します。Accedo Studio Proは、メンテナンスコストを削減し、魅力的なユーザーエクスペリエンスを実現し、一元的なクラウドベースのダッシュボードからプラットフォーム全体の OTT サービスの完全な管理を可能にします。</p>
-    <p>OTT <a href="https://support.ottflow.com">フローについてもっと知る</a>。</p>
+    <p>Accedoを搭載したブライトコーブ OTT フローは、美しいマルチプラットフォームの OTT サービスの立ち上げに伴う技術的な複雑さと市場参入障壁を減らします。<a href="#video-cloud"></a>ブライトコーブビデオクラウドは、業界をリードするビデオプレーヤー、取り込み、トランスコーディング、メタデータ管理、SDK で OTT Flow のバックボーンを提供します。Accedo Studio Proは、メンテナンスコストを削減し、魅力的なユーザーエクスペリエンスを実現し、一元的なクラウドベースのダッシュボードからプラットフォーム全体の OTT サービスの完全な管理を可能にします。</p>
+    <p><a href="https://support.ottflow.com">OTT</a>フローの詳細については、こちらをご覧ください。</p>
   </section>
 </article>
 
@@ -543,11 +333,19 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
+<div class="last-updated">
+  ページの最終更新日21 May 2021
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
-        <h2>Brightcove サポート</h2>
+        <h2>ブライトコーブのサポート</h2>
 
         <ul class="menu">
           <li>
@@ -574,14 +372,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
           </li>
           <li>
-            <a href="https://university.brightcove.com/">Brightcove University</a>
+            <a href="https://university.brightcove.com/">ブライトコーブ大学</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>ブライトコーブ</h2>
 
         <ul class="menu">
           <li>
@@ -600,12 +398,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> ブライトコーブ Inc. すべての権利を保有</div>
             </td>
             <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -615,27 +413,11 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </div>
   </div>
 </footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
+
 <script>
-
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-
+      
+  var searchBox = sajari.init ( { mode: "search-box", project: "1588255093746585379", // Set this to your project. collection: "brightcove-documenation", // Set this to your collection. instantPipeline: "autocomplete", // Pipeline used as you type inputPlaceholder: "Search", // Input element placeholder maxSuggestions: 5, // Maximum number of suggestions to show attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to } ); SearchBox (「サブ」,「pipeline.search-sent」, 関数 (_, クエリ) { window.location = "/search.html?q=" + encodeURIComponent(query.q); } );
+  
 
 </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
@@ -661,30 +443,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
+    asj-paginator__page-number.sj-paginator__page-number { background-color: lightblue; }—current.css-so0ov7 { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab div.sj-tabs__tab { border-bottom-color: crimson; background-color: #f8f8f8; }—選択されたp.sj-result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text。css-31l7gp h3 { color: navy; font-size: 1.4rem; }
     </style>
 
 </body>

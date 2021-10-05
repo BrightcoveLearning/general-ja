@@ -1,0 +1,135 @@
+- section:
+  name: 'ホーム'
+  url: '/index.html'
+- section:
+  name: '一般情報'
+  url: '/general/index.html'
+  icon: '<i data-feather="info"></i>'
+  docs:
+    - name: 'Brightcove製品の概要'
+      url: '/general/brightcove-product-overview.html'
+    - name: 'Brightcove Continuum 概要'
+      url: '/general/brightcove-continuum-overview.html'
+    - name: 'Roku TrickPlayのBrightcoveビデオ'
+      url: '/general/roku-trick-play.html'
+    - name: 'Brightcove オープンソースプロジェクト'
+      url: '/general/brightcove-open-source-projects.html'
+    - name: 'MPEG-DASHビデオ'
+      url: '/general/mpeg-dash-video.html'
+- section:
+  name: '開発者'
+  url: '/developer/index.html'
+  icon: '<i data-feather="code"></i>'
+  docs:
+    - name: 'CORSを理解する'
+      url: '/developer/concepts-cors.html'
+    - name: 'JSONの紹介'
+      url: '/developer/concepts-introducing-json.html'
+    - name: 'JavaScriptデバッグの基本'
+      url: '/developer/concepts-javascript-debugging-basics.html'
+    - name: 'JavaScriptモジュールのデザインパターン'
+      url: '/developer/concepts-javascript-module-design-pattern.html'
+    - name: 'cURL を設定する'
+      url: '/developer/concepts-set-curl.html'
+    - name: 'JavaScriptPromisesの使用'
+      url: '/developer/concepts-using-javascript-promises.html'
+    - name: 'JSON ウェブトークン (JWT) の作成'
+      url: '/developer/create-json-web-token.html'
+    - name: 'JSON Web Token（JWT）の作成-非推奨'
+      url: '/developer/create-jwt.html'
+    - name: 'モバイルデバイスでのデバッグ'
+      url: '/developer/debugging-mobile-devices.html'
+    - name: 'MTRの使用（私のtraceroute）'
+      url: '/developer/using-mtr-to-look-at-network-traffic.html'
+    - name: 'Wiresharkを使用したネットワークトラフィックの追跡'
+      url: '/developer/using-wireshark-track-network-traffic-debugging.html'
+- section:
+  name: 'Ooyalaからの移行'
+  url: '/ooyala/index.html'
+  icon: '<i data-feather="truck"></i>'
+  docs:
+    - name: 'Ooyalaのお客様向けの移行ドキュメント'
+      url: '/ooyala/migration-docs-ooyala-customers.html'
+    - name: 'Brightcove AnalyticsAPIへの移行'
+      url: '/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html'
+    - name: 'Video Cloudへの移行:広告セット'
+      url: '/ooyala/migrating-video-cloud-ad-sets.html'
+    - name: 'Video Cloudへの移行:取り込みアダプタ'
+      url: '/ooyala/migrating-video-cloud-ingestion-adapter.html'
+    - name: '取り込みアダプター：CSV マニフェストファイル'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html'
+    - name: '取り込みアダプター：アスペラで摂取する'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html'
+    - name: '取り込みアダプター：FTPS で取り込み'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html'
+    - name: '取り込みアダプター：OIS2.5で摂取する'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html'
+    - name: '取り込みアダプター：バックロット API を使用した取り込み'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html'
+    - name: '取り込みアダプター：MRSS によるリモートアセットの取り込み'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html'
+    - name: '取り込みアダプター：ホストされた MRSS からの取り込み'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html'
+    - name: 'バックロット/ビデオクラウドCMSコネクタ'
+      url: '/ooyala/backlot-video-cloud-cms-connector.html'
+    - name: 'BacklotとVideo Cloud:動画と再生リストのフィールド'
+      url: '/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html'
+    - name: '取り込みアダプター：マニフェストファイル形式'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html'
+    - name: '取り込みアダプター：XML マニフェストファイル'
+      url: '/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html'
+    - name: '取り込みアダプター：サポートされているインジェスト形式'
+      url: '/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html'
+    - name: 'テスト用のBrightcoveDNSサーバーの追加'
+      url: '/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html'
+    - name: 'BrightcoveAPIリクエストの認証'
+      url: '/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html'
+    - name: '今トレンドレポートリファレンス'
+      url: '/ooyala/trending-now-report-reference.html'
+    - name: 'ビデオクラウドコンテンツにOoyalaプレーヤーを使用する'
+      url: '/ooyala/using-ooyala-players-deliver-video-cloud-content.html'
+- section:
+  name: 'ユーティリティ'
+  url: '/utilities/index.html'
+  icon: '<i data-feather="tool"></i>'
+  docs:
+    - name: 'Base64エンコーディングツール'
+      url: '/utilities/base-64-encoding-tool.html'
+    - name: '日付コンバーター'
+      url: '/utilities/date-converter.html'
+    - name: '文字列エンコーダ'
+      url: '/utilities/string-encoder.html'
+- section:
+  name: トレーニング
+  url: /training/index.html
+  icon: '<i data-feather="award"></i>'
+  docs:
+    - name: すべてのオンライントレーニングコース
+      url: /training/online-training-courses.html
+    - name: インストラクター主導トレーニングへの登録
+      url: /training/register-training.html
+    - name: 'トレーニング:ビデオクラウドの概要'
+      url: /training/training-demand-introduction-video-cloud.html
+    - name: 'トレーニング:ビデオクラウド分析の概要'
+      url: /training/training-demand-introduction-video-cloud-analytics.html
+    - name: 'トレーニング:ビデオクラウドの基本'
+      url: /training/training-demand-video-cloud-basics.html
+    - name: ビデオクラウドスタジオトレーニングビデオ
+      url: /training/video-cloud-studio-training-videos.html
+    - name: Brightcove Universityトレーニングコース
+      url: /training/brightcove-university.html
+- section:
+  name: 'サポート'
+  url: '/support/index.html'
+  icon: '<i data-feather="help-circle"></i>'
+  docs:
+    - name: '既知の問題'
+      url: '/support/known-issues-studio-brightcove-player-and-apis.html'
+    - name: 'Brightcoveのシステムステータスページの表示'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: '営業へのお問い合わせ'
+      url: '/support/contact-sales.html'
+    - name: 'サポートケースを開く'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'サポートポータルのパスワードをリセットする'
+      url: '/support/reset-support-portal-password.html'
